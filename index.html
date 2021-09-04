@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <link href="./assets/css/css/boxicons.min.css" rel="stylesheet">
+    <link href="./assets/img/davizi.jpg" rel="icon">
+    <link href="./assets/css/style.css" rel="stylesheet">
+    <title>Grammy Li CV</title>
+</head>
+
+<body>
+    <header class="l-header" id="header">
+        <nav class="bd-container nav">
+            <a class="nav__logo" href="#home">Grammy Li</a>
+            <!--menu-->
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <!--home-->
+                    <li class="nav__item">
+                        <a class="active-link nav__link" href="#home">
+                            <i class='bx bx-home nav__icon'></i>主页
+                        </a>
+                    </li>
+                    <!--home-->
+
+                    <!--profile-->
+                    <li class="nav__item">
+                        <a class="nav__link" href="#profile">
+                            <i class='bx bx-user nav__icon'></i>简介
+                        </a>
+                    </li>
+                    <!--profile-->
+
+                    <!--socmed-->
+                    <li class="nav__item">
+                        <a class="nav__link" href="#socmed">
+                            <i class='bx bx-globe nav__icon'></i>社交
+                        </a>
+                    </li>
+                    <!--socmed-->
+
+                    <!--skill-->
+                    <li class="nav__item">
+                        <a class="nav__link" href="#skill">
+                            <i class='bx bx-receipt nav__icon'></i>技能
+                        </a>
+                    </li>
+                    <!--skill-->
+
+                    <!--language-->
+                    <li class="nav__item">
+                        <a class="nav__link" href="#language">
+                            <i class='bx bx-font nav__icon'></i>语言
+                        </a>
+                    </li>
+                    <!--language-->
+
+                    <!--education-->
+                    <li class="nav__item">
+                        <a class="nav__link" href="#education">
+                            <i class='bx bx-book nav__icon'></i>教育
+                        </a>
+                    </li>
+                    <!--education-->
+
+                    <!--experience-->
+                    <li class="nav__item">
+                        <a class="nav__link" href="#experience">
+                            <i class='bx bx-briefcase nav__icon'></i>经验
+                        </a>
+                    </li>
+                    <!--experience-->
+
+                    <!--certificate-->
+                    <li class="nav__item">
+                        <a class="nav__link" href="#certificate">
+                            <i class='bx bx-certification nav__icon'></i>项目
+                        </a>
+                    </li>
+                    <!--certificate-->
+
+                    <!--interest-->
+                    <li class="nav__item">
+                        <a class="nav__link" href="#interest">
+                            <i class='bx bx-heart nav__icon'></i>兴趣
+                        </a>
+                    </li>
+                    <!--interest-->
+                </ul>
+            </div>
+            <!--menu-->
+
+            <!--category-->
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-category'></i>
+            </div>
+            <!--category-->
+        </nav>
+    </header>
+
+    <main class="bd-container l-main">
+        <!-- All elements within this div, is generated in PDF -->
+        <div class="resume" id="area-cv">
+            <!--left-->
+            <div class="resume__left">
+                <!--home-->
+                <section class="home" id="home">
+                    <div class="bd-grid home__container section">
+                        <div class="bd-grid home__data">
+                            <img alt="Muhammad Fauzul Hanif's photo" class="home__img" src="./assets/img/davizi.jpg">
+                            <h1 class="home__title"> 李朝 </h1>
+                            <h3 class="home__profession">前端程序员</h3>
+
+                            <!-- Button to download your CV saved in the pdf folder. Available for mobile -->
+                            <div>
+                                <a class="home__button-movil" download="" target="_blank"
+                                    href="assets/pdf/前端工程师_李朝_15927762230.pdf"> 简历</a>
+                            </div>
+                            <!-- Button to download your CV saved in the pdf folder. Available for mobile -->
+                        </div>
+
+                        <div class="bd-grid home__address">
+                            <span class="home__information">
+                                <i class='bx bx-map home__icon'></i> 🇨🇳 武汉
+                            </span>
+                            <span class="home__information">
+                                <i class='bx bxs-school home__icon'>
+                                </i> 本科
+                            </span>
+                            <span class="home__information">
+                                <i class='bx bx-envelope home__icon'></i> yy_lichao@outlook.com
+                            </span>
+                            <span class="home__information">
+                                <i class='bx bx-phone home__icon'></i> (+86) 15927762230
+                            </span>
+                            <a class="social__link" href="http://davizi.gitee.io/" target="_blank">
+                                <i class='bx bx-globe social__icon'></i> http://davizi.gitee.io/
+                            </a>
+                            <a class="social__link" href="https://www.github.com/DaZhiZi" target="_blank">
+                                <i class='bx bxl-github social__icon'></i> @魔法师
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Theme change button -->
+                    <i class='bx bx-moon change-theme' id="theme-button" title="Theme"></i>
+                    <!-- Theme change button -->
+
+                    <!-- Button to generate and download the pdf. Available for desktop. -->
+                    <i class='bx bx-download generate-pdf' title="Generate PDF" id="resume-button"></i>
+                    <!-- Button to generate and download the pdf. Available for desktop. -->
+                </section>
+                <!--home-->
+
+                <!--profile-->
+                <section class="section profile" id="profile">
+                    <h2 class="section-title">简介</h2>
+                    <p class="profile__description">
+                        计算机专业，爱好编程，实现过近二十种在线游戏，并且自制游戏引擎，学习前后端有四年时间
+                        实习经验快有一年，在此期间，负责公司两个最新上线React 项目（教务和艺术馆）, 前端部分主要由我一人完成
+                        ，前端技术不限，后端 Node 或者 Python, 乐观积极向上，喜欢与同事交流合作，解决技术难题
+                    </p>
+                </section>
+                <!--profile-->
+
+                <!--socmed-->
+                <section class="social section" id="socmed">
+                    <h2 class="section-title">联系</h2>
+                    <div class="bd-grid social__container">
+                        <a class="social__link" href="https://www.facebook.com/zhao.li.94651774" target="_blank">
+                            <i class='bx bxl-facebook social__icon'></i> Grammy Li
+                        </a>
+                        <a class="social__link" href="https://www.github.com/DaZhiZi" target="_blank">
+                            <i class='bx bxl-github social__icon'></i> @魔法师
+                        </a>
+                        <a class="social__link" href="https://codepen.io/DaZhiZi" target="_blank">
+                            <i class='bx bxl-codepen social__icon'></i> @大侄子
+                        </a>
+                        <a class="social__link" href="https://www.instagram.com/yy_lichao/" target="_blank">
+                            <i class='bx bxl-instagram social__icon'></i> @yy_lichao
+                        </a>
+
+                        <a class="social__link" target="_blank">
+                            <i class='bx bxl-whatsapp social__icon'></i> (+86) 15927762230
+                        </a>
+                        <a class="social__link" href="http://davizi.gitee.io/" target="_blank">
+                            <i class='bx bx-globe social__icon'></i> http://davizi.gitee.io/
+                        </a>
+
+                    </div>
+                </section>
+                <!--socmed-->
+
+                <!--language-->
+                <section class="language section" id="language">
+                    <h2 class="section-title">语言</h2>
+                    <div class="language__container">
+                        <ul class="bd-grid language__content">
+                            <li class="language__name">
+                                <span class="language__circle"></span> CET-4
+                            </li>
+
+                        </ul>
+                    </div>
+                </section>
+                <!--language-->
+
+
+
+
+            </div>
+            <!--left-->
+
+            <!--right-->
+            <div class="resume__right">
+                <!--education-->
+                <section class="education section" id="education">
+                    <h2 class="section-title">教育经历</h2>
+                    <div class="bd-grid education__container">
+                        <!--SMK-->
+                        <!-- <div class="education__content">
+                            <div class="education__time">
+                                <span class="education__rounder"></span>
+                                <span class="education__line"></span>
+                            </div>
+                            <div class="bd-grid education__data">
+                                <h3 class="education__title">洪湖市第一中学</h3>
+                                <span class="education__studies">高中</span>
+                                <span class="education__year">2014 - 2017</span>
+                            </div>
+                        </div> -->
+                        <!--SMK-->
+
+                        <!--SMK-->
+                        <div class="education__content">
+                            <div class="education__time">
+                                <span class="education__rounder"></span>
+                                <span class="education__line"></span>
+                            </div>
+                            <div class="bd-grid education__data">
+                                <h3 class="education__title">文华学院</h3>
+                                <span class="education__year">2017-09 - 2021-07</span>
+                                <span class="education__studies">本科 / 计算机科学与技术专业</span>
+
+                            </div>
+                        </div>
+                        <!--SMK-->
+
+
+                    </div>
+                </section>
+                <!--education-->
+
+                <!--experience-->
+                <section class="experience section" id="experience">
+                    <h2 class="section-title">工作经历</h2>
+                    <div class="bd-grid experience__container">
+
+                        <div class="experience__content">
+                            <div class="experience__time">
+                                <span class="experience__rounder"></span>
+                                <span class="experience__line"></span>
+                            </div>
+                            <div class="bd-grid experience__data">
+                                <h3 class="experience__title"> PonyCody </h3>
+                                <span class="experience__place">2020-07 - 2021-05 | 美国硅谷 | 前端工程师</span>
+                                <p class="experience__description">
+                                    1. 应用技术：React + Redux + Antdesign + Echarts + ES6
+                                    <br>
+                                    2. 跟美国同事远程沟通合作，创新性解决业务逻辑问题。
+                                    <br>
+                                    3. 独立实现公司的页面制作，客户端获取数据接口的封装及优化，同时也会联调后端相应接口。
+                                    <br>
+                                    4. 通过动态路由的方式实现不同组件的渲染来达到页面的跳转。
+                                    <br>
+                                    5. 解决页面的自适应、自动横屏、可拖拽悬浮弹窗、学生答题卡的制作或者打印单页成绩单等功能。
+                                    <br>
+                                    6. 熟悉 Socket 实时更新数据功能的使用。
+                                    <br>
+                                    7. 熟练使用 JS 可视化图表, 如 Echarts 等, 满足公司相关图表的各类需求。
+                                    <br>
+                                    8. 实现视频、图片、代码和音频等文件的上传、显示、删除和在线下载功能，如音频的可视化、PDF预览或者相机拍照上传等。
+                                    <br>
+                                    9. 独立实现智能拖拽表单组件（类似于低代码开发组件应用）。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="experience__content">
+                            <div class="experience__time">
+                                <span class="experience__rounder"></span>
+                                <span class="experience__line"></span>
+                            </div>
+                            <div class="bd-grid experience__data">
+                                <h3 class="experience__title"> 深圳悠悦天成科技有限公司 </h3>
+                                <span class="experience__place">2020-06 - 2020-07 | h5游戏前端工程师</span>
+                                <p class="experience__description">
+                                    1. 应用技术：JavaScript + HTML + CSS。
+                                    <br>
+                                    2. 负责页面的布局和数据渲染，并且配合后端完成页面的嵌套。
+                                    <br>
+                                    3. 使用JavaScript实现某些功能的逻辑处理和某些页面的动态效果。
+                                    <br>
+                                    4. 负责一些网页游戏制作，例如扫雷、数独、2048、打砖块、记忆纸牌等。
+                                    <br>
+                                    5. 解决一些性能的优化问题。
+                                    <br>
+                                    6. 页面的适配问题。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--experience-->
+                <!--skill-->
+                <section class="skill section" id="skill">
+                    <h2 class="section-title">技能</h2>
+                    <div class="bd-grid experience__container">
+                        <div class="  skill__content">
+                            <div class="experience__content">
+                                <div class="experience__time">
+                                    <span class="experience__rounder"></span>
+                                    <span class="experience__line"></span>
+                                </div>
+                                <div class="experience__data">
+                                    <h3 class="experience__title">
+                                        <a>HTML / CSS</a>
+                                    </h3>
+
+                                    <p class="experience__description">
+                                        1. 熟练掌握 HTML 以及 CSS 的样式与动画。并能结合运用构建网页及实现复杂布局。
+                                        <br>
+                                        2. 熟练掌握 HTML5 新增内容: 语义化标签, 视频，音频标签以及 localStorage、 sessionStorage 的离线存储功能及清除功能,
+                                        并实现十五种以上的游戏， 熟悉 CSS3。
+                                        <br>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="experience__content">
+                                <div class="experience__time">
+                                    <span class="experience__rounder"></span>
+                                    <span class="experience__line"></span>
+                                </div>
+                                <div class="experience__data">
+                                    <h3 class="experience__title">
+                                        <a>ECMAScript(JavaScript)</a>
+                                    </h3>
+
+                                    <p class="experience__description">
+                                        1. 熟悉原生 Javascript 中 DOM 编程基本原理，event，prototype，constructor 等复杂概念。
+                                        <br>
+                                        2. 熟悉 Javascript 在各个浏览器下的兼容问题，能脱离 jQuery 等类库编写基本的原生 Javascript 代码。
+                                        <br>
+                                        3. 熟练掌握 ES6 新特性, 如箭头函数, class, set 等知识。
+                                        <br>
+                                        4. 熟练运用模块化、面向对象的方式编程。
+                                        <br>
+                                        5. 熟练在项目中熟练运用能够编写自动化测试,利用Chorme DevTools进行代码调试，快速定位和解决bug。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="experience__content">
+                                <div class="experience__time">
+                                    <span class="experience__rounder"></span>
+                                    <span class="experience__line"></span>
+                                </div>
+                                <div class="experience__data">
+                                    <h3 class="experience__title">
+                                        <a>DOM / BOM</a>
+                                    </h3>
+
+                                    <p class="experience__description">
+                                        1. 熟练掌握 JavaScript 操作 DOM 方法，实现事件委托，动态变更元素样式及其他复杂页面效果。
+                                        <br>
+                                        2. 熟练掌握 BOM API 操作浏览器。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="experience__content">
+                                <div class="experience__time">
+                                    <span class="experience__rounder"></span>
+                                    <span class="experience__line"></span>
+                                </div>
+                                <div class="experience__data">
+                                    <h3 class="experience__title">
+                                        <a>AJAX / JSON / axios</a>
+                                    </h3>
+
+                                    <p class="experience__description">
+                                        1. 熟悉AJAX/ axios的封装和使用，能熟练使用AJAX/ axios进行客户端与服务器端的数据交互
+                                        <br>
+                                        2. 熟悉 JSON、XML 数据格式。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="experience__content">
+                                <div class="experience__time">
+                                    <span class="experience__rounder"></span>
+                                    <span class="experience__line"></span>
+                                </div>
+                                <div class="experience__data">
+                                    <h3 class="experience__title">
+                                        <a>React / Vue / jQuery / Lodash / ECharts</a>
+                                    </h3>
+
+                                    <p class="experience__description">
+                                        1. 熟悉 jQuery 的常用 API，能使用 jQuery 制作网站、轮播等的组件，并且用原生JavaScript实现jQuery的大部分功能。
+                                        <br>
+                                        2. 熟悉 Bootstrap、Lodash、React 、Vue等前端框架开发。
+                                        <br>
+                                        3. 熟练掌握组件运行中的渲染原理与组件的生命周期，能够开发高效可复用的UI组件。
+                                        <br>
+                                        4. 熟悉 ECharts 等第三方库的使用，能使用 ECharts 进行数据可视化。
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="experience__content">
+                                <div class="experience__time">
+                                    <span class="experience__rounder"></span>
+                                    <span class="experience__line"></span>
+                                </div>
+                                <div class="experience__data">
+                                    <h3 class="experience__title">
+                                        <a>移动端 / 微信小程序 / 桌面应用程序</a>
+                                    </h3>
+
+                                    <p class="experience__description">
+                                        1. 熟练掌握 web 页面手机端适配，擅长移动端 H5 开发。
+                                        <br>
+                                        2. 熟悉微信小程序 API，可以使用微信 web 开发者工具进行小程序开发。
+                                        <br>
+                                        3. 熟练使用原生 Javascript 完成 Electron 程序。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="experience__content">
+                                <div class="experience__time">
+                                    <span class="experience__rounder"></span>
+                                    <span class="experience__line"></span>
+                                </div>
+                                <div class="experience__data">
+                                    <h3 class="experience__title">
+                                        <a>Node / HTTP</a>
+                                    </h3>
+
+                                    <p class="experience__description">
+                                        1. 熟悉node常用模块，能够使用 Express 搭建后端服务器以及设计 RESTful 接口。
+                                        <br>
+                                        2. 能使用 Webpack、Babel 等开发项目脚手架。
+                                        <br>
+                                        3. 掌握网络爬虫,配合 syncrequest 与 cheerio 实现网络请求与网页分析。
+                                        <br>
+                                        4. 熟悉网络编程，深入理解 HTTP 协议在前后端的数据交互原理。
+                                        <br>
+                                        5. 熟悉常见跨域处理方式。
+                                        <br>
+                                        6. 熟悉 Websocket 协议，实现过基于 Websocket 的在线聊天室
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="experience__content">
+                                <div class="experience__time">
+                                    <span class="experience__rounder"></span>
+                                    <span class="experience__line"></span>
+                                </div>
+                                <div class="experience__data">
+                                    <h3 class="experience__title">
+                                        <a>Python</a>
+                                    </h3>
+
+                                    <p class="experience__description">
+                                        1. 熟悉 Python 编程，熟悉类的继承、类方法、静态方法的使用。
+                                        <br>
+                                        2. 熟悉 Python 有关的 爬虫 、图像处理、数据处理、数据解析等操作。
+                                        <br>
+                                        3. 熟练掌握 Flask Web 开发，掌握 Flask 中 Jinja2 模板渲染、蓝图注册等功能的使用。
+                                        <br>
+                                        4. 深入理解 MVC 原理，掌握 MVC 模式的 Web 架构的工作原理。
+                                        <br>
+                                        5. 具备基本的 Web 安全知识（SQL 注入等）。
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="experience__content">
+                                <div class="experience__time">
+                                    <span class="experience__rounder"></span>
+                                    <span class="experience__line"></span>
+                                </div>
+                                <div class="experience__data">
+                                    <h3 class="experience__title">
+                                        <a>MySQL / MongoDB</a>
+                                    </h3>
+
+                                    <p class="experience__description">
+                                        1. 熟悉掌握 数据库（MySQL MongoDB）增删改查能胜任。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="experience__content">
+                                <div class="experience__time">
+                                    <span class="experience__rounder"></span>
+                                    <span class="experience__line"></span>
+                                </div>
+                                <div class="experience__data">
+                                    <h3 class="experience__title">
+                                        <a>数据结构 / 算法</a>
+                                    </h3>
+
+                                    <p class="experience__description">
+                                        1. 熟练掌握常见的数据结构（栈 / 队列 / 链表 / 搜索树）的性质，并能实现这些数据结构。
+                                        <br>
+                                        2. 熟悉算法复杂度概念，熟悉常见算法复杂度。
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="experience__content">
+                                <div class="experience__time">
+                                    <span class="experience__rounder"></span>
+                                    <span class="experience__line"></span>
+                                </div>
+                                <div class="experience__data">
+                                    <h3 class="experience__title">
+                                        <a>工具</a>
+                                    </h3>
+
+                                    <p class="experience__description">
+                                        1. 熟悉使用 PyCharm、WebStorm、Git 、Zeplin等开发工具。
+                                        <br>
+                                        2. 能使用 Google Stack Overflow 解决开发中的问题。
+                                        <br>
+                                        3. 熟练使用 Markdown 进行文档编写，了解项目开发流程及开发调试工具的使用。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--skill-->
+                <!--certificate-->
+                <section class="certificate section" id="certificate">
+                    <h2 class="section-title">个人项目</h2>
+                    <div class="bd-grid experience__container">
+                        <div class="experience__content">
+                            <div class="experience__time">
+                                <span class="experience__rounder"></span>
+                                <span class="experience__line"></span>
+                            </div>
+                            <div class="bd-grid experience__data">
+                                <h3 class="experience__title">
+                                    <a class="certificate__link" target="_blank"
+                                        href="https://yylichao.gitee.io/projects/piano/index.html">魔法钢琴🎹</a>
+                                </h3>
+                                <span class="experience__place">2019-07-10 - 2019-07-11 </span>
+                                <p class="experience__description">
+                                    1. 使用原生 JavaScript 实现，用户可以用鼠标点击白键或者黑键，有不同的声音效果
+                                    <br>
+                                    2. 用户也可以按键盘的SDGHj或者ZXCVBNM(1-7)，也会有不同的声音效果
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="experience__content">
+                            <div class="experience__time">
+                                <span class="experience__rounder"></span>
+                                <span class="experience__line"></span>
+                            </div>
+                            <div class="bd-grid experience__data">
+                                <h3 class="experience__title">
+                                    <a class="certificate__link" target="_blank"
+                                        href="https://yylichao.gitee.io/magician/projects/pokemon/">
+                                        宝可梦纸牌
+                                    </a>
+                                </h3>
+                                <span class="experience__place">2021-02-20 - 2021-02-21</span>
+                                <p class="experience__description">
+                                    1. 是一个宝可梦为主题的记忆游戏, 翻动卡片并匹配，直到你找到所有匹配的对
+                                    <br>
+                                    2. 点击重置可以重新开始游戏，用户还可以看到自己翻牌的次数和游戏时间
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="experience__content">
+                            <div class="experience__time">
+                                <span class="experience__rounder"></span>
+                                <span class="experience__line"></span>
+                            </div>
+                            <div class="bd-grid experience__data">
+                                <h3 class="experience__title">
+                                    <a class="certificate__link" target="_blank"
+                                        href="https://yylichao.gitee.io/projects/puzzle_photo/index.html">
+                                        灌篮高手拼图
+                                    </a>
+                                </h3>
+                                <span class="experience__place">2021-02-22 - 2021-02-24</span>
+                                <p class="experience__description">
+                                    1. 用户可以选择灌篮高手、宝可梦或者七龙珠的图片进行拼图游戏
+                                    <br>
+                                    2. 点击空白元素周围照片， 或者键盘按 w s a d 来移动照片
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="experience__content">
+                            <div class="experience__time">
+                                <span class="experience__rounder"></span>
+                                <span class="experience__line"></span>
+                            </div>
+                            <div class="bd-grid experience__data">
+                                <h3 class="experience__title">
+                                    <a class="certificate__link" target="_blank"
+                                        href="https://yylichao.gitee.io/projects/game/sudoku/index.html">
+                                        数独
+                                    </a>
+                                </h3>
+                                <span class="experience__place">2020-11-08 - 2021-11-10</span>
+                                <p class="experience__description">
+                                    1. 将数字1-9填入空格内，使每行、每列、每宫及每条斜线内数字均不重复
+                                    <br>
+                                    2. 用户可以选择不同游戏的模式，还有时间显示
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="experience__content">
+                            <div class="experience__time">
+                                <span class="experience__rounder"></span>
+                                <span class="experience__line"></span>
+                            </div>
+                            <div class="bd-grid experience__data">
+                                <h3 class="experience__title">
+                                    <a class="certificate__link" target="_blank"
+                                        href="https://yylichao.gitee.io/projects/paint_framework/index.html">
+                                        画图框架
+                                    </a>
+                                </h3>
+                                <span class="experience__place">2020-04-20 - 2020-06-21</span>
+                                <p class="experience__description">
+                                    1. 使用原生 JavaScript Canvas 实现，用户可以在页面中写代码，并且执行代码或者清空画布
+                                    <br>
+                                    2. 点击相应选项可以相应配置 mario 位置和颜色
+                                    <br>
+                                    3. 点击不同按钮可以显示一些参考的动画案例 （画一些国旗、画龙、西瓜、还有统计图）
+                                    <br>
+                                    4. 爬虫数据可视化可以用到折线图和统计图
+                                </p>
+                            </div>
+                        </div>
+                        <div class="experience__content">
+                            <div class="experience__time">
+                                <span class="experience__rounder"></span>
+                                <span class="experience__line"></span>
+                            </div>
+                            <div class="bd-grid experience__data">
+                                <h3 class="experience__title">
+                                    <a class="certificate__link" target="_blank"
+                                        href="https://yylichao.gitee.io/projects/double_input_method/index.html">
+                                        双拼输入法
+                                    </a>
+                                </h3>
+                                <span class="experience__place">2020-06-20 - 2020-06-21</span>
+                                <p class="experience__description">
+                                    1.自制双拼输入法，支持点击键盘字符，显示相应的字，并且可以删除输入字符和选择相应的字
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="experience__content">
+                            <div class="experience__time">
+                                <span class="experience__rounder"></span>
+                                <span class="experience__line"></span>
+                            </div>
+                            <div class="bd-grid experience__data">
+                                <h3 class="experience__title">
+                                    <a class="certificate__link" target="_blank"
+                                        href="https://yylichao.gitee.io/img/my.gif">
+                                        图像处理
+                                    </a>
+                                </h3>
+                                <span class="experience__place">2019-03-20 - 2019-04-01</span>
+                                <p class="experience__description">
+                                    1. 使用JavaScript 或者 python 实现三十多种图片滤镜（其中包含双重曝光效果）
+                                    <br>
+                                    2. 并且用这些图片滤镜实现轮播图组件和 gif 动态图
+                                    <br>
+                                    3. 图像裁剪 图像旋转（左转、右转，上下旋转中文字位置改变
+                                    <br>
+                                    4. 图像对比，对比两个图片改变的 rbga，并且填充相应的颜色
+                                </p>
+                            </div>
+                        </div>
+                        <!-- 
+                        <div class="experience__content">
+                            <div class="experience__time">
+                                <span class="experience__rounder"></span>
+                                <span class="experience__line"></span>
+                            </div>
+                            <div class="bd-grid experience__data">
+                                <h3 class="experience__title">
+                                    <a class="certificate__link" target="_blank"
+                                        href="https://yylichao.gitee.io/magician/projects/sweeping/">
+                                        扫雷
+                                    </a>
+                                </h3>
+                                <span class="experience__place">2020-07-03 - 2020-07-08</span>
+                                <p class="experience__description">
+                                    1. 用户右键可以标记雷
+                                    <br>
+                                    2. 用户可以选择不同关卡模式，还是计时功能
+
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="experience__content">
+                            <div class="experience__time">
+                                <span class="experience__rounder"></span>
+                                <span class="experience__line"></span>
+                            </div>
+                            <div class="bd-grid experience__data">
+                                <h3 class="experience__title">
+                                    <a class="certificate__link" target="_blank"
+                                        href="https://yylichao.gitee.io/projects/weather/index.html">
+                                        天气预报
+                                    </a>
+                                </h3>
+                                <span class="experience__place">2019-10-01 - 2019-10-02</span>
+                                <p class="experience__description">
+                                    1. 使用Vue 和 AJAX 技术获取数据实现，当用户输入相应的城市， 点击回车时，页面会自动渲染相应的数据
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="experience__content">
+                            <div class="experience__time">
+                                <span class="experience__rounder"></span>
+                                <span class="experience__line"></span>
+                            </div>
+                            <div class="bd-grid experience__data">
+                                <h3 class="experience__title">
+                                    <a class="certificate__link" target="_blank"
+                                        href="https://yylichao.gitee.io/projects/weather/index.html">
+                                        天气预报
+                                    </a>
+                                </h3>
+                                <span class="experience__place">2019-04-04 - 2019-04-05</span>
+                                <p class="experience__description">
+                                    1. 使用Vue 和 AJAX 技术获取数据实现，当用户输入相应的城市， 点击回车时，页面会自动渲染相应的数据
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="experience__content">
+                            <div class="experience__time">
+                                <span class="experience__rounder"></span>
+                                <span class="experience__line"></span>
+                            </div>
+                            <div class="bd-grid experience__data">
+                                <h3 class="experience__title">
+                                    <a class="certificate__link" target="_blank"
+                                        href="https://yylichao.gitee.io/projects/draw_edit_map/index.html">
+                                        亲戚计算机
+                                    </a>
+                                </h3>
+                                <span class="experience__place">2019-10-01 - 2019-10-02</span>
+                                <p class="experience__description">
+                                    1. 用户选择性别，通过指定关系的叠加，计算出互相之间的关系称谓
+                                    <br>
+                                </p>
+                            </div>
+                        </div> -->
+
+                        <div class="experience__content">
+                            <div class="experience__time">
+                                <span class="experience__rounder"></span>
+                                <span class="experience__line"></span>
+                            </div>
+                            <div class="bd-grid experience__data">
+                                <h3 class="experience__title">
+                                    <a class="certificate__link" target="_blank"
+                                        href="https://yylichao.gitee.io/projects/%E7%BA%B8%E7%89%8C/index.html">
+                                        纸牌游戏
+                                    </a>
+                                </h3>
+                                <span class="experience__place">2019-08-01 - 2019-08-03</span>
+                                <p class="experience__description">
+                                    1. 原生 JavaScript + CSS 动画复刻经典规则的纸牌, 活用 HTML 元素嵌套 与 Drag & Drop API，令纸牌能够一起被拖入另一列。
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="experience__content">
+                            <div class="experience__time">
+                                <span class="experience__rounder"></span>
+                                <span class="experience__line"></span>
+                            </div>
+                            <div class="bd-grid experience__data">
+                                <h3 class="experience__title">
+                                    <a class="certificate__link" target="_blank"
+                                        href="https://yylichao.gitee.io/projects/game/plant_zombie/day_04_bullet_over/game.html">
+                                        植物战僵尸
+                                    </a>
+                                </h3>
+                                <span class="experience__place">2020-02-23 - 2020-02-28</span>
+                                <p class="experience__description">
+                                    1. 使用原生 JavaScript Canvas实现 游戏引擎，包含多个场景（开始场景，主场景 ，编辑场景，结束场景），场景中包含多个元素(这里显示有
+                                    豌豆射手和铁桶僵尸) 豌豆射手：在出现僵尸的情况下才可以自动发射子弹 铁桶僵尸：可以随机出现在任意轨道 在生命值为零时，自动消失
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="experience__content">
+                            <div class="experience__time">
+                                <span class="experience__rounder"></span>
+                                <span class="experience__line"></span>
+                            </div>
+                            <div class="bd-grid experience__data">
+                                <h3 class="experience__title">
+                                    <a class="certificate__link" target="_blank"
+                                        href="https://yylichao.gitee.io/projects/visual_echart/topmovie.html">
+                                        爬虫及其可视化
+                                    </a>
+                                </h3>
+                                <span class="experience__place">2019-11-13 - 2019-10-24</span>
+                                <p class="experience__description">
+                                    1. 使用原生 JavaScript、Node.js 、Lodash、ECharts 框架以及爬虫技术实现，显示数据效果漂亮。
+                                    <br>
+                                    2. 获取原始数据：使用 Node.js 或者 Python, 通过 cheerio 和 sync-request 框架获取网站页面的数据，并将数据以 JSON
+                                    格式保存到本地。
+                                    <br>
+                                    3. API 搭建：使用 Node.js 通过 Express 框架搭建 API，API 会读取本地文件的数据，并发送到前端。
+                                    <br>
+                                    4. 展示数据：通过 AJAX 技术获取数据，并将数据封装好后传递给 ECharts 框架所提供的功能函数，配置对应的参数，显示图表。
+                                    <br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--certificate-->
+
+                <!--interest-->
+                <section class="interest section" id="interest">
+                    <h2 class="section-title">兴趣爱好</h2>
+
+                    <div class="bd-grid interest__container">
+                        <div class="interest__content">
+                            <i class='bx interest__icon bx-basketball' style="width: 1.2rem;">
+
+                            </i>
+                            <span class="interest__name">篮球</span>
+                        </div>
+                        <div class="interest__content">
+                            <i class='bx bx-laptop interest__icon'></i>
+                            <span class="interests__name">游戏</span>
+                        </div>
+                        <div class="interest__content">
+                            <i class='bx bx-code interest__icon'></i>
+                            <span class="interest__name">编程</span>
+                        </div>
+                        <div class="interest__content">
+                            <i class='bx bx-photo-album interest__icon' style="width: 1.2rem;">
+
+                            </i>
+                            <span class="interest__name">摄影</span>
+                        </div>
+                    </div>
+                </section>
+                <!--interest-->
+            </div>
+            <!--right-->
+        </div>
+    </main>
+
+    <!--scroll top-->
+    <a href="#" class="scrolltop" id="scroll-top">
+        <i class='bx bx-up-arrow-alt scrolltop__icon'></i>
+    </a>
+    <!--scroll top-->
+
+
+    <!--html2pdf-->
+    <script src="assets/js/html2pdf.bundle.min.js"></script>
+    <!--html2pdf-->
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
