@@ -1,10 +1,14 @@
-# GrammyLi 
+## GrammyLi 
 personal page
 
-link: grammyli.com
+link: <grammyli.com> 
+
+## cv
+
+limk: <grammyli.com/cv>
 ## music
 
-link : grammyli.com/music
+link : <grammyli.com/music>
 
 image: 
 
