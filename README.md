@@ -1,17 +1,17 @@
 ## GrammyLi 
 personal page
 
-link: <grammyli.com> 
+link: https://grammyli.com
 
 ## cv
 
-limk: <grammyli.com/cv>
+limk: https://grammyli.com/cv
+
 ## music
 
-link : <grammyli.com/music>
+link : https://grammyli.com/music
 
 image: 
 
 <img src="./img/../%20img/music.png">
 
-<img src="./img/../%20img/music-pc.png">
