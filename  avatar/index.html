@@ -1,7 +1,7 @@
 <!--
  * @Author: grammyli
  * @Date: 2021-10-09 19:09:23
- * @LastEditTime: 2021-10-09 21:27:01
+ * @LastEditTime: 2021-10-09 21:48:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath:  头像生成器/index.html
@@ -16,6 +16,7 @@
   <title> 头像生成器 </title>
   <link href="./styles.css" rel="stylesheet">
   <link href="../cv/assets/img/davizi.jpg" rel="icon">
+
 </head>
 
 <body>
@@ -32,48 +33,45 @@
 
     <canvas class="t-canvas"></canvas>
     <div class="t-settings">
-      <div class="t-field"></div>
-      <div class="t-label">
-        flag:
+      <div class="t-field">
+        <div class="t-label">
+          flag:
+        </div>
+        <div class="t-value">
+          <select class="t-select-flag" data-flag="1">
+            <option value="1"> flag1 </option>
+            <option value="2"> flag2 </option>
+            <option value="3"> flag3 </option>
+            <option value="4"> flag4 </option>
+            <option value="5"> flag5 </option>
+            <option value="6"> flag6 </option>
+          </select>
+        </div>
       </div>
-      <div class="t-value">
-        <select class="t-select-flag" data-flag="1">
-          <option value="1"> flag1 </option>
-          <option value="2"> flag2 </option>
-          <option value="3"> flag3 </option>
-          <option value="4"> flag4 </option>
-          <option value="5"> flag5 </option>
-          <option value="6"> flag6 </option>
-        </select>
+      <div class="t-field">
+        <div class="t-label">
+          filter (only once):
+        </div>
+        <div class="t-value">
+          <select class="t-select-filter" data-filter="notFilter">
+            <option value="notFilter"> not filter </option>
+            <option value="gray"> gray </option>
+            <option value="blackWhite"> blackWhite </option>
+            <option value="negative"> negative </option>
+          </select>
+        </div>
       </div>
     </div>
 
   </div>
-
+  <script src="./utils.js"></script>
   <script>
-    // 基础工具
-    const debug = true
-    const log = debug ? console.log.bind(console, '*** debug ***') : () => {}
-    const int = num => parseInt(num, 10)
-    const e = sel => document.querySelector(sel)
-    const drawImage = (data, callback) => {
-      const c = e('.t-canvas')
-      const context = c.getContext('2d')
-      c.width = 400
-      c.height = 400
-      const img = new Image
-      img.src = data
-      img.onload = () => {
-        callback(context, img)
-      }
-    }
-
     const drawToCanvas = (data) => {
       drawImage(data, (context, img) => {
         context.drawImage(img, 0, 0, 400, 400)
+        imageFilter()
         // 上传头像的数据
         window.imageData = context.getImageData(0, 0, 400, 400)
-
         drawFlag(context)
       })
     }
@@ -124,6 +122,26 @@
         drawFlag(context)
       })
     }
+
+    const handleSelectFilter = () => {
+      const select = e('.t-select-filter')
+      select.addEventListener('change', (event) => {
+        let v = event.target.value
+        e('.t-select-filter').dataset.filter = v
+        imageFilter()
+        if (!imageData) {
+          alert('大佬 上传图片')
+          return
+        }
+        // // 清空画布
+        const c = e('.t-canvas')
+        const context = c.getContext('2d')
+        context.clearRect(0, 0, 400, 400)
+        context.putImageData(imageData, 0, 0)
+        drawFlag(context)
+      })
+    }
+
     // TODO 下载功能
     const handleSaveFile = () => {
       const input = e('.t-save-btn')
@@ -152,15 +170,15 @@
       handleSelectFlag()
       // 监听下载文件
       handleSaveFile()
+      handleSelectFilter()
     }
 
-    // empty.29426768.png
     const __main = () => {
       window.imageData = null
-
+      // 初始化
       init()
+      // 事件集合
       handleEvents()
-
     }
     __main()
   </script>
