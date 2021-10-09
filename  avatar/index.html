@@ -1,0 +1,169 @@
+<!--
+ * @Author: grammyli
+ * @Date: 2021-10-09 19:09:23
+ * @LastEditTime: 2021-10-09 21:27:01
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath:  头像生成器/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 头像生成器 </title>
+  <link href="./styles.css" rel="stylesheet">
+  <link href="../cv/assets/img/davizi.jpg" rel="icon">
+</head>
+
+<body>
+  <div class="t-container">
+    <div class="t-btns">
+      <button class="t-upload-btn t-btn">
+        upload
+        <input class="t-upload" type="file" accept="image/*" />
+      </button>
+      <button class="t-save-btn t-btn">
+        save
+      </button>
+    </div>
+
+    <canvas class="t-canvas"></canvas>
+    <div class="t-settings">
+      <div class="t-field"></div>
+      <div class="t-label">
+        flag:
+      </div>
+      <div class="t-value">
+        <select class="t-select-flag" data-flag="1">
+          <option value="1"> flag1 </option>
+          <option value="2"> flag2 </option>
+          <option value="3"> flag3 </option>
+          <option value="4"> flag4 </option>
+          <option value="5"> flag5 </option>
+          <option value="6"> flag6 </option>
+        </select>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // 基础工具
+    const debug = true
+    const log = debug ? console.log.bind(console, '*** debug ***') : () => {}
+    const int = num => parseInt(num, 10)
+    const e = sel => document.querySelector(sel)
+    const drawImage = (data, callback) => {
+      const c = e('.t-canvas')
+      const context = c.getContext('2d')
+      c.width = 400
+      c.height = 400
+      const img = new Image
+      img.src = data
+      img.onload = () => {
+        callback(context, img)
+      }
+    }
+
+    const drawToCanvas = (data) => {
+      drawImage(data, (context, img) => {
+        context.drawImage(img, 0, 0, 400, 400)
+        // 上传头像的数据
+        window.imageData = context.getImageData(0, 0, 400, 400)
+
+        drawFlag(context)
+      })
+    }
+
+    const drawFlag = (context) => {
+      const n = +e('.t-select-flag').dataset.flag
+      const imgUrl = `./img/hat${n + 1}.png`
+      const img = new Image()
+      img.src = imgUrl
+      img.onload = () => {
+        context.drawImage(img, 0, 0, 400, 400)
+      }
+    }
+
+    const handleUploadFile = () => {
+      const input = e('.t-upload')
+      input.addEventListener('change', (event) => {
+        const file = event.target.files[0]
+        // 过滤文件
+        if (!/image\/\w+/.test(file.type)) {
+          alert("请确保文件为图像类型")
+          return false
+        }
+        const reader = new FileReader()
+        // 转化成base64数据类型
+        reader.readAsDataURL(file)
+        reader.onload = () => {
+          drawToCanvas(reader.result)
+        }
+      }, false)
+    }
+
+    const handleSelectFlag = () => {
+      const select = e('.t-select-flag')
+      select.addEventListener('change', (event) => {
+        log('event', event)
+        let v = event.target.value
+        e('.t-select-flag').dataset.flag = v
+        if (!imageData) {
+          alert('大佬 上传图片')
+          return
+        }
+        // 清空画布
+        const c = e('.t-canvas')
+        const context = c.getContext('2d')
+        context.clearRect(0, 0, 400, 400)
+        context.putImageData(imageData, 0, 0)
+        drawFlag(context)
+      })
+    }
+    // TODO 下载功能
+    const handleSaveFile = () => {
+      const input = e('.t-save-btn')
+      input.addEventListener('click', (event) => {
+        let a = document.createElement("a")
+        a.download = 'flag-avatar'
+        // log('canvas', e('.t-canvas'))
+        a.href = e('.t-canvas').toDataURL("image/png")
+        a.body.appendChild(a)
+        a.click()
+        a.remove() // 下载之后把创建的元素删除
+      })
+    }
+
+    const init = () => {
+      const url = './img/empty.29426768.png'
+      drawImage(url, (context, img) => {
+        context.drawImage(img, 0, 0, 400, 400)
+      })
+    }
+
+    const handleEvents = () => {
+      // 监听上传文件
+      handleUploadFile()
+      // 选择旗子
+      handleSelectFlag()
+      // 监听下载文件
+      handleSaveFile()
+    }
+
+    // empty.29426768.png
+    const __main = () => {
+      window.imageData = null
+
+      init()
+      handleEvents()
+
+    }
+    __main()
+  </script>
+</body>
+
+</html>

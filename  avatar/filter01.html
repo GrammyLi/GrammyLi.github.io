@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>低配版 滤镜效果</title>
+</head>
+
+<body>
+  <input class="t-upload" type="file" accept="image/*" />
+  <canvas class="t-canvas"></canvas>
+  <script>
+    // 基础工具
+    const debug = true
+    const log = debug ? console.log.bind(console, '*** debug ***') : () => {}
+    const int = num => parseInt(num, 10)
+
+    const grayOfColors = (colors) => {
+      let r = colors[0]
+      let g = colors[1]
+      let b = colors[2]
+      let gray = (r + g + b) / 3
+      let R = gray
+      let G = gray
+      let B = gray
+      let A = colors[3]
+      return [int(R), int(G), int(B), int(A)]
+    }
+
+    // 求RGB平均值Avg ＝ (R + G + B) / 3，如果Avg >= 100，
+    // 则新的颜色值为＝RG＝B＝255；
+    // 如果Avg < 100，则新的颜色值为R＝G＝B＝0；255就是白色，0就是黑色
+    const blackWhiteOfColors = (colors) => {
+      let r = colors[0]
+      let g = colors[1]
+      let b = colors[2]
+      let gray = (r + g + b) / 3
+      gray = gray >= 100 ? 255 : 0
+      let R = gray
+      let G = gray
+      let B = gray
+      let A = colors[3]
+      return [int(R), int(G), int(B), int(A)]
+    }
+
+    // 底片
+    // 算法原理：将当前像素点的RGB值分别与255之差后的值作为当前点的RGB值，即
+    // R = 255 – R；G = 255 – G；B = 255 – B；
+    const negativeOfColors = (colors) => {
+      let r = colors[0]
+      let g = colors[1]
+      let b = colors[2]
+      let R = 255 - r
+      let G = 255 - g
+      let B = 255 - b
+      let A = colors[3]
+      return [int(R), int(G), int(B), int(A)]
+    }
+
+    const imageFilter = (type) => {
+      if (!type) {
+        return
+      }
+      const filters = {
+        gray: grayOfColors, // 灰度
+        blackWhite: blackWhiteOfColors, // 黑白
+        negative: negativeOfColors, // 底片
+      }
+      const image = document.querySelector('.t-canvas')
+      const context = image.getContext('2d')
+      const imageData = context.getImageData(0, 0, 400, 400)
+      const {
+        data
+      } = imageData
+      for (let i = 0; i < data.length; i += 4) {
+        const colors = data.slice(i, i + 4)
+        const newColors = filters[type](colors)
+        const [r, g, b, a] = newColors
+        data[i] = r
+        data[i + 1] = g
+        data[i + 2] = b
+        data[i + 3] = a
+      }
+      context.putImageData(imageData, 0, 0)
+    }
+
+    const drawToCanvas = (data) => {
+      const c = document.querySelector('.t-canvas')
+      const context = c.getContext('2d')
+      c.width = 400
+      c.height = 400
+      const img = new Image
+      img.src = data
+      img.onload = () => {
+        context.drawImage(img, 0, 0, 400, 400)
+        imageFilter()
+        const imgUrl = './img/hat2.png'
+        drawImage(imgUrl, context)
+      }
+    }
+  
+    const drawImage = (imgUrl, context) => {
+      const img = new Image()
+      img.src = imgUrl
+      img.onload = () => {
+        context.drawImage(img, 0, 0, 400, 400)
+      }
+    }
+    
+    const handleUploadFile = () => {
+      const input = document.querySelector('.t-upload')
+      input.addEventListener('change', (event) => {
+        const file = event.target.files[0]
+        // 过滤文件
+        if (!/image\/\w+/.test(file.type)) {
+          alert("请确保文件为图像类型")
+          return false
+        }
+        const reader = new FileReader()
+        // 转化成base64数据类型
+        reader.readAsDataURL(file)
+        reader.onload = () => {
+          drawToCanvas(reader.result)
+        }
+      })
+    }
+
+    const __main = () => {
+      // 监听上传文件
+      handleUploadFile()
+    }
+    __main()
+  </script>
+</body>
+
+</html>
