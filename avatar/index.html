@@ -1,7 +1,7 @@
 <!--
  * @Author: grammyli
  * @Date: 2021-10-09 19:09:23
- * @LastEditTime: 2021-10-10 18:17:42
+ * @LastEditTime: 2021-10-10 19:05:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath:  头像生成器/index.html
@@ -42,7 +42,14 @@
           <input id="radio-2" class="t-type-graduation" name="radio" type="radio"> 🎓
         </div>
       </div>
-
+      <div class="t-field">
+        <div class="t-label">
+          width:
+        </div>
+        <div class="t-value">
+          <input class="t-value-width" type="number" min="400" />
+        </div>
+      </div>
       <div class="t-field t-field-graduation hidden">
         <div class="t-label">
           graduation:
@@ -91,12 +98,11 @@
   <script>
     const drawToCanvas = (data) => {
       drawImage(data, (context, img) => {
-        context.drawImage(img, 0, 0, 400, 400)
-         
+        context.drawImage(img, 0, 0, width, width)
         // 原图像数据
-        window.rawImageData = context.getImageData(0, 0, 400, 400)
+        window.rawImageData = context.getImageData(0, 0, width, width)
         // 上传头像的数据
-        window.imageData = context.getImageData(0, 0, 400, 400)
+        window.imageData = context.getImageData(0, 0, width, width)
         drawHat(context)
       })
     }
@@ -111,7 +117,7 @@
       const img = new Image()
       img.src = imgUrl
       img.onload = () => {
-        context.drawImage(img, 0, 0, 400, 400)
+        context.drawImage(img, 0, 0, width, width)
       }
     }
 
@@ -123,7 +129,7 @@
       const c = e('.t-canvas')
       const context = c.getContext('2d')
       // 清空画布
-      context.clearRect(0, 0, 400, 400)
+      context.clearRect(0, 0, width, width)
       context.putImageData(imageData, 0, 0)
       drawHat(context)
     }
@@ -154,7 +160,7 @@
         drawAvatar()
       })
     }
-    
+
     const handleSelectGraduation = () => {
       const select = e('.t-select-graduation')
       select.addEventListener('change', (event) => {
@@ -175,13 +181,23 @@
       })
     }
 
+    const handleSetWidth = () => {
+      const input = e('.t-value-width')
+      input.addEventListener('change', (event) => {
+        const v = +event.target.value
+        // log('v', v, typeof v)
+        window.width = v
+        drawAvatar()
+      }, false)
+    }
+
     // TODO 下载功能
     const handleSaveFile = () => {
       const input = e('.t-save-btn')
       input.addEventListener('click', (event) => {
         let a = document.createElement("a")
         a.download = 'flag-avatar'
-        // log('canvas', e('.t-canvas'))
+        log('canvas', e('.t-canvas'))
         a.href = e('.t-canvas').toDataURL("image/png")
         a.body.appendChild(a)
         a.click()
@@ -222,9 +238,11 @@
     }
 
     const init = () => {
+      // 设置宽度
+      e('.t-value-width').value = window.width
       const url = './img/empty.29426768.png'
       drawImage(url, (context, img) => {
-        context.drawImage(img, 0, 0, 400, 400)
+        context.drawImage(img, 0, 0, width, width)
       })
     }
 
@@ -241,9 +259,12 @@
       handleSelectGraduation()
       // 选择滤镜
       handleSelectFilter()
+      // 自定义头像大小
+      handleSetWidth()
     }
 
     const __main = () => {
+      window.width = 400
       window.imageData = null
       // 初始化
       init()

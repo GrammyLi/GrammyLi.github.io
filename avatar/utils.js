@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-09 21:34:32
- * @LastEditTime: 2021-10-10 18:17:06
+ * @LastEditTime: 2021-10-10 19:01:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/ avatar/utils.js
@@ -14,8 +14,8 @@ const e = (sel) => document.querySelector(sel);
 const drawImage = (data, callback) => {
   const c = e(".t-canvas");
   const context = c.getContext("2d");
-  c.width = 400;
-  c.height = 400;
+  c.width = width;
+  c.height = width;
   const img = new Image();
   img.src = data;
   img.onload = () => {
