@@ -1,7 +1,7 @@
 <!--
  * @Author: grammyli
  * @Date: 2021-10-09 19:09:23
- * @LastEditTime: 2021-10-10 18:09:16
+ * @LastEditTime: 2021-10-10 18:17:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath:  头像生成器/index.html
@@ -92,7 +92,9 @@
     const drawToCanvas = (data) => {
       drawImage(data, (context, img) => {
         context.drawImage(img, 0, 0, 400, 400)
-        imageFilter()
+         
+        // 原图像数据
+        window.rawImageData = context.getImageData(0, 0, 400, 400)
         // 上传头像的数据
         window.imageData = context.getImageData(0, 0, 400, 400)
         drawHat(context)

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-09 21:34:32
- * @LastEditTime: 2021-10-09 21:45:11
+ * @LastEditTime: 2021-10-10 18:17:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/ avatar/utils.js
@@ -66,8 +66,16 @@ const negativeOfColors = (colors) => {
 };
 
 const imageFilter = () => {
-  const type = e('.t-select-filter').dataset.filter
-  if (type === 'notFilter') {
+  const type = e(".t-select-filter").dataset.filter;
+  if (!window.imageData) {
+    return;
+  }
+  const image = document.querySelector(".t-canvas");
+  const context = image.getContext("2d");
+  if (type === "notFilter") {
+    log("notFilter");
+    window.imageData = window.rawImageData;
+    context.putImageData(imageData, 0, 0);
     return;
   }
   const filters = {
@@ -75,11 +83,7 @@ const imageFilter = () => {
     blackWhite: blackWhiteOfColors, // 黑白
     negative: negativeOfColors, // 底片
   };
-  if (!window.imageData) {
-    return 
-  }
-  const image = document.querySelector(".t-canvas");
-  const context = image.getContext("2d");
+
   // const imageData = context.getImageData(0, 0, 400, 400);
   const { data } = window.imageData;
   for (let i = 0; i < data.length; i += 4) {
