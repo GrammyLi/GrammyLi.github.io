@@ -1,7 +1,7 @@
 <!--
  * @Author: grammyli
  * @Date: 2021-10-09 19:09:23
- * @LastEditTime: 2021-10-09 21:48:39
+ * @LastEditTime: 2021-10-10 18:01:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath:  头像生成器/index.html
@@ -35,6 +35,28 @@
     <div class="t-settings">
       <div class="t-field">
         <div class="t-label">
+          theme:
+        </div>
+        <div class="t-value t-value-theme-type" data-type="flag">
+          <input id="radio-1" class="t-type-flag" name="radio" type="radio" checked> 🇨🇳
+          <input id="radio-2" class="t-type-graduation" name="radio" type="radio"> 🎓
+        </div>
+      </div>
+
+      <div class="t-field t-field-graduation hidden">
+        <div class="t-label">
+          graduation:
+        </div>
+        <div class="t-value">
+          <select class="t-select-graduation" data-graduation="1">
+            <option value="1"> graduation1 </option>
+            <option value="2"> graduation2 </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="t-field t-field-flag">
+        <div class="t-label">
           flag:
         </div>
         <div class="t-value">
@@ -48,6 +70,7 @@
           </select>
         </div>
       </div>
+
       <div class="t-field">
         <div class="t-label">
           filter (only once):
@@ -72,18 +95,34 @@
         imageFilter()
         // 上传头像的数据
         window.imageData = context.getImageData(0, 0, 400, 400)
-        drawFlag(context)
+        drawHat(context)
       })
     }
 
-    const drawFlag = (context) => {
-      const n = +e('.t-select-flag').dataset.flag
-      const imgUrl = `./img/hat${n + 1}.png`
+    // 添加头像周围的图层
+    const drawHat = (context) => {
+      const type = e('.t-value-theme-type').dataset.type
+      const n = +e(`.t-select-${type}`).dataset[type]
+      const pre = type === 'flag' ? 'hat' : type
+      const imgUrl = `./img/${type}/${pre}${n}.png`
       const img = new Image()
       img.src = imgUrl
       img.onload = () => {
         context.drawImage(img, 0, 0, 400, 400)
       }
+    }
+
+    const drawAvatar = () => {
+      if (!imageData) {
+        alert('大佬 上传图片')
+        return
+      }
+      const c = e('.t-canvas')
+      const context = c.getContext('2d')
+      // 清空画布
+      context.clearRect(0, 0, 400, 400)
+      context.putImageData(imageData, 0, 0)
+      drawHat(context)
     }
 
     const handleUploadFile = () => {
@@ -110,16 +149,7 @@
         log('event', event)
         let v = event.target.value
         e('.t-select-flag').dataset.flag = v
-        if (!imageData) {
-          alert('大佬 上传图片')
-          return
-        }
-        // 清空画布
-        const c = e('.t-canvas')
-        const context = c.getContext('2d')
-        context.clearRect(0, 0, 400, 400)
-        context.putImageData(imageData, 0, 0)
-        drawFlag(context)
+        drawAvatar()
       })
     }
 
@@ -128,17 +158,9 @@
       select.addEventListener('change', (event) => {
         let v = event.target.value
         e('.t-select-filter').dataset.filter = v
+        // 添加滤镜效果
         imageFilter()
-        if (!imageData) {
-          alert('大佬 上传图片')
-          return
-        }
-        // // 清空画布
-        const c = e('.t-canvas')
-        const context = c.getContext('2d')
-        context.clearRect(0, 0, 400, 400)
-        context.putImageData(imageData, 0, 0)
-        drawFlag(context)
+        drawAvatar()
       })
     }
 
@@ -156,6 +178,38 @@
       })
     }
 
+    const handleThemeType = () => {
+      const input = e('.t-value-theme-type')
+      input.addEventListener('click', (event) => {
+        const radio = event.target
+        const flag = e('.t-field-flag')
+        const graduation = e('.t-field-graduation')
+        const cls = 'hidden'
+        if (radio.classList.contains('t-type-flag')) {
+          input.dataset.type = 'flag'
+          if (flag.classList.contains(cls)) {
+            flag.classList.remove(cls)
+          }
+          if (!graduation.classList.contains(cls)) {
+            graduation.classList.add(cls)
+          }
+        } else {
+          input.dataset.type = 'graduation'
+          if (graduation.classList.contains(cls)) {
+            graduation.classList.remove(cls)
+          }
+          if (!flag.classList.contains(cls)) {
+            flag.classList.add(cls)
+          }
+        }
+        if (!imageData) {
+          alert('大佬 上传图片')
+          return
+        }
+        drawAvatar()
+      })
+    }
+
     const init = () => {
       const url = './img/empty.29426768.png'
       drawImage(url, (context, img) => {
@@ -164,13 +218,16 @@
     }
 
     const handleEvents = () => {
-      // 监听上传文件
+      // 上传文件
       handleUploadFile()
+      // 下载文件
+      handleSaveFile()
       // 选择旗子
       handleSelectFlag()
-      // 监听下载文件
-      handleSaveFile()
+      // 选择滤镜
       handleSelectFilter()
+      // 选择主题类型
+      handleThemeType()
     }
 
     const __main = () => {
