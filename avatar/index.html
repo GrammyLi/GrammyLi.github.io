@@ -1,7 +1,7 @@
 <!--
  * @Author: grammyli
  * @Date: 2021-10-09 19:09:23
- * @LastEditTime: 2021-10-11 12:09:29
+ * @LastEditTime: 2021-10-11 18:33:56
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath:  头像生成器/index.html
@@ -21,10 +21,11 @@
 
 <body>
   <div class="t-container">
-    <input class="t-upload hidden" type="file" accept="image/*" />
+   
     <div class="t-btns">
       <button class="t-upload-btn t-btn">
         upload
+        <input class="t-upload hidden" type="file" accept="image/*" />
       </button>
       <button class="t-save-btn t-btn">
         save
@@ -134,13 +135,6 @@
       context.clearRect(0, 0, width, width)
       context.putImageData(imageData, 0, 0)
       drawHat(context)
-    }
-
-    const handleClickUpload = () => {
-      const input = e('.t-upload-btn')
-      input.addEventListener('click', (event) => {
-        e('.t-upload').click()
-      })
     }
 
     const handleUploadFile = () => {
@@ -265,7 +259,6 @@
 
     const handleEvents = () => {
       // 上传文件
-      handleClickUpload()
       handleUploadFile()
       // 下载文件
       handleSaveFile()
