@@ -1,7 +1,7 @@
 <!--
  * @Author: grammyli
  * @Date: 2021-10-09 19:09:23
- * @LastEditTime: 2021-10-11 19:32:11
+ * @LastEditTime: 2021-10-11 19:45:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath:  头像生成器/index.html
@@ -31,7 +31,7 @@
         save
       </button>
     </div>
-
+    <video class="t-video hidden" width="400px" height="400px" autoplay="autoplay"></video>
     <canvas class="t-canvas"></canvas>
     <div class="t-settings">
       <div class="t-field">
@@ -43,14 +43,14 @@
           <input id="radio-2" class="t-type-graduation" name="radio" type="radio"> 🎓
         </div>
       </div>
-      <div class="t-field">
+      <!-- <div class="t-field">
         <div class="t-label">
           width:
         </div>
         <div class="t-value">
           <input class="t-value-width" type="number" min="400" />
         </div>
-      </div>
+      </div> -->
       <div class="t-field t-field-graduation hidden">
         <div class="t-label">
           graduation:
@@ -92,8 +92,20 @@
           </select>
         </div>
       </div>
-    </div>
 
+
+    </div>
+    <!-- <div class="t-btns">
+      <button class="t-open-btn t-btn">
+         open
+      </button>
+      <button class="t-take-btn t-btn">
+        take
+     </button>
+      <button class="t-close-btn t-btn">
+         close
+      </button>
+    </div> -->
   </div>
   <script src="./utils.js"></script>
   <script>
@@ -193,14 +205,13 @@
         drawAvatar()
       }, false)
     }
- 
+
     const saveAsPNG = () => {
       const canvas = e('.t-canvas')
       // log('canvas', canvas)
       return canvas.toDataURL("image/png")
     }
-    // 被污染的画布无法输出
-    // TODO 下载功能
+    
     const handleSaveFile = () => {
       const input = e('.t-save-btn')
       input.addEventListener('click', (event) => {
@@ -250,7 +261,7 @@
 
     const init = () => {
       // 设置宽度
-      e('.t-value-width').value = window.width
+      // e('.t-value-width').value = window.width
       const url = 'https://grammyli.com/avatar/img/empty.29426768.png'
       const c = e(".t-canvas")
       const context = c.getContext("2d")
@@ -280,8 +291,10 @@
       handleSelectGraduation()
       // 选择滤镜
       handleSelectFilter()
+      // TODO
       // 自定义头像大小
-      handleSetWidth()
+      // handleSetWidth()
+      // hanldeOpenVideo()
     }
 
     const __main = () => {
