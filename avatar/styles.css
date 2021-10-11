@@ -76,6 +76,10 @@ select {
   width: 140px;
 }
 
+.t-value-width {
+  width: 132px;
+}
+
 .t-field {
   display: block;
   margin-bottom: 32px;
