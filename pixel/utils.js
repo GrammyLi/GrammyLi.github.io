@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-09-22 12:46:21
- * @LastEditTime: 2021-09-22 12:56:51
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /pixel_art_tool/utils.js
- */
 const debug = true
 const log = debug ? console.log.bind(console) : function() { }
 const int = number => parseInt(number, 10)
@@ -420,20 +412,48 @@ const randomSquare = function(n) {
 
 const len = string_or_list => string_or_list.length
 
-const words = {
-  '0': [
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 3, 3, 3, 3, 3, 3, 3, 0],
-      [0, 0, 3, 0, 0, 0, 0, 0, 3, 0],
-      [0, 0, 3, 0, 0, 0, 0, 0, 3, 0],
-      [0, 0, 3, 0, 0, 0, 0, 0, 3, 0],
-      [0, 0, 3, 0, 0, 0, 0, 0, 3, 0],
-      [0, 0, 3, 3, 3, 3, 3, 3, 3, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  ],
-
+const markedSquare = function(array) {
+    let square = copy(array)
+    for (let i = 0; i < len(square); i++) {
+        let line = square[i]
+        for (let j = 0; j < len(line); j++) {
+            if (square[i][j] === 9) {
+                markedAround(square, i, j)
+            }
+        }
+    }
+    // log('square', square)
+    return square
 }
 
-const e = sel => document.querySelector(sel)
+const markedAround = function(square, i, j) {
+    // left
+    jxyi(square, i, j - 1)
+    // right
+    jxyi(square, i, j + 1)
+    // up
+    jxyi(square, i - 1, j)
+    // down
+    jxyi(square, i + 1, j)
+
+    // 四个顶点
+    jxyi(square, i - 1, j - 1)
+    // right
+    jxyi(square, i + 1, j + 1)
+    // up
+    jxyi(square, i - 1, j + 1)
+    // down
+    jxyi(square, i + 1, j - 1)
+}
+
+const isSquare = function(square, i, j) {
+    let rule_row = i >= 0 && i < len(square)
+    let rule_col = j >= 0 && j < len(square[0])
+    return rule_col && rule_row
+}
+
+const jxyi = function(square, i, j) {
+    if (isSquare(square, i, j) && square[i][j] != 9) {
+        square[i][j] += 1
+    }
+}
