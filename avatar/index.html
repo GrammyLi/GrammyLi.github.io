@@ -1,7 +1,7 @@
 <!--
  * @Author: grammyli
  * @Date: 2021-10-09 19:09:23
- * @LastEditTime: 2021-10-11 09:52:22
+ * @LastEditTime: 2021-10-11 12:09:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath:  头像生成器/index.html
@@ -21,10 +21,10 @@
 
 <body>
   <div class="t-container">
+    <input class="t-upload hidden" type="file" accept="image/*" />
     <div class="t-btns">
       <button class="t-upload-btn t-btn">
         upload
-        <input class="t-upload" type="file" accept="image/*" />
       </button>
       <button class="t-save-btn t-btn">
         save
@@ -98,6 +98,7 @@
   <script>
     const drawToCanvas = (data) => {
       drawImage(data, (context, img) => {
+        // img.setAttribute('crossorigin', 'anonymous')
         context.drawImage(img, 0, 0, width, width)
         // 原图像数据
         window.rawImageData = context.getImageData(0, 0, width, width)
@@ -113,8 +114,9 @@
       const n = +e(`.t-select-${type}`).dataset[type]
       const pre = type === 'flag' ? 'hat' : type
       const imgUrl = `./img/${type}/${pre}${n}.png`
-      log('imgUrl', imgUrl)
+      // log('imgUrl', imgUrl)
       const img = new Image()
+      // img.setAttribute('crossorigin', 'anonymous')
       img.src = imgUrl
       img.onload = () => {
         context.drawImage(img, 0, 0, width, width)
@@ -134,6 +136,13 @@
       drawHat(context)
     }
 
+    const handleClickUpload = () => {
+      const input = e('.t-upload-btn')
+      input.addEventListener('click', (event) => {
+        e('.t-upload').click()
+      })
+    }
+
     const handleUploadFile = () => {
       const input = e('.t-upload')
       input.addEventListener('change', (event) => {
@@ -143,9 +152,6 @@
           alert("请确保文件为图像类型")
           return false
         }
-        // if (!/image\/\w+/.test(file.type)) {
-
-        // }
         const reader = new FileReader()
         // 转化成base64数据类型
         reader.readAsDataURL(file)
@@ -193,19 +199,23 @@
         drawAvatar()
       }, false)
     }
+    // const canvas = e('.t-canvas')
+    // const base64 = canvas.toDataURL("image/png");
+    // log('base64', base64)
     const saveAsPNG = () => {
       const canvas = e('.t-canvas')
       log('canvas', canvas)
       return canvas.toDataURL("image/png")
     }
+    // 被污染的画布无法输出
     // TODO 下载功能
     const handleSaveFile = () => {
       const input = e('.t-save-btn')
       input.addEventListener('click', (event) => {
         let a = document.createElement("a")
         a.download = 'flag-avatar'
-        log('saveAsPNG() ', saveAsPNG() )
-        a.href = saveAsPNG() 
+        log('saveAsPNG() ', saveAsPNG())
+        a.href = saveAsPNG()
         a.body.appendChild(a)
         a.click()
         a.remove() // 下载之后把创建的元素删除
@@ -255,6 +265,7 @@
 
     const handleEvents = () => {
       // 上传文件
+      handleClickUpload()
       handleUploadFile()
       // 下载文件
       handleSaveFile()
@@ -271,7 +282,7 @@
     }
 
     const __main = () => {
-      window.width = 400
+      window.width = 300
       window.imageData = null
       // 初始化
       init()
