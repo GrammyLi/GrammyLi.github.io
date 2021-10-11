@@ -1,7 +1,7 @@
 <!--
  * @Author: grammyli
  * @Date: 2021-10-09 19:09:23
- * @LastEditTime: 2021-10-11 18:36:14
+ * @LastEditTime: 2021-10-11 19:27:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath:  头像生成器/index.html
@@ -21,7 +21,7 @@
 
 <body>
   <div class="t-container">
-   
+
     <div class="t-btns">
       <button class="t-upload-btn t-btn">
         upload
@@ -114,10 +114,10 @@
       const type = e('.t-value-theme-type').dataset.type
       const n = +e(`.t-select-${type}`).dataset[type]
       const pre = type === 'flag' ? 'hat' : type
-      const imgUrl = `./img/${type}/${pre}${n}.png`
+      const imgUrl = `https://grammyli.com/avatar/img/${type}/${pre}${n}.png`
       // log('imgUrl', imgUrl)
       const img = new Image()
-      // img.setAttribute('crossorigin', 'anonymous')
+      img.setAttribute('crossorigin', 'anonymous')
       img.src = imgUrl
       img.onload = () => {
         context.drawImage(img, 0, 0, width, width)
@@ -198,7 +198,7 @@
     // log('base64', base64)
     const saveAsPNG = () => {
       const canvas = e('.t-canvas')
-      log('canvas', canvas)
+      // log('canvas', canvas)
       return canvas.toDataURL("image/png")
     }
     // 被污染的画布无法输出
@@ -208,11 +208,13 @@
       input.addEventListener('click', (event) => {
         let a = document.createElement("a")
         a.download = 'flag-avatar'
-        log('saveAsPNG() ', saveAsPNG())
+        // log('saveAsPNG() ', saveAsPNG())
         a.href = saveAsPNG()
-        a.body.appendChild(a)
+        log('a.href', a.href)
+        document.body.appendChild(a)
         a.click()
-        a.remove() // 下载之后把创建的元素删除
+        a.remove()
+
       })
     }
 
@@ -251,10 +253,20 @@
     const init = () => {
       // 设置宽度
       e('.t-value-width').value = window.width
-      const url = './img/empty.29426768.png'
-      drawImage(url, (context, img) => {
+      const url = 'https://grammyli.com/avatar/img/empty.29426768.png'
+      const c = e(".t-canvas")
+      const context = c.getContext("2d")
+      c.width = width
+      c.height = width
+      const img = new Image()
+      img.setAttribute('crossorigin', 'anonymous')
+      img.src = url
+      img.onload = () => {
         context.drawImage(img, 0, 0, width, width)
-      })
+      };
+      // drawImage(url, (context, img) => {
+      //   context.drawImage(img, 0, 0, width, width)
+      // })
     }
 
     const handleEvents = () => {

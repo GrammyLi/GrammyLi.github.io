@@ -31,11 +31,12 @@ body {
 .t-btn {
   border: none;
   box-shadow: none;
-  width: 150px;
+  width: 100px;
   height: 44px;
   padding: 10px;
   margin-bottom: 20px;
   margin-right: 20px;
+  margin-left: 10px;
   text-align: center;
   border-radius: 5px;
   cursor: pointer;
