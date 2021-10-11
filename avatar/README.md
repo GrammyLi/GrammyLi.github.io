@@ -1,7 +1,7 @@
 <!--
  * @Author: grammyli
  * @Date: 2021-10-09 20:09:19
- * @LastEditTime: 2021-10-10 19:05:44
+ * @LastEditTime: 2021-10-11 12:15:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /工作任务笔记/头像生成器/README.md
@@ -17,4 +17,7 @@
 6. ~~选择🎓风格~~
 7. 下载图片有问题
 8. 拍照上传
+9. bug 移动端上传文件
+10. bug 设置 width
+    
 
