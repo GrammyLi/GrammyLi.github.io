@@ -1,7 +1,7 @@
 <!--
  * @Author: grammyli
  * @Date: 2021-10-09 19:09:23
- * @LastEditTime: 2021-10-11 21:19:23
+ * @LastEditTime: 2021-10-11 21:24:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath:  头像生成器/index.html
@@ -279,8 +279,8 @@
         canvas.classList.remove('hidden')
         let context = canvas.getContext('2d')
         context.drawImage(video, 0, 0, width, width)
-         // 原图像数据
-         window.rawImageData = context.getImageData(0, 0, width, width)
+        // 原图像数据
+        window.rawImageData = context.getImageData(0, 0, width, width)
         // 上传头像的数据
         window.imageData = context.getImageData(0, 0, width, width)
         drawHat(context)
