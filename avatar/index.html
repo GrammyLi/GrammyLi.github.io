@@ -1,7 +1,7 @@
 <!--
  * @Author: grammyli
  * @Date: 2021-10-09 19:09:23
- * @LastEditTime: 2021-10-10 19:05:13
+ * @LastEditTime: 2021-10-11 09:52:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath:  头像生成器/index.html
@@ -139,10 +139,13 @@
       input.addEventListener('change', (event) => {
         const file = event.target.files[0]
         // 过滤文件
-        if (!/image\/\w+/.test(file.type)) {
+        if (!file.type.includes('image')) {
           alert("请确保文件为图像类型")
           return false
         }
+        // if (!/image\/\w+/.test(file.type)) {
+
+        // }
         const reader = new FileReader()
         // 转化成base64数据类型
         reader.readAsDataURL(file)
@@ -190,15 +193,19 @@
         drawAvatar()
       }, false)
     }
-
+    const saveAsPNG = () => {
+      const canvas = e('.t-canvas')
+      log('canvas', canvas)
+      return canvas.toDataURL("image/png")
+    }
     // TODO 下载功能
     const handleSaveFile = () => {
       const input = e('.t-save-btn')
       input.addEventListener('click', (event) => {
         let a = document.createElement("a")
         a.download = 'flag-avatar'
-        log('canvas', e('.t-canvas'))
-        a.href = e('.t-canvas').toDataURL("image/png")
+        log('saveAsPNG() ', saveAsPNG() )
+        a.href = saveAsPNG() 
         a.body.appendChild(a)
         a.click()
         a.remove() // 下载之后把创建的元素删除
