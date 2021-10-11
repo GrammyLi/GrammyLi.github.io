@@ -1,7 +1,7 @@
 <!--
  * @Author: grammyli
  * @Date: 2021-10-09 19:09:23
- * @LastEditTime: 2021-10-11 19:45:52
+ * @LastEditTime: 2021-10-11 21:09:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath:  头像生成器/index.html
@@ -31,7 +31,7 @@
         save
       </button>
     </div>
-    <video class="t-video hidden" width="400px" height="400px" autoplay="autoplay"></video>
+    <video class="t-video hidden" autoplay="autoplay"></video>
     <canvas class="t-canvas"></canvas>
     <div class="t-settings">
       <div class="t-field">
@@ -95,17 +95,17 @@
 
 
     </div>
-    <!-- <div class="t-btns">
+    <div class="t-btns">
       <button class="t-open-btn t-btn">
-         open
+        open
       </button>
       <button class="t-take-btn t-btn">
         take
-     </button>
-      <button class="t-close-btn t-btn">
-         close
       </button>
-    </div> -->
+      <button class="t-close-btn t-btn">
+        close
+      </button>
+    </div>
   </div>
   <script src="./utils.js"></script>
   <script>
@@ -211,7 +211,7 @@
       // log('canvas', canvas)
       return canvas.toDataURL("image/png")
     }
-    
+
     const handleSaveFile = () => {
       const input = e('.t-save-btn')
       input.addEventListener('click', (event) => {
@@ -223,7 +223,66 @@
         document.body.appendChild(a)
         a.click()
         a.remove()
+      })
+    }
 
+
+    const hanldeOpenVideo = () => {
+      const input = e('.t-open-btn')
+      input.addEventListener('click', (event) => {
+        log('open')
+        // e('.t-close-btn').classList.remove('hidden')
+        e('.t-canvas').classList.add('hidden')
+        log('canvas', e('.t-canvas'))
+        let video = e('.t-video')
+        video.classList.remove('hidden')
+        let constraints = {
+          video: {
+            width: width,
+            height: width,
+          },
+          audio: false
+        };
+        let promise = navigator.mediaDevices.getUserMedia(constraints)
+        promise.then((mediaStream) => {
+          // mediaStreamTrack = typeof mediaStream.stop === 'function' ? mediaStream : mediaStream.getTracks()[1];
+          mediaStreamTrack = mediaStream.getVideoTracks()
+          video.srcObject = mediaStream
+          video.play()
+        })
+      })
+    }
+
+    const hanldeCloseVideo = () => {
+      const input = e('.t-close-btn')
+      input.addEventListener('click', (event) => {
+        log('close')
+        e('.t-canvas').classList.remove('hidden')
+        let video = e('.t-video')
+        let stream = video.srcObject
+        let tracks = stream.getTracks()
+        tracks.forEach(function (track) {
+          track.stop()
+        })
+        document.getElementById('video').srcObjec
+      })
+    }
+
+    const handleTakePhoto = () => {
+      const input = e('.t-take-btn')
+      input.addEventListener('click', (event) => {
+        log('take photo')
+        let video = e('.t-video')
+        let canvas = e('.t-canvas')
+        video.classList.add('hidden')
+        canvas.classList.remove('hidden')
+        let context = canvas.getContext('2d')
+        context.drawImage(video, 0, 0, width, width)
+         // 原图像数据
+         window.rawImageData = context.getImageData(0, 0, width, width)
+        // 上传头像的数据
+        window.imageData = context.getImageData(0, 0, width, width)
+        drawHat(context)
       })
     }
 
@@ -294,12 +353,18 @@
       // TODO
       // 自定义头像大小
       // handleSetWidth()
-      // hanldeOpenVideo()
+      // 打开视频
+      hanldeOpenVideo()
+      // 关闭视频
+      hanldeCloseVideo()
+      // 拍照上传
+      handleTakePhoto()
     }
 
     const __main = () => {
       window.width = 300
       window.imageData = null
+      window.mediaStreamTrack = null // 视频对象(全局)
       // 初始化
       init()
       // 事件集合
