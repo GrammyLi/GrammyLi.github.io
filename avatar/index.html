@@ -1,7 +1,7 @@
 <!--
  * @Author: grammyli
  * @Date: 2021-10-09 19:09:23
- * @LastEditTime: 2021-10-11 21:24:40
+ * @LastEditTime: 2021-10-12 12:47:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath:  头像生成器/index.html
@@ -15,6 +15,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> grammyli avatar </title>
   <link href="./styles.css" rel="stylesheet">
+  <link href="./camera.css" rel="stylesheet">
   <link href="../cv/assets/img/davizi.jpg" rel="icon">
 
 </head>
@@ -95,17 +96,10 @@
 
 
     </div>
-    <div class="t-btns">
-      <button class="t-open-btn t-btn">
-        open
-      </button>
-      <button class="t-take-btn t-btn">
-        take
-      </button>
-      <button class="t-close-btn t-btn">
-        close
-      </button>
+    <div class='container'>
+      <span class='pulse-button t-open'> </span>
     </div>
+
   </div>
   <script src="./utils.js"></script>
   <script>
@@ -226,64 +220,72 @@
       })
     }
 
-
-    const hanldeOpenVideo = () => {
-      const input = e('.t-open-btn')
-      input.addEventListener('click', (event) => {
-        log('open')
-        // e('.t-close-btn').classList.remove('hidden')
-        e('.t-canvas').classList.add('hidden')
-        log('canvas', e('.t-canvas'))
-        let video = e('.t-video')
-        video.classList.remove('hidden')
-        let constraints = {
-          video: {
-            width: width,
-            height: width,
-          },
-          audio: false
-        };
-        let promise = navigator.mediaDevices.getUserMedia(constraints)
-        promise.then((mediaStream) => {
-          // mediaStreamTrack = typeof mediaStream.stop === 'function' ? mediaStream : mediaStream.getTracks()[1];
-          mediaStreamTrack = mediaStream.getVideoTracks()
-          video.srcObject = mediaStream
-          video.play()
-        })
+    const open = () => {
+      let canvas = e('.t-canvas')
+      let video = e('.t-video')
+      canvas.classList.add('hidden')
+      video.classList.remove('hidden')
+      let constraints = {
+        video: {
+          width: width,
+          height: width,
+        },
+        audio: false
+      };
+      let promise = navigator.mediaDevices.getUserMedia(constraints)
+      promise.then((mediaStream) => {
+        // mediaStreamTrack = typeof mediaStream.stop === 'function' ? mediaStream : mediaStream.getTracks()[1];
+        mediaStreamTrack = mediaStream.getVideoTracks()
+        video.srcObject = mediaStream
+        video.play()
       })
     }
 
-    const hanldeCloseVideo = () => {
-      const input = e('.t-close-btn')
-      input.addEventListener('click', (event) => {
-        log('close')
-        e('.t-canvas').classList.remove('hidden')
-        let video = e('.t-video')
-        video.classList.add('hidden')
-        let stream = video.srcObject
-        let tracks = stream.getTracks()
-        tracks.forEach(function (track) {
-          track.stop()
-        })
-        document.getElementById('video').srcObjec
+    const close = () => {
+      let canvas = e('.t-canvas')
+      let video = e('.t-video')
+      canvas.classList.remove('hidden')
+      video.classList.add('hidden')
+      let stream = video.srcObject
+      let tracks = stream.getTracks()
+      tracks.forEach(function (track) {
+        track.stop()
       })
+      document.getElementById('video').srcObjec
+    }
+
+    const takePhoto = () => {
+      let video = e('.t-video')
+      let canvas = e('.t-canvas')
+      video.classList.add('hidden')
+      canvas.classList.remove('hidden')
+      let context = canvas.getContext('2d')
+      context.drawImage(video, 0, 0, width, width)
+      // 原图像数据
+      window.rawImageData = context.getImageData(0, 0, width, width)
+      // 上传头像的数据
+      window.imageData = context.getImageData(0, 0, width, width)
+      drawHat(context)
     }
 
     const handleTakePhoto = () => {
-      const input = e('.t-take-btn')
+      const input = e('.container')
       input.addEventListener('click', (event) => {
-        log('take photo')
-        let video = e('.t-video')
-        let canvas = e('.t-canvas')
-        video.classList.add('hidden')
-        canvas.classList.remove('hidden')
-        let context = canvas.getContext('2d')
-        context.drawImage(video, 0, 0, width, width)
-        // 原图像数据
-        window.rawImageData = context.getImageData(0, 0, width, width)
-        // 上传头像的数据
-        window.imageData = context.getImageData(0, 0, width, width)
-        drawHat(context)
+        const btn = event.target
+        if (btn.classList.contains('t-open')) {
+          log("open")
+          open()
+          btn.classList.remove('t-open')
+          btn.classList.add('pulse')
+          e('.pulse-button ').innerText = 'take'
+        } else {
+          log('take close and close')
+          btn.classList.remove('pulse')
+          btn.classList.add('t-open')
+          e('.pulse-button ').innerText = ''
+          takePhoto()
+          close()
+        }
       })
     }
 
@@ -354,11 +356,6 @@
       // TODO
       // 自定义头像大小
       // handleSetWidth()
-      // 打开视频
-      hanldeOpenVideo()
-      // 关闭视频
-      hanldeCloseVideo()
-      // 拍照上传
       handleTakePhoto()
     }
 
