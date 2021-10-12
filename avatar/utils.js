@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-09 21:34:32
- * @LastEditTime: 2021-10-11 19:26:15
+ * @LastEditTime: 2021-10-12 13:30:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/ avatar/utils.js
@@ -22,6 +22,40 @@ const drawImage = (data, callback) => {
     callback(context, img);
   };
 };
+
+const comicBooksOfColors = (colors) => {
+  let r = colors[0];
+  let g = colors[1];
+  let b = colors[2];
+  let A = colors[3];
+  let R = (Math.abs(g - b + g + r) * r) / 256;
+  let G = (Math.abs(b - g + b + r) * r) / 256;
+  let B = (Math.abs(b - g + b + r) * g) / 256;
+  return [int(R), int(G), int(B), int(A)];
+};
+
+const nostalgiaOfColors = (colors) => {
+  let r = colors[0];
+  let g = colors[1];
+  let b = colors[2];
+  let A = colors[3];
+  let R = 0.393 * r + 0.769 * g + 0.189 * b
+  let G = 0.349 * r + 0.686 * g + 0.168 * b
+  let B = 0.272 * r + 0.534 * g + 0.131 * b
+  return [int(R), int(G), int(B), int(A)];
+}
+
+const fusedCastOfColors = (colors) => {
+  let r = colors[0];
+  let g = colors[1];
+  let b = colors[2];
+  let A = colors[3];
+  let R = r * 128 / (g + b + 1)
+  let G = g * 128 / (r + b + 1)
+  let B = b * 128 / (g + r + 1)
+  return [int(R), int(G), int(B), int(A)];
+}
+
 
 const grayOfColors = (colors) => {
   let r = colors[0];
@@ -82,6 +116,9 @@ const imageFilter = () => {
     gray: grayOfColors, // 灰度
     blackWhite: blackWhiteOfColors, // 黑白
     negative: negativeOfColors, // 底片
+    comic: comicBooksOfColors, // 漫画
+    nostalgia: nostalgiaOfColors, // 怀旧
+    fusedCast: fusedCastOfColors,
   };
 
   // const imageData = context.getImageData(0, 0, 400, 400);
