@@ -1,7 +1,7 @@
 <!--
  * @Author: grammyli
  * @Date: 2021-10-09 19:09:23
- * @LastEditTime: 2021-10-12 12:52:51
+ * @LastEditTime: 2021-10-12 12:58:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath:  头像生成器/index.html
@@ -32,8 +32,8 @@
         save
       </button>
     </div>
-    <video class="t-video hidden" autoplay="autoplay" width="400" height="400"></video>
-    <canvas class="t-canvas" width="400" height="400"></canvas>
+    <video class="t-video hidden" autoplay="autoplay" width="300" height="300"></video>
+    <canvas class="t-canvas"></canvas>
     <div class="t-settings">
       <div class="t-field">
         <div class="t-label">
@@ -335,6 +335,8 @@
       img.onload = () => {
         context.drawImage(img, 0, 0, width, width)
       };
+
+     
       // drawImage(url, (context, img) => {
       //   context.drawImage(img, 0, 0, width, width)
       // })
