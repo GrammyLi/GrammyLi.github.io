@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-10-12 09:39:52
- * @LastEditTime: 2021-10-13 18:39:06
+ * @LastEditTime: 2021-10-13 19:26:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/avatar-generator/index.html
@@ -23,29 +23,29 @@
     <canvas id="c" class="grammy-canvas"></canvas>
     <form class="settings">
       <div class="field">
-        <!-- <label for="px-count">
-          pixel count:
+        <label for="px-count">
+          pixelCount:
         </label>
         <input id="px-count" name="px-count" type="number" min="1" />
       </div>
 
       <div class="field">
         <label for="px-size">
-          pixel size:
+          pixelSize:
         </label>
         <input id="px-size" name="px-size" type="number" min="1" />
       </div>
 
       <div class="field">
         <label for="base-color">
-          base color:
+          bgColor:
         </label>
         <input type="color" id="base-color" name="base-color" />
       </div>
 
       <div class="field">
         <label for="base-frequency">
-          base frequency:
+          frequency:
         </label>
         <input id="base-frequency" name="base-frequency" type="range" min="0" max="1" step="0.1" />
       </div>
@@ -69,28 +69,33 @@
           blue:
         </label>
         <input id="blue-slider" name="blue-slider" type="range" min="0" max="255" />
-      </div> -->
+      </div>
 
-      <div class="field">
-        <label for="autoplay">
-          autoplay
-        </label>
-        <input id="autoplay" name="autoplay" type="checkbox" />
-        <div class="field conditional">
-          <label for="autoplay-speed">
-            speed:
+        <div class="field">
+          <label for="autoplay">
+            autoplay
           </label>
-          <input id="autoplay-speed" name="autoplay" type="range" min="1" />
+          <input id="autoplay" name="autoplay" type="checkbox" />
+          <div class="field conditional">
+            <label for="autoplay-speed">
+              speed:
+            </label>
+            <input id="autoplay-speed" name="autoplay" type="range" min="1" />
+          </div>
         </div>
-      </div>
-      <div class="field">
-        <label for="github-index">
-          github:
-        </label>
-        <input id="github-index" name="github-index" type="range" min="0" max="24" />
-      </div>
-      <switch><input class="mui-switch" type="checkbox" checked> github avatar</switch>
-      <!-- <div class="field">
+        <div class="field">
+          <label for="github-index">
+            github:
+          </label>
+          <input id="github-index" name="github-index" type="range" min="0" max="24" />
+        </div>
+
+        <switch>
+          <input class="mui-switch" type="checkbox" checked>
+          <div class="mui-switch-msg">monochromatic</div>
+          
+        </switch>
+        <!-- <div class="field">
         <button type="button" id="refresh">
           Refresh
         </button>

@@ -1,11 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-10-12 09:44:43
- * @LastEditTime: 2021-10-13 18:38:05
+ * @LastEditTime: 2021-10-13 19:25:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/avatar-generator/main.js
  */
+
 // 所有像素
 var pixels = null;
 
@@ -30,12 +31,16 @@ var canvas = document.getElementById("c");
 var ctx = canvas.getContext("2d");
 
 let githubColorIndex = 0;
+let githubModel = true;
 
 var { round, random } = Math;
 
 function rgb(colors) {
-  return `#${githubs_colors[githubColorIndex]}`;
-  // return `rgb(${colors.join(",")})`;
+  if (githubModel) {
+    return `#${githubs_colors[githubColorIndex]}`;
+  } else {
+    return `rgb(${colors.join(",")})`;
+  }
 }
 
 function getPixels({ count, bias, baseColor, baseFrequency }) {
@@ -109,10 +114,6 @@ function draw() {
   requestAnimationFrame(draw);
 }
 
-const on = (sel, eventName, callback) => {
-  document.querySelector(sel).addEventListener(eventName, callback);
-};
-
 const handleGithubColor = () => {
   on("#github-index", "input", (e) => {
     githubColorIndex = parseFloat(e.target.value, 10);
@@ -121,18 +122,94 @@ const handleGithubColor = () => {
 
 const handleAutoplay = () => {
   on("#autoplay", "change", (e) => {
-    log('e.target.checked', e.target.checked)
-     autoplay = e.target.checked;
+    log("e.target.checked", e.target.checked);
+    autoplay = e.target.checked;
+  });
+};
+
+const handleGithubModel = () => {
+  on(".mui-switch", "change", (e) => {
+    githubModel = e.target.checked;
+    $(".mui-switch-msg").innerText = githubModel
+      ? "monochromatic"
+      : "multicolor";
+  });
+};
+
+const handleChangePxCount = () => {
+  // 初始化
+  $('#px-count').value = pxCount
+  // 绑定事件
+  on("#px-count", "change", (e) => {
+    pxCount = parseInt(e.target.value, 10);
+  });
+};
+
+const handleChangePxSize = () => {
+  $('#px-size').value = pxSize
+  on("#px-size", "change", (e) => {
+    pxSize = parseInt(e.target.value, 10);
+  });
+};
+
+const handleChangeBaseColor = () => {
+  on("#base-color", "change", (e) => {
+    baseColor = e.target.value;
+  });
+};
+
+const handleChangeFrequency = () => {
+  on("#base-frequency", "change", (e) => {
+    baseFrequency = parseFloat(e.target.value, 10);
+  });
+};
+
+const handleChangeRed = () => {
+  on("#red-slider", "change", (e) => {
+    red = parseInt(e.target.value, 10);
+  });
+};
+
+const handleChangeGreen = () => {
+  on("#green-slider", "change", (e) => {
+    green = parseInt(e.target.value, 10);
+  });
+};
+
+const handleChangeBlue = () => {
+  on("#blue-slider", "change", (e) => {
+    blue = parseInt(e.target.value, 10);
+  });
+};
+
+const handleChangeSpeed = () => {
+
+  const autoplaySpeed = $("#autoplay-speed")
+  autoplaySpeed.value = autoplaySpeed
+  autoplaySpeed.max = _autoplaySpeedMax
+
+  on("#autoplay-speed", "change", (e) => {
+    autoplaySpeed = parseInt(e.target.value, 10)
   });
 };
 
 const hanldeEvents = () => {
+  // github 模式风格的颜色
   handleGithubColor();
+  // 是否自动切换
   handleAutoplay();
+  // 是单色模式还是多色
+  handleGithubModel();
+  handleChangePxCount();
+  handleChangePxSize();
+  handleChangeBaseColor();
+  handleChangeFrequency();
+  handleChangeRed();
+  handleChangeGreen();
+  handleChangeBlue();
 };
 
 const __main = () => {
-  // draw()
   requestAnimationFrame(draw);
   hanldeEvents();
 };

@@ -150,5 +150,7 @@ select {
 .mui-switch.mui-switch-anim:checked:before {
   transition: left 0.3s;
 }
-
+.mui-switch-msg {
+  display: inline;
+}
 /*# sourceMappingURL=mui-switch.css.map */
