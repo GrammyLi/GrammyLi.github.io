@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-12 09:44:43
- * @LastEditTime: 2021-10-13 13:04:22
+ * @LastEditTime: 2021-10-13 13:50:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/avatar-generator/main.js
@@ -9,9 +9,9 @@
 // 所有像素
 var pixels = null;
 
-// 像素数量
+// 像素宽度
 var pxCount = 5;
-//
+// 总数
 var totalPxCount = 0;
 
 var pxSize = 32;
@@ -29,10 +29,13 @@ var _autoplayCounter = 0;
 var canvas = document.getElementById("c");
 var ctx = canvas.getContext("2d");
 
+let githubColorIndex = 0;
+
 var { round, random } = Math;
 
 function rgb(colors) {
-  return `rgb(${colors.join(",")})`;
+  return `#${githubs_colors[githubColorIndex]}`;
+  // return `rgb(${colors.join(",")})`;
 }
 
 function getPixels({ count, bias, baseColor, baseFrequency }) {
@@ -106,8 +109,17 @@ function draw() {
   // requestAnimationFrame(draw);
 }
 
+const hanldeEvents = () => {
+  var $githubIndex = document.getElementById("github-index");
+  $githubIndex.value = githubColorIndex;
+  $githubIndex.addEventListener("input", (e) => {
+    githubColorIndex = parseFloat(e.target.value, 10);
+  });
+};
+
 const __main = () => {
   requestAnimationFrame(draw);
+  hanldeEvents();
 };
 
 __main();

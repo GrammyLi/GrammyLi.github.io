@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-10-12 09:39:52
- * @LastEditTime: 2021-10-13 12:23:03
+ * @LastEditTime: 2021-10-13 13:49:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/avatar-generator/index.html
@@ -73,7 +73,7 @@
 
       <div class="field">
         <label for="autoplay">
-          autoplay?
+          autoplay
         </label>
         <input id="autoplay" name="autoplay" type="checkbox" />
         <div class="field conditional">
@@ -83,7 +83,13 @@
           <input id="autoplay-speed" name="autoplay" type="range" min="1" />
         </div>
       </div>
-
+      <div class="field">
+        <label for="github-index">
+          github:
+        </label>
+        <input id="github-index" name="github-index" type="range" min="0" max="24" />
+      </div>
+      <switch><input class="mui-switch" type="checkbox" checked> github avatar</switch>
       <div class="field">
         <button type="button" id="refresh">
           Refresh
