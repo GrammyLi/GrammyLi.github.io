@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-12 09:44:43
- * @LastEditTime: 2021-10-13 13:50:45
+ * @LastEditTime: 2021-10-13 18:38:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/avatar-generator/main.js
@@ -21,7 +21,7 @@ var baseColor = "#ffffff";
 var baseFrequency = 0.4;
 var [red, green, blue] = [255, 0, 127];
 
-var autoplay = true;
+var autoplay = false;
 var autoplaySpeed = 6;
 var _autoplaySpeedMax = 30;
 var _autoplayCounter = 0;
@@ -106,18 +106,33 @@ function draw() {
     drawPixel(pixel, index);
   });
 
-  // requestAnimationFrame(draw);
+  requestAnimationFrame(draw);
 }
 
-const hanldeEvents = () => {
-  var $githubIndex = document.getElementById("github-index");
-  $githubIndex.value = githubColorIndex;
-  $githubIndex.addEventListener("input", (e) => {
+const on = (sel, eventName, callback) => {
+  document.querySelector(sel).addEventListener(eventName, callback);
+};
+
+const handleGithubColor = () => {
+  on("#github-index", "input", (e) => {
     githubColorIndex = parseFloat(e.target.value, 10);
   });
 };
 
+const handleAutoplay = () => {
+  on("#autoplay", "change", (e) => {
+    log('e.target.checked', e.target.checked)
+     autoplay = e.target.checked;
+  });
+};
+
+const hanldeEvents = () => {
+  handleGithubColor();
+  handleAutoplay();
+};
+
 const __main = () => {
+  // draw()
   requestAnimationFrame(draw);
   hanldeEvents();
 };
