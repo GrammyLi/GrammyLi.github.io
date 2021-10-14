@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-06-20 22:46:54
- * @LastEditTime: 2021-10-14 18:55:20
- * @LastEditors: your name
+ * @LastEditTime: 2021-10-14 19:27:32
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/snake/utils/audio.js
  */
@@ -15,8 +15,8 @@ const gameOver = function() {
     e('.grammy-gameover').play()
 }
 const stopMusic = () => {
-    e('.grammy-bgm').pause()
-    e('.grammy-bgm').currentTime = 0
+    // e('.grammy-bgm').pause()
+    // e('.grammy-bgm').currentTime = 0
 }
 const upMusic = () => {
     e('.grammy-up').play()
