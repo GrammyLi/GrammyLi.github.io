@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-09 21:34:32
- * @LastEditTime: 2021-10-12 13:30:22
+ * @LastEditTime: 2021-10-14 12:01:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/ avatar/utils.js
@@ -101,13 +101,13 @@ const negativeOfColors = (colors) => {
 
 const imageFilter = () => {
   const type = e(".t-select-filter").dataset.filter;
+  // 没有上传文件
   if (!window.imageData) {
     return;
   }
   const image = document.querySelector(".t-canvas");
   const context = image.getContext("2d");
   if (type === "notFilter") {
-    log("notFilter");
     window.imageData = window.rawImageData;
     context.putImageData(imageData, 0, 0);
     return;

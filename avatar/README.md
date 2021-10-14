@@ -1,7 +1,7 @@
 <!--
  * @Author: grammyli
  * @Date: 2021-10-09 20:09:19
- * @LastEditTime: 2021-10-12 13:02:34
+ * @LastEditTime: 2021-10-14 12:02:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /工作任务笔记/头像生成器/README.md
@@ -21,5 +21,7 @@
 10. bug 设置 width（上传文件时，保存其数据）
 11. bug 滤镜, 每次选择滤镜时，都是从原头像上添加滤镜效果（再添加一个canvas。当做备份)
 12. ~~样式 open/close/take 按钮，需要优化~~
+13. 视频的时候也可以添加滤镜效果
+14. 重构代码
     
 
