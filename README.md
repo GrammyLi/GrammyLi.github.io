@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-10 13:05:29
- * @LastEditTime: 2021-10-14 12:47:56
+ * @LastEditTime: 2021-10-14 18:42:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/README.md
@@ -30,36 +30,36 @@ image:
 - 
 ## pixel
 
-link: https://grammyli.com/music
+link: https://grammyli.com/pixel
 
-![pixel](./img/../%20img/image-20211013194422944.png)
+![pixel](./%20img/image-20211013194422944.png)
 
 
 ## avatar
 
-link: https://grammyli.com/music
+link: https://grammyli.com/avatar
 
-![avatar](./img/../%20img/image-20211013201952277.png)
+![avatar](./%20img/image-20211013201952277.png)
 
 
 ## avatar-generator
 
 link: https://grammyli.com/avatar-generator/
 
-![avatar-generator](./img/../%20img/image-20211013202009264.png)
+![avatar-generator](./%20img/image-20211013202009264.png)
 
  
 ## visualization
 
 link:  https://grammyli.com/visualization/
 
-![visualization - rect](./img/../%20img/image-20211014122052819.png)
+![visualization - rect](./%20img/image-20211014122052819.png)
 
-![visualization - line](./img/../%20img/image-20211014122207704.png)
+![visualization - line](./%20img/image-20211014122207704.png)
 
 
 ## game puzzle
 
 link:  https://grammyli.com/puzzle/
 
-![game- puzzle](./img/../%20img/image-20211014122031997.png)
+![game- puzzle](./%20img/image-20211014122031997.png)
