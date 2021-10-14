@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-10-12 10:46:59
+ * @LastEditTime: 2021-10-14 21:18:26
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /grammyli/led/font.js
+ */
 class Font {
     construct() {
 
@@ -44,11 +52,13 @@ class Font {
         let stringBits = []
         while (i < s.length) {
             if (s[i] < 128) {
+                // 符号
                 let word = s[i]
                 let bits = Font.wordBitsFromDataAscii(word)
                 stringBits.push(bits)
                 i += 1
             } else {
+                // 汉字
                 let word = s.slice(i, i + 2)
                 let bits = Font.wordBitsFromDataGbk(word)
                 stringBits.push(bits)

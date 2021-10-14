@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-12 09:44:43
- * @LastEditTime: 2021-10-13 19:25:17
+ * @LastEditTime: 2021-10-14 20:00:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/avatar-generator/main.js
@@ -215,3 +215,18 @@ const __main = () => {
 };
 
 __main();
+
+/**
+requestAnimationFrame
+该方法告诉浏览器您希望执行动画并请求浏览器在下一次重绘之前调用指定的函数来更新动画。
+该方法使用一个回调函数作为参数，这个回调函数会在浏览器重绘之前调用。
+
+requestAnimationFrame 优点
+1.避免掉帧
+完全依赖浏览器的绘制频率，从而避免过度绘制，影响电池寿命。
+2.提升性能
+当Tab或隐藏的iframe里，暂停调用。
+
+setTimeout和requestAnimationFrame
+https://juejin.cn/post/6844904083204079630
+ */
