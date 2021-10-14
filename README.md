@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-10 13:05:29
- * @LastEditTime: 2021-10-14 12:45:52
+ * @LastEditTime: 2021-10-14 12:47:56
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/README.md
@@ -46,15 +46,9 @@ link: https://grammyli.com/music
 
 link: https://grammyli.com/avatar-generator/
 
-![avatar-generator](./img/../%20img/image-20211014123106086.png)
+![avatar-generator](./img/../%20img/image-20211013202009264.png)
 
-## avatar-generator
-
-link: https://grammyli.com/avatar-generator/
-
-![avatar-generator](./img/../%20img/image-20211014123106086.png)
-
-
+ 
 ## visualization
 
 link:  https://grammyli.com/visualization/
