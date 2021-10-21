@@ -1,15 +1,25 @@
+/*
+ * @Author: your name
+ * @Date: 2021-10-20 22:19:32
+ * @LastEditTime: 2021-10-21 12:23:44
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /game-framework/break-out/main.js
+ */
 //  load level block
 // n  is  level class
 const loadLevel = (n, game) => {
     n -= 1
     let blocks = []
+    // log('levels', levels)
     let level = levels[n]
+   // log('level', level)
     for (let v of level) {
-        // let obj = JSON.parse(v)
-        let b = Block(v, game)
+        let obj = JSON.parse(v)
+        let b = Block(obj, game)
         blocks.push(b)
     }
-
+    log('blocks', blocks)
     return blocks
 }
 

@@ -1,13 +1,20 @@
-log('music  xxxxx debug')
+/*
+ * @Author: grammyli
+ * @Date: 2021-10-20 22:07:46
+ * @LastEditTime: 2021-10-21 12:13:06
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /game-framework/break-out/game/auido.js
+ */
 const startMusic = () => {
-    let b = e('.g-bg')
-    b.currentTime = 0
-    b.play()
+    // let b = e('.g-bg')
+    // b.currentTime = 0
+    // b.play()
 }
 const stopMusic = () => {
-    let b = e('.g-bg')
-    b.currentTime = 0    
-    b.pause()
+    // let b = e('.g-bg')
+    // b.currentTime = 0    
+    // b.pause()
 }
 const elementMusic = (sel) => {
     e(sel).play()

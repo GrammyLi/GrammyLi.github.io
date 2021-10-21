@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-10-20 22:09:56
- * @LastEditTime: 2021-10-21 09:51:09
+ * @LastEditTime: 2021-10-21 12:13:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /game-framework/break-out/game.html
@@ -11,19 +11,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Grammy Li Break out</title>
-    <!-- <style>
-        .container {
-            text-align: center;
-        }
-
-        #id-canvas {
-            border: 1px solid red;
-        }
-    </style> -->
+    <title>grammyli breack out</title>
     <link rel="stylesheet" href="style.css">
     <script src="game/utils.js"></script>
-
+    <link rel="shortcut icon" href="./davizi.jpg">
 </head>
 
 <body>
@@ -31,11 +22,11 @@
     <div id="rules" class="rules">
         <h2>How To Play:</h2>
         <p>
-            click k  start game
+            click k start game
             <br>
-            click e  edit game block
+            click e edit game block
             <br>
-            click f  fire ball
+            click f fire ball
             <br>
             click r restart game
         </p>
@@ -45,16 +36,14 @@
 
     <canvas id="id-canvas" width="560" height="460"></canvas>
     <br>
-    <!-- 
-            <div>拖动进度条，改变小球速度
-                <div>
-                    <input id='id-input-speed' type="range" value="1">
 
-                </div>
-
-            </div> -->
+    <div>change ball speed
+        <div>
+            <input id='id-input-speed' type="range" value="1">
+        </div>
+    </div>
     <!-- 这里可以写到函数里 -->
-    <audio class="g-bg" src="sounds/朝日温子 - K.K. Idol (しずえ Ver.).mp3"></audio>
+    <!-- <audio class="g-bg" src="sounds/朝日温子 - K.K. Idol (しずえ Ver.).mp3"></audio> -->
     <audio class="g-block-hit" src="sounds/brick_hit.mp3"></audio>
     <audio class="g-paddle-hit" src="sounds/paddle_hit.mp3"></audio>
     <audio class="g-wall-hit" src="sounds/wall.mp3"></audio>
