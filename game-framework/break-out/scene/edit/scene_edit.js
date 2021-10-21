@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-10-20 22:14:00
+ * @LastEditTime: 2021-10-21 09:49:33
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /game-framework/break-out/scene/edit/scene_edit.js
+ */
 class SceneEdit extends Scene {
     constructor(game) {
         super(game)
@@ -52,7 +60,7 @@ class SceneEdit extends Scene {
         const self = this
         let game = self.game
         //  draw  bg
-        game.context.fillStyle = '#8b6a6a'
+        game.context.fillStyle = '#333'
         game.context.fillRect(0, 0, 560, 560)
         //draw labels
 

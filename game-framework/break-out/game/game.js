@@ -24,11 +24,11 @@ class DaZhiZiGame {
     setup() {
         let g = this
         //events
-        bindEvent(window, EventType.keydown, (event) => {
+        bindEvent(window, 'keydown', (event) => {
             let k = event.key
             g.keydowns[k] = true
         })
-        bindEvent(window, EventType.keyup, (event) => {
+        bindEvent(window, 'keyup', (event) => {
             let k = event.key
             g.keydowns[k] = false
         })

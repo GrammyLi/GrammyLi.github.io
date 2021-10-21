@@ -1,20 +1,16 @@
+/*
+ * @Author: your name
+ * @Date: 2021-10-20 22:12:48
+ * @LastEditTime: 2021-10-21 09:52:20
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /game-framework/break-out/game/utils.js
+ */
 const log = console.log.bind(console)
 
 const e = selector => document.querySelector(selector)
 const es = selector => document.querySelectorAll(selector)
  
-const EventType = {
-    click: 'click',
-    popstate: 'popstate',
-    mouseover: 'mouseover',
-    mouseout: 'mouseout',
-    keydown: 'keydown',
-    keyup: 'keyup',
-    mousedown: 'mousedown',
-    mousemove: 'mousemove',
-    mouseup: 'mouseup',
-}
-
 const bindEvent = (element, eventName, callback) => {
     element.addEventListener(eventName, callback)
 }

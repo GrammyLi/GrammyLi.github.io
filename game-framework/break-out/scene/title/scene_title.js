@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-10-20 22:12:26
+ * @LastEditTime: 2021-10-21 09:49:18
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /game-framework/break-out/scene/title/scene_title.js
+ */
 class SceneTitle extends  Scene {
     constructor(game) {
         super(game)
@@ -20,7 +28,7 @@ class SceneTitle extends  Scene {
         const self = this
         let game = self.game
         //  draw  bg
-        game.context.fillStyle = '#8b6a6a'
+        game.context.fillStyle = '#333'
         game.context.fillRect(0, 0, 560, 560)
 
         

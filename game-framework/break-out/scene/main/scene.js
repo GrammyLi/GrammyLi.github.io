@@ -51,7 +51,7 @@ var SceneMain = (game) => {
     })
     s.draw = () => {
         //  draw  bg
-        game.context.fillStyle = '#8b6a6a'
+        game.context.fillStyle = '#333'
         game.context.fillRect(0, 0, 560, 560)
 
         game.drawImage(paddle)
