@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-05-30 17:50:06
+ * @LastEditTime: 2021-10-21 12:41:15
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /game-framework/break-out/scene/main/ball.js
+ */
 const Ball = (game) => {
     let obj = game.imageByName('ball')
     obj.x = 100
@@ -23,7 +31,6 @@ const Ball = (game) => {
             obj.y += obj.speedY
         }
     }
-
     obj.bounce = (ele) => {
         obj.speedX *= edgeBounce(obj, ele)
         obj.speedY *= -1
