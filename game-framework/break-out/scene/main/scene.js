@@ -27,7 +27,6 @@ var SceneMain = (game) => {
     cvs.addEventListener('mousedown', event => {
         let x = event.offsetX
         let y = event.offsetY
-        //   log('down')
         // 检查　是否点中
         if (ball.hasPoint(x, y)) {
             // 设置　拖拽状态
@@ -64,10 +63,10 @@ var SceneMain = (game) => {
             }
         }
         //draw labels
-        // e('.g-score').innerHTML = score
-        // game.context.fillStyle = 'white'
-        // game.context.font= "14px 微软雅黑"
-        // game.context.fillText('分 数 ：' + score, 10, 390)
+       
+        game.context.fillStyle = 'white'
+        game.context.font= "14px 微软雅黑"
+        game.context.fillText('分 数 ：' + score, 10, 390)
         // game.context.fillText('按 f  开 始  p 暂 停', 380, 390)
     }
     s.update = () => {

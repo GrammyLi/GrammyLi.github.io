@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-20 22:19:32
- * @LastEditTime: 2021-10-21 12:23:44
+ * @LastEditTime: 2021-10-21 12:37:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /game-framework/break-out/main.js
@@ -13,13 +13,10 @@ const loadLevel = (n, game) => {
     let blocks = []
     // log('levels', levels)
     let level = levels[n]
-   // log('level', level)
-    for (let v of level) {
-        let obj = JSON.parse(v)
-        let b = Block(obj, game)
+    level.forEach(block => {
+        let b = Block(block, game)
         blocks.push(b)
-    }
-    log('blocks', blocks)
+    })
     return blocks
 }
 
