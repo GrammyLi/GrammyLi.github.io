@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Grammy Li Break out</title>
+    <!-- <style>
+        .container {
+            text-align: center;
+        }
+
+        #id-canvas {
+            border: 1px solid red;
+        }
+    </style> -->
+    <link rel="stylesheet" href="style.css">
+    <script src="game/utils.js"></script>
+
+</head>
+
+<body>
+    <h1>Breakout!</h1>
+    <button id="rules-btn" class="btn rules-btn">Show Rules</button>
+    <div id="rules" class="rules">
+        <h2>How To Play:</h2>
+        <p>
+            Use your right and left keys to move the paddle to bounce the ball up
+            and break the blocks.
+        </p>
+        <p>If you miss the ball, your score and the blocks will reset.</p>
+        <button id="close-btn" class="btn">Close</button>
+    </div>
+
+    <canvas id="id-canvas" width="560" height="460"></canvas>
+    <br>
+    <!-- 
+            <div>拖动进度条，改变小球速度
+                <div>
+                    <input id='id-input-speed' type="range" value="1">
+
+                </div>
+
+            </div> -->
+    <!-- 这里可以写到函数里 -->
+    <audio class="g-bg" src="sounds/朝日温子 - K.K. Idol (しずえ Ver.).mp3"></audio>
+    <audio class="g-block-hit" src="sounds/brick_hit.mp3"></audio>
+    <audio class="g-paddle-hit" src="sounds/paddle_hit.mp3"></audio>
+    <audio class="g-wall-hit" src="sounds/wall.mp3"></audio>
+    <audio class="g-game-over" src="sounds/life_lost.mp3"></audio>
+
+    <script src="game/game.js"></script>
+    <script src="game/Scene.js"></script>
+
+    <script src="game/auido.js"></script>
+    <!-- 场景 -->
+    <script src="scene/main/paddle.js"></script>
+    <script src="scene/main/ball.js"></script>
+    <script src="scene/main/block.js"></script>
+    <script src="scene/main/scene.js"></script>
+    <script src="scene/title/scene_title.js"></script>
+    <script src="scene/edit/scene_edit.js"></script>
+    <script src="scene/end/scene_end.js"></script>
+    <!-- 关卡 -->
+    <script src="level.js"></script>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
