@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-10 13:05:29
- * @LastEditTime: 2021-10-14 18:42:55
+ * @LastEditTime: 2021-10-16 17:55:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/README.md
@@ -31,8 +31,6 @@ image:
 ## pixel
 
 link: https://grammyli.com/pixel
-
-![pixel](./%20img/image-20211013194422944.png)
 
 
 ## avatar
