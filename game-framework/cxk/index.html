@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 11:32:12
- * @LastEditTime: 2021-10-22 19:23:05
+ * @LastEditTime: 2021-10-22 20:09:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /game-framework/animation/game.html
@@ -13,6 +13,9 @@
 	<meta charset="UTF-8">
 	<title>animation cxk</title>
 	<style>
+		.game {
+			text-align: center;
+		}
 		#id-canvas {
 			border: 1px solid red;
 		}
@@ -22,27 +25,30 @@
 		}
 	</style>
 	<link rel="shortcut icon" href="davizi.jpg">
-	<!-- 工具函数 -->
+	<!-- 工具 -->
 	<script src="game/utils.js"></script>
 	<script src="game/game.js"></script>
 	<script src="game/scene.js"></script>
+	<!-- 元素 -->
 	<script src="game/image.js"></script>
 	<script src="game/lable.js"></script>
 	<script src="game/animation.js"></script>
+	<script src="scene/main/ball.js"></script>
+	<script src="scene/main/block.js"></script>
 	<!-- 关卡 -->
 	<script src="level.js"></script>
 	<!-- 场景 -->
 	<script src="scene/title/scene_title.js"></script>
-
-	<script src="scene/main/ball.js"></script>
-	<script src="scene/main/block.js"></script>
 	<script src="scene/main/scene_main.js"></script>
-
+	<script src="scene/end/scene_end.js"></script>
 </head>
 
 <body>
-	<canvas id="id-canvas" width="1012" height="768"></canvas>
-	<div class="container">
+	<div class="game">
+		<canvas id="id-canvas" width="800" height="560"></canvas>
+
+	</div>
+	<!-- <div class="container">
 		<div class="item">
 			<div class="label">
 				width:
@@ -58,9 +64,9 @@
 			<div class="value">
 				<input value="512" data-height="512" />
 			</div>
-		</div>
+		</div> -->
 	</div>
- 
+
 	<!-- 主函数 -->
 	<script src="main.js"></script>
 </body>

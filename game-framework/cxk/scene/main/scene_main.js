@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-22 13:31:06
- * @LastEditTime: 2021-10-22 19:34:13
+ * @LastEditTime: 2021-10-22 20:05:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /game-framework/cxk/scene/main/scene_main.js
@@ -18,6 +18,7 @@ class SceneMain extends Scene {
     this.score = 0;
     let { game } = this;
     let cave = BaseImage.new(game, "bg");
+    this.cave = cave
     this.addElement(cave);
 
     this.blocks = [];
@@ -27,8 +28,9 @@ class SceneMain extends Scene {
       this.addElement(b);
       this.blocks.push(b);
     });
-
-    let label = Lable.new(game, "cxk yyds");
+    const text = `cxk yyds: ${this.score}`;
+    let label = Lable.new(game, text);
+    this.label = label;
     this.addElement(label);
 
     let amt = Animation.new(game);
@@ -58,10 +60,20 @@ class SceneMain extends Scene {
     this.bindEventKeys();
   }
 
-  update() {
-    const { amt: paddle, ball } = this;
-    ball.move();
+  draw() {
+    const { amt: paddle, ball, game, blocks, cave: bg } = this;
+    bg.draw();
+    paddle.draw();
+    ball.draw();
+    blocks.forEach((b) => b.draw());
+    const text = `cxk yyds: ${this.score}`;
+    let label = Lable.new(game, text);
+    label.draw();
+  }
 
+  update() {
+    const { amt: paddle, ball, game } = this;
+    ball.move();
     paddle.update();
 
     if (paddle.collide(ball)) {
@@ -74,9 +86,16 @@ class SceneMain extends Scene {
         block.kill();
         //反弹
         ball.bounce(block);
-        // score
+
         this.score += 100;
+        log("this.score", this.score);
       }
     });
+
+    if (ball.y > paddle.y) {
+      // gameOverMusic();
+      let end = SceneEnd.new(game);
+      game.replaceScene(end);
+    }
   }
 }

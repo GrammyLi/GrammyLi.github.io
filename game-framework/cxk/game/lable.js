@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-22 13:21:33
- * @LastEditTime: 2021-10-22 13:21:34
+ * @LastEditTime: 2021-10-22 19:57:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /game-framework/cxk/scene/title/lable.js
@@ -22,6 +22,6 @@ class Lable {
       self.game.context.fillText(self.text, 180, 200)
   }
   update() {
-
+    
   }
 }
