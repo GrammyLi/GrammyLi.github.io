@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-30 17:50:06
- * @LastEditTime: 2021-10-22 14:01:08
+ * @LastEditTime: 2021-10-22 18:31:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /game-framework/break-out/scene/main/ball.js
@@ -19,10 +19,6 @@ class Ball extends BaseImage {
 
   fire() {
       this.fired = true
-  }
-
-  update() {
-    this.move()
   }
 
   draw() {

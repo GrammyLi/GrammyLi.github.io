@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-03-03 13:02:00
+ * @LastEditTime: 2021-10-22 18:34:09
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /game-framework/cxk/scene/title/scene_title.js
+ */
 class SceneTitle extends Scene {
     constructor(game) {
         super(game)
@@ -34,4 +42,6 @@ class SceneTitle extends Scene {
             this.game.replaceScene(s);
         })
     }
+
+   
 }

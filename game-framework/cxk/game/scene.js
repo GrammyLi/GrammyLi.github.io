@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2019-10-06 18:08:02
- * @LastEditTime: 2021-10-22 09:35:58
- * @LastEditors: your name
+ * @LastEditTime: 2021-10-22 18:22:19
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /game-framework/animation/game/scene.js
  */

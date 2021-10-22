@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2019-10-06 17:10:16
- * @LastEditTime: 2021-10-22 13:10:02
+ * @LastEditTime: 2021-10-22 18:27:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /game-framework/animation/game/Image.js
@@ -15,8 +15,8 @@ class BaseImage {
         this.w = this.texture.width
         this.h = this.texture.height
     }
-    static new(game, name) {
-        let i = new this(game, name)
+    static new(...args) {
+        let i = new this(...args)
         return i
     }
     draw() {

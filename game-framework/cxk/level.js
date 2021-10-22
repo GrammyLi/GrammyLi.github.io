@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2021-10-22 13:23:54
+ * @LastEditTime: 2021-10-22 19:25:50
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: /game-framework/cxk/level.js
+ */
 window.levels = [
     [
         {
@@ -8,12 +16,12 @@ window.levels = [
         {
             x: 200,
             y: 20,
-            health: 1,
+            health: 2,
         },
         {
             x: 100,
             y: 150,
-            health: 1,
+            health: 3,
         },
     ],
 
