@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2019-10-06 15:54:58
- * @LastEditTime: 2021-10-22 13:10:26
+ * @LastEditTime: 2021-10-22 13:30:36
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /game-framework/cxk/game/utils.js
@@ -62,4 +62,30 @@ const randomBetween = (start, end) => {
     let n = Math.random() * (end - start + 1)
     return Math.floor(n + start)
     // return ~~(n + start)
+}
+
+/*
+    1    2
+    3    4
+ */
+const edgeBounce = (a, b) => {
+    let w = b.w
+    let h = b.h
+    if (a.x == b.x && a.y == b.y) {
+        log('1')
+        return -1
+    }
+    if (a.x == b.x + w && a.y == b.y) {
+        log('2')
+        return -1
+    }
+    if (a.x == b.x  && a.y == b.y + h) {
+        log('3')
+        return -1
+    }
+    if (a.x == b.x + w && a.y == b.y + h) {
+        log('4')
+        return -1
+    }
+    return 1
 }

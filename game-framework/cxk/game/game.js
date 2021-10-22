@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2019-11-05 20:13:02
- * @LastEditTime: 2021-10-22 13:09:47
+ * @LastEditTime: 2021-10-22 13:27:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /game-framework/cxk/game/game.js
@@ -85,6 +85,16 @@ class DaZhiZiGame {
         }, 1000 / window.fps)
     }
     textureByName(name) {
+        // let g = this
+        // let img = g.images[name]
+        // // log('img', img)
+        // // log('img width', img.width)
+        // let image = {
+        //     w: img.width,
+        //     h: img.height,
+        //     image: img,
+        // }
+        // return image
         let g = this
         let img = g.images[name]
         return img

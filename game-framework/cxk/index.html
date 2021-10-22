@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-11-13 11:32:12
- * @LastEditTime: 2021-10-22 12:23:26
+ * @LastEditTime: 2021-10-22 13:39:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /game-framework/animation/game.html
@@ -16,19 +16,27 @@
 		#id-canvas {
 			border: 1px solid red;
 		}
+
 		.item {
 			display: block;
 		}
 	</style>
 	<link rel="shortcut icon" href="davizi.jpg">
+	<!-- 工具函数 -->
 	<script src="game/utils.js"></script>
 	<script src="game/game.js"></script>
 	<script src="game/scene.js"></script>
 	<script src="game/image.js"></script>
-	<script src="game/particle_system.js"></script>
+	<script src="game/lable.js"></script>
 	<script src="game/animation.js"></script>
+	<!-- 关卡 -->
+	<script src="level.js"></script>
 	<!-- 场景 -->
 	<script src="scene/title/scene_title.js"></script>
+
+	<script src="scene/main/ball.js"></script>
+	<script src="scene/main/scene_main.js"></script>
+
 </head>
 
 <body>
@@ -51,9 +59,7 @@
 			</div>
 		</div>
 	</div>
-
-
-	<br>
+ 
 	<!-- 主函数 -->
 	<script src="main.js"></script>
 </body>
