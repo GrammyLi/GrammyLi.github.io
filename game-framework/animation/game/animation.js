@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2020-02-18 20:42:00
- * @LastEditTime: 2021-10-22 09:35:22
- * @LastEditors: your name
+ * @LastEditTime: 2021-10-22 10:01:42
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /game-framework/animation/game/animation.js
  */
@@ -78,7 +78,6 @@ class Animation {
     move(x, keyStatus) {
         this.flipx = (x < 0)
         this.x += x
-        log('keyStatus', keyStatus)
         let animationNames = {  // 经典
             down: 'run',
             up: 'stand',
