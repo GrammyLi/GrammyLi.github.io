@@ -1,31 +1,61 @@
 <!--
  * @Author: your name
- * @Date: 2019-06-10 02:11:43
- * @LastEditTime: 2021-10-22 10:10:43
- * @LastEditors: your name
+ * @Date: 2020-11-13 11:32:12
+ * @LastEditTime: 2021-10-22 12:23:26
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: /game-framework/cxk/index.html
+ * @FilePath: /game-framework/animation/game.html
 -->
 <!DOCTYPE html>
-<html lang="zh_CN">
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=11">
-		<title>cxk</title>
-	</head>
-	<body>
-		<div class="container">
-		 
-					<center id="t-div" style="width: 100%;">
-						<p><canvas id="canvas" style="width: 100%;height: 563px;"></canvas></p>
-					</center>
-			 
-				</div>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>animation cxk</title>
+	<style>
+		#id-canvas {
+			border: 1px solid red;
+		}
+		.item {
+			display: block;
+		}
+	</style>
+	<link rel="shortcut icon" href="davizi.jpg">
+	<script src="game/utils.js"></script>
+	<script src="game/game.js"></script>
+	<script src="game/scene.js"></script>
+	<script src="game/image.js"></script>
+	<script src="game/particle_system.js"></script>
+	<script src="game/animation.js"></script>
+	<!-- 场景 -->
+	<script src="scene/title/scene_title.js"></script>
+</head>
+
+<body>
+	<canvas id="id-canvas" width="1012" height="768"></canvas>
+	<div class="container">
+		<div class="item">
+			<div class="label">
+				width:
+			</div>
+			<div class="value">
+				<input value="512" data-width="512" />
 			</div>
 		</div>
-	</body>
-	<script>
-		 
-	</script>
+		<div class="item">
+			<div class="label">
+				height:
+			</div>
+			<div class="value">
+				<input value="512" data-height="512" />
+			</div>
+		</div>
+	</div>
+
+
+	<br>
+	<!-- 主函数 -->
+	<script src="main.js"></script>
+</body>
+
 </html>
