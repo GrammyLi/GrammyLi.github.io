@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-13 20:34:24
- * @LastEditTime: 2021-10-13 20:51:07
+ * @LastEditTime: 2021-10-22 20:34:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/visualization/utils.js
@@ -393,4 +393,9 @@ const on = (element, eventName, callback) => {
 
 const appendHtml = (element, html) => {
     element.insertAdjacentHTML('beforeend', html)
+}
+
+const randomBetween = (start, end) => {
+    let n = Math.random() * (end - start + 1)
+    return Math.floor(n + start)
 }
