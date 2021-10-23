@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-10-16 18:09:36
- * @LastEditTime: 2021-10-16 18:31:05
+ * @LastEditTime: 2021-10-23 13:06:07
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/plan/README.md
@@ -12,8 +12,7 @@
 
 
 高度组件化、模块化思维，拥有各平台调试能力
-
-、B端开发
+B端开发
 
 HTML / CSS：
 能够编写语义化的 HTML，模块化的 CSS
@@ -70,3 +69,4 @@ Webpack / Rollup / Lerna
 2. 熟练使用 rebase、cherry-pick 等 Git 命令，了解 CI、CD 流程
 
 3. 熟练使用 Jest 单元测试框架，熟悉各种测试技巧
+
