@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-12 09:44:43
- * @LastEditTime: 2021-10-16 17:52:07
+ * @LastEditTime: 2021-10-23 16:10:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/avatar-generator/main.js
@@ -82,9 +82,15 @@ const drawPixel = (pixel, index) => {
   const p4 = [x4, y4];
 
   const ps = [p1, p2, p3, p4];
+
   ps.forEach(([x, y]) => {
     ctx.fillRect(x, y, pxSize, pxSize);
   });
+};
+
+const drawSquare = (color, x, y, len) => {
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y, len, len);
 };
 
 function draw() {
@@ -106,12 +112,41 @@ function draw() {
       baseFrequency,
     });
   }
-
+  // log('pxCount', pxCount, 'tottol', totalPxCount)
+  // log('pixels', pixels.length)
+  // log('pixels', pixels)
   pixels.forEach((pixel, index) => {
     drawPixel(pixel, index);
   });
 
   requestAnimationFrame(draw);
+
+  // let data = [
+  //   [0, 0, 1],
+  //   [0, 1, 0],
+  //   [0, 1, 0],
+  //   [0, 0, 1],
+  //   [0, 1, 0],
+  //   [0, 1, 0],
+  // ]
+  // let new_data = data.map(item => {
+  //   let new_item = copy(item).reverse()
+  //   return [...item, ...new_item]
+  // })
+  // for (let i = 0; i < new_data.length; i++) {
+  //   const line = new_data[i]
+  //   for (let j = 0; j < line.length; j++) {
+  //     log('i', i, 'j', j)
+  //     let x = j * 32
+  //     let y = i * 32
+  //     if (new_data[i][j] > 0) {
+  //       drawSquare('gray', x, y, 32)
+  //     }
+  //   }
+  // }
+  // log('new_data', new_data)
+
+  // 高必须是宽的两倍
 }
 
 const handleGithubColor = () => {
@@ -138,7 +173,7 @@ const handleGithubModel = () => {
 
 const handleChangePxCount = () => {
   // 初始化
-  $('#px-count').value = pxCount
+  $("#px-count").value = pxCount;
   // 绑定事件
   on("#px-count", "change", (e) => {
     pxCount = parseInt(e.target.value, 10);
@@ -146,7 +181,7 @@ const handleChangePxCount = () => {
 };
 
 const handleChangePxSize = () => {
-  $('#px-size').value = pxSize
+  $("#px-size").value = pxSize;
   on("#px-size", "change", (e) => {
     pxSize = parseInt(e.target.value, 10);
   });
@@ -183,13 +218,12 @@ const handleChangeBlue = () => {
 };
 
 const handleChangeSpeed = () => {
-
-  const autoplaySpeed = $("#autoplay-speed")
-  autoplaySpeed.value = autoplaySpeed
-  autoplaySpeed.max = _autoplaySpeedMax
+  const autoplaySpeed = $("#autoplay-speed");
+  autoplaySpeed.value = autoplaySpeed;
+  autoplaySpeed.max = _autoplaySpeedMax;
 
   on("#autoplay-speed", "change", (e) => {
-    autoplaySpeed = parseInt(e.target.value, 10)
+    autoplaySpeed = parseInt(e.target.value, 10);
   });
 };
 

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-10-16 18:09:36
- * @LastEditTime: 2021-10-23 13:06:07
+ * @LastEditTime: 2021-10-23 14:46:56
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/plan/README.md
@@ -70,3 +70,20 @@ Webpack / Rollup / Lerna
 
 3. 熟练使用 Jest 单元测试框架，熟悉各种测试技巧
 
+
+我在此项目负责前端css,vue组件的编写，已经服务端的开发。在项目开发的过程中遇到在线聊天需求时，起初利用"轮询"实现，但是实际效率比较低会造成资源浪费，最后通过websocket来实现服务器主动像客户端进行数据的推送，以此来减少要服务端发送请求的次数
+
+熟悉HTML5，CSS3和编写更加合理的 HTML 以及规范化的 CSS，能准确还原设计稿
+
+能熟练使用Vue.js，Jquery，Bootstrap对React等框架有了解，能根据公司需求快速上手,会使用webpack
+
+对面向对象理解比较深刻，并对es6语法和对代码风格比较熟悉
+
+对响应式开发和一些浏览兼容有不错的了解
+
+对Git版本控制工具有使用经验，平时用WebStorm为开发环境工作，了解开发调试的工具
+
+有点审美能力重视用户体验
+
+
+学习能力较强,能快速适应公司技术栈。对技术热情比较高，有良好的代码习惯，性格比较开朗能与同事形成比较好的协调合作， 能较快的融入到团队开发中去
