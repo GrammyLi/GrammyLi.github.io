@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-10-14 13:27:53
- * @LastEditTime: 2021-10-14 13:35:40
+ * @LastEditTime: 2021-11-04 12:40:56
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/index.html
@@ -10,27 +10,16 @@
 <html>
 
 <head>
-  <title>Search Tool</title>
+  <title>grammyli search</title>
   <link href="./styles.css" rel="stylesheet">
 </head>
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="column">
-        <h1>QwikiSearch <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank"><span class="fa fa-question-circle" aria-hidden="true"></span></a></h1>
-        <div class="form-group">
-          <form action="javascript:searchQuery()" method="GET" id="searchQuery">
-            <label>
-              <span class="screen-reader-text">Search:</span>
-              <input name="query" type="text" id="query" placeholder="Search" /><input type="submit" name="submit" id="submit" value="Go" />
-            </label>
-          </form>
-        </div>
-        <div id="searchResults">
-        </div>
-        <p id="author">by <a href="https://twitter.com/ChickenN00dle" target="_blank">@Chickenn00dle <span class="fa fa-external-link"></span></a></p>
-      </div>
+  <div class="g-container">
+    <h1>grammyli</h1>
+    <div class="g-search">
+      <div class="g-script__type"></div>
+      <input type="text" placeholder="" autofocus="autofocus" class="g-input__search">
     </div>
   </div>
   <script src="./main.js"></script>

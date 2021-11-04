@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-10 13:05:29
- * @LastEditTime: 2021-11-04 12:23:54
+ * @LastEditTime: 2021-11-04 12:25:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/README.md
@@ -67,3 +67,4 @@ link : https://grammyli.com/music
 - pokemon-color 存在算法错误，有时挺难复现
 - personal web 项目板块待更新
 - personal web 计划板块待更新
+- search 项目需要完善
