@@ -6,3 +6,9 @@
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/2048/README.md
 -->
+
+### TODO
+
+1. 解决悔棋功能
+
+
