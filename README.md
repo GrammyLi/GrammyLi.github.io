@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-10 13:05:29
- * @LastEditTime: 2021-11-04 12:17:38
+ * @LastEditTime: 2021-11-04 12:23:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/README.md
@@ -63,4 +63,7 @@ link : https://grammyli.com/music
 
 - music 解决点击播放，专辑图片旋转功能
 - music 需要重写进度条
-- 
+- 2048 存在算法错误，当横向滑动时，数字的位置显示错误
+- pokemon-color 存在算法错误，有时挺难复现
+- personal web 项目板块待更新
+- personal web 计划板块待更新
