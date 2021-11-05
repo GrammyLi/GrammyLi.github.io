@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-05 10:06:10
- * @LastEditTime: 2021-11-05 13:59:37
+ * @LastEditTime: 2021-11-05 14:03:19
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/config.js
@@ -53,7 +53,7 @@ window.engines = [
     id: 4,
     url: "./img/icons8-baidu.svg",
     text: "Baidu",
-    search: 'https://cn.bing.com/search?q=keyword&mkt=zh-CN',
+    search: 'https://www.baidu.com/s?wd=keyword',
   },
   {
     id: 5,
