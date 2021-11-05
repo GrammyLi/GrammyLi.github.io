@@ -56,7 +56,7 @@
   color: rgba(0, 0, 0, .24);
 }
 
-.g-clear embed {
+.g-clear img {
   width: 100%;
 }
 
@@ -74,7 +74,7 @@
   color: #0f60ab;
 }
 
-.g-btn embed {
+.g-btn img {
   width: 100%;
 }
 
@@ -123,7 +123,7 @@
   color: blue;
 }
 
-embed {
+img {
   width: 80%;
 }
 
@@ -147,6 +147,10 @@ embed {
   margin-top: 0.533333vw;
 }
 
-.btn .g-engine embed {
+.btn .g-engine img {
   width: 20%;
+}
+
+.g-hide {
+  display: none;
 }
