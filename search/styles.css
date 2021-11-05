@@ -42,7 +42,7 @@
 }
 
 .g-clear {
-  margin-right: 30px;
+  margin-right: 38px;
   width: 25px;
   margin-left: 0.8vw;
   transition: color .4s;
@@ -61,7 +61,7 @@
 }
 
 .g-btn {
-  margin-right: 4px;
+  margin-right: 14px;
   transition: color .4s;
   cursor: pointer;
   position: absolute;
@@ -157,5 +157,7 @@
 }
 
 @media (min-width: 600px) {
-   
+   .g-search {
+     
+   }
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-14 13:35:59
- * @LastEditTime: 2021-11-05 16:26:09
+ * @LastEditTime: 2021-11-05 16:54:36
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/main.js
@@ -73,6 +73,7 @@ const hideLogoBtn = () => {
 const actions = {
   clearInputValue() {
     e(".g-input__search").value = "";
+    e('.g-clear').classList.add('g-hide')
   },
   clickEngineCard(event) {
     // 更新搜索方式
