@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-05 10:06:10
- * @LastEditTime: 2021-11-05 13:51:51
+ * @LastEditTime: 2021-11-05 13:59:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/config.js
@@ -41,7 +41,7 @@ window.engines = [
     id: 11,
     url: "./img/icons8-qq.svg",
     text: "Grammyli",
-    search: 'https://weixin.sogou.com/weixinwap?type=2&query=keyword',
+    search: 'https://www.sogou.com/web?query=keyword',
   },
   {
     id: 3,
