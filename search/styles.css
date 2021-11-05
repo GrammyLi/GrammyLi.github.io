@@ -37,8 +37,8 @@
 
 .g-input__search:focus,
 .g-input__search[data-focus] {
-  border-color: rgba(0, 0, 0, .24);
-  box-shadow: rgba(0, 0, 0, .44);
+  border-color: rgb(37, 117, 230);
+  box-shadow: rgb(98, 154, 231);
 }
 
 .g-clear {
@@ -120,11 +120,12 @@
 
 .g-engines .g-engine:hover {
   background: #e8e8e9;
-  color: blue;
+  color: rgb(37, 117, 230);
 }
 
-img {
+.g-engine img {
   width: 80%;
+  height: 100px;
 }
 
 .g-engine span {
@@ -153,4 +154,8 @@ img {
 
 .g-hide {
   display: none;
+}
+
+@media (min-width: 600px) {
+   
 }

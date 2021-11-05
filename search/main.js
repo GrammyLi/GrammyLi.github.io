@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-14 13:35:59
- * @LastEditTime: 2021-11-05 13:55:08
+ * @LastEditTime: 2021-11-05 16:26:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/main.js
@@ -46,6 +46,11 @@ const init = () => {
 
 const bindEventKeyup = () => {
   bindEvent(window, "keyup", (event) => {
+    if (e(".g-input__search").value.length === 0) {
+      e('.g-clear').classList.add('g-hide')
+    } else {
+      e('.g-clear').classList.remove('g-hide')
+    }
     if (event.key === "Enter") {
       actions.searchContent();
     }
