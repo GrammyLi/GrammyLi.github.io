@@ -1,14 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-10-14 13:35:59
- * @LastEditTime: 2021-11-05 16:54:36
+ * @LastEditTime: 2021-11-06 13:53:22
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/main.js
  */
 const templateEngine = ({ id, url, text, search }, index) => {
   return `
-  <div class="g-engine g-engine-${id} g-drag" data-index="${index}">
+  <div class="g-engine g-engine-${id} g-drag" data-index="${index}" draggable="true">
     <img src="${url}"  data-action="clickEngineCard"  />
     <span>${text}</span>
   </div>
@@ -119,6 +119,7 @@ const bindEventClick = () => {
 const bindEvents = () => {
   bindEventKeyup();
   bindEventClick();
+  bindEventDnd();
 };
 
 const __main = () => {
