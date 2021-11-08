@@ -1,14 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-10-14 13:35:59
- * @LastEditTime: 2021-11-06 13:53:22
+ * @LastEditTime: 2021-11-08 12:54:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/main.js
  */
-const templateEngine = ({ id, url, text, search }, index) => {
+const templateEngine = ({ id, url, text, search }) => {
   return `
-  <div class="g-engine g-engine-${id} g-drag" data-index="${index}" draggable="true">
+  <div class="g-engine g-engine-${id} g-drag" data-id="${id}" draggable="true">
     <img src="${url}"  data-action="clickEngineCard"  />
     <span>${text}</span>
   </div>
@@ -30,7 +30,13 @@ const renderEngines = () => {
 };
 
 const renderLogo = () => {
-  let engine = window.engines[currentEngineIndex];
+  let id = enginesIds[currentEngineIndex]
+  let engine = window.engines[0]
+  engines.forEach(ele => {
+    if (ele.id === id) {
+      engine = ele
+    }
+  })
   let t = templateLogoEngine(engine);
   const center = e(".g-center");
   // 先清空画布
@@ -78,7 +84,12 @@ const actions = {
   clickEngineCard(event) {
     // 更新搜索方式
     let engine = event.target.closest(".g-engine");
-    window.currentEngineIndex = Number(engine.dataset.index);
+    let id = Number(engine.dataset.id)
+    enginesIds.forEach((i, index) => {
+      if (i === id) {
+        window.currentEngineIndex = index;
+      }
+    })
     renderLogo();
   },
   clickControlBtn(event) {
@@ -102,7 +113,13 @@ const actions = {
       return;
     }
     let link = e(".g-search-link");
-    let engine = window.engines[currentEngineIndex];
+    let id = enginesIds[currentEngineIndex] 
+    let engine = window.engines[0];
+    engines.forEach(e => {
+      if (e.id === id) {
+        engine = e
+      }
+    })
     link.href = engine.search.replace("keyword", v);
     link.click();
   },

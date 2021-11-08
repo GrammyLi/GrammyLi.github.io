@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-06 13:36:07
- * @LastEditTime: 2021-11-06 14:04:29
+ * @LastEditTime: 2021-11-08 12:54:32
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /grammyli/search/dnd.js
@@ -61,12 +61,23 @@ function handleDrop(e) {
 }
 
 function handleDragEnd(e) {
+  log('over')
+  // 更新 engines
+  const eles = es('.g-engines .g-engine')
+  const ids = []
+  eles.forEach((ele, i) => {
+    let id = Number(ele.dataset.id);
+    ids.push(id)
+  })
+  enginesIds = ids
+ 
+  renderLogo()
   // this/e.target is the source node.
   this.classList.remove('over');
-
   /*[].forEach.call(cols, function (col) {
     col.classList.remove('over');
   });*/
+  
 }
 
 function addDnDHandlers(elem) {

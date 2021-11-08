@@ -1,29 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-11-05 10:06:10
- * @LastEditTime: 2021-11-06 14:03:50
+ * @LastEditTime: 2021-11-08 12:54:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/config.js
  */
-
- /*
- https://www.google.com.hk/search?q=keyword
-
-https://cn.bing.com/search?q=keyword&mkt=zh-CN
-
-https://www.zhihu.com/search?type=content&q=keyword
-
-https://search.bilibili.com/all?keyword=wefw&from_source=web_search
-
-https://www.douban.com/search?q=keyword
-
-https://weixin.sogou.com/weixinwap?type=2&query=keyword
-
-https://www.npmjs.com/search?q=keyword
-
-https://github.com/search?utf8=%E2%9C%93&q=keyword
- */
+ 
 window.engines = [
   {
     id: 1,
@@ -92,3 +75,8 @@ window.engines = [
     search: 'https://developer.mozilla.org/zh-CN/search?q=keyword',
   },
 ];
+
+window.enginesIds = []
+engines.forEach((e, i) => {
+  enginesIds.push(e.id)
+})
