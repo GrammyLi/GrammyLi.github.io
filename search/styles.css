@@ -126,7 +126,7 @@
   background: #e8e8e9;
   color: rgb(37, 117, 230) !important;
 }
- 
+
 .g-engine img {
   width: 80%;
   height: 100px;
@@ -190,4 +190,12 @@ body {
   /* Required to make elements draggable in old WebKit */
   -khtml-user-drag: element;
   -webkit-user-drag: element;
+}
+
+
+.g-header {
+  margin-top: 32px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
