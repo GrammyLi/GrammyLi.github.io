@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-14 13:35:59
- * @LastEditTime: 2021-11-08 12:54:41
+ * @LastEditTime: 2021-11-09 18:34:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/main.js
@@ -137,6 +137,7 @@ const bindEvents = () => {
   bindEventKeyup();
   bindEventClick();
   bindEventDnd();
+  bindEventChange();
 };
 
 const __main = () => {

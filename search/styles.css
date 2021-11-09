@@ -160,6 +160,34 @@
   display: none;
 }
 
+.g-search__menus {
+  margin-top: 9px;
+  width: 61.8%;
+  border: 1px rgb(37, 117, 230) solid;
+  border-radius: 12px;
+}
+
+.g-search__menus::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid rgb(37, 117, 230);
+  position: absolute;
+  margin-top: -9px;
+  margin-left: 18px;
+}
+
+.g-search__menus .g-menu {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0.533333vw 1.066667vw;
+  color: rgba(0,0,0,.44);
+  font-size: 32px;
+}
+
 @media screen and (max-width: 900px) {}
 
 

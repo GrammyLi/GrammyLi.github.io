@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-04 19:56:27
- * @LastEditTime: 2021-11-06 13:53:51
+ * @LastEditTime: 2021-11-09 19:14:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/utils.js
@@ -26,3 +26,19 @@ const appendHtml = (element, html) => {
 
 const e = selector => document.querySelector(selector)
 const es = selector => document.querySelectorAll(selector)
+
+const ajax = (request) => {
+  let {method, path, data, callback} = request
+  let r = new XMLHttpRequest()
+  r.open(method, path, true)
+  r.setRequestHeader('Content-Type', 'application/json')
+  r.onreadystatechange = () => {
+      if (r.readyState === 4) {
+          callback(r.response)
+      }
+  }
+  if (method === 'POST') {
+      data = JSON.stringify(data)
+  }
+  r.send(data)
+}
