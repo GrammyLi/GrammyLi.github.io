@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-14 13:35:59
- * @LastEditTime: 2021-11-09 19:55:57
+ * @LastEditTime: 2021-11-10 13:04:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/main.js
@@ -44,6 +44,22 @@ const renderLogo = () => {
   center.innerHTML = t;
   hideLogoBtn()
 };
+
+const renderHistorys = () => {
+  let menus = e('.g-search__menus')
+  menus.innerHTML = ''
+  let t = `
+  <div class="g-menu-header">
+    <div class="g-menu-history">hisory</div>
+    <div class="g-menu-clear" data-action="clearHistory">clear</div>
+  </div>
+  `
+  t += window.historys.map(h => {
+    return `<div class="g-menu">${h}</div>`
+  }).join('')
+ 
+  appendHtml(menus, t)
+}
 
 const init = () => {
   renderEngines();
@@ -112,6 +128,7 @@ const actions = {
     if (v.length === 0) {
       return;
     }
+    window.historys = [v, ...window.historys.slice(0, 9)]
     let link = e(".g-search-link");
     let id = enginesIds[currentEngineIndex] 
     let engine = window.engines[0];
@@ -123,6 +140,10 @@ const actions = {
     link.href = engine.search.replace("keyword", v);
     link.click();
   },
+  clearHistory() {
+    window.historys = []
+    renderHistorys()
+  }
 };
 
 const bindEventClick = () => {
@@ -133,15 +154,43 @@ const bindEventClick = () => {
   });
 };
 
+const bindEventChange = () => {
+  bindEvent(e(".g-input__search"), 'focus', event => {
+    let v = event.target.value
+    if (v.length === 0 && window.historys.length > 0) {
+      renderHistorys()
+      e('.g-search__menus').classList.remove('g-hide')
+      e('.g-engines').classList.add('g-hide')
+    } else {
+      e('.g-search__menus').classList.add('g-hide')
+      e('.g-engines').classList.remove('g-hide')
+    }
+  })
+  bindEvent(e(".g-input__search"), 'input', event => {
+    let v = event.target.value
+    if (v.length === 0 && window.historys.length > 0) {
+      renderHistorys()
+      e('.g-search__menus').classList.remove('g-hide')
+      e('.g-engines').classList.add('g-hide')
+    } else {
+      e('.g-search__menus').classList.add('g-hide')
+      e('.g-engines').classList.remove('g-hide')
+    }
+  })
+}
+
 const bindEvents = () => {
   bindEventKeyup();
   bindEventClick();
   bindEventDnd();
-  // bindEventChange();
+  bindEventChange();
 };
 
 const __main = () => {
+  // 当前搜索网站的索引
   window.currentEngineIndex = 2;
+  // 搜索的历史记录
+  window.historys = []
   init();
   bindEvents();
 };

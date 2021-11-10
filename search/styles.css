@@ -188,8 +188,23 @@
   font-size: 32px;
 }
 
-@media screen and (max-width: 900px) {}
+.g-menu-header {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.533333vw 1.066667vw;
+  font-size: 32px;
+}
 
+.g-menu-header .g-menu-history {
+  color: rgba(0,0,0,.44);
+}
+
+.g-menu-header .g-menu-clear {
+  color: rgb(37, 117, 230);
+}
+
+@media screen and (max-width: 900px) {}
 
 .g-footer {
   display: none;
