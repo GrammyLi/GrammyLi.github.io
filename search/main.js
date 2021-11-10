@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-14 13:35:59
- * @LastEditTime: 2021-11-10 13:04:27
+ * @LastEditTime: 2021-11-10 13:38:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/main.js
@@ -55,7 +55,7 @@ const renderHistorys = () => {
   </div>
   `
   t += window.historys.map(h => {
-    return `<div class="g-menu">${h}</div>`
+    return `<div class="g-menu" data-action="searchHistory">${h}</div>`
   }).join('')
  
   appendHtml(menus, t)
@@ -91,6 +91,20 @@ const hideLogoBtn = () => {
     e(".g-left-img").classList.remove('g-hide');
   }
 };
+
+const jumpLink = (value) => {
+  let v = value
+  let link = e(".g-search-link");
+  let id = enginesIds[currentEngineIndex] 
+  let engine = window.engines[0];
+  engines.forEach(e => {
+    if (e.id === id) {
+      engine = e
+    }
+  })
+  link.href = engine.search.replace("keyword", v);
+  link.click();
+}
 
 const actions = {
   clearInputValue() {
@@ -129,20 +143,15 @@ const actions = {
       return;
     }
     window.historys = [v, ...window.historys.slice(0, 9)]
-    let link = e(".g-search-link");
-    let id = enginesIds[currentEngineIndex] 
-    let engine = window.engines[0];
-    engines.forEach(e => {
-      if (e.id === id) {
-        engine = e
-      }
-    })
-    link.href = engine.search.replace("keyword", v);
-    link.click();
+    jumpLink(v)
   },
   clearHistory() {
     window.historys = []
     renderHistorys()
+  },
+  searchHistory(event) {
+    let v = event.target.innerText
+    jumpLink(v)
   }
 };
 

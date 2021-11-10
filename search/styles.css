@@ -204,6 +204,10 @@
   color: rgb(37, 117, 230);
 }
 
+.g-menu-header {
+ border-bottom: 1px solid #dcd5d570;
+}
+
 @media screen and (max-width: 900px) {}
 
 .g-footer {
