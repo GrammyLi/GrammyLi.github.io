@@ -184,8 +184,17 @@
   display: flex;
   align-items: center;
   padding: 0.533333vw 1.066667vw;
-  color: rgba(0,0,0,.44);
+  color: rgba(0, 0, 0, .44);
   font-size: 32px;
+}
+
+.g-search__menus .g-menu:nth-last-child(1) {
+  border-radius: 0 0 12px 12px;
+}
+
+.g-search__menus .g-menu:hover {
+  background: #f3f6f7;;
+  color: rgb(37, 117, 230) !important;
 }
 
 .g-menu-header {
@@ -197,7 +206,7 @@
 }
 
 .g-menu-header .g-menu-history {
-  color: rgba(0,0,0,.44);
+  color: rgba(0, 0, 0, .44);
 }
 
 .g-menu-header .g-menu-clear {
@@ -205,7 +214,7 @@
 }
 
 .g-menu-header {
- border-bottom: 1px solid #dcd5d570;
+  border-bottom: 1px solid #dcd5d570;
 }
 
 @media screen and (max-width: 900px) {}
