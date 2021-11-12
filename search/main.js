@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-14 13:35:59
- * @LastEditTime: 2021-11-12 19:24:04
+ * @LastEditTime: 2021-11-12 20:01:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/main.js
@@ -133,6 +133,7 @@ const updateTheme = (ele, theme) => {
   // 更新 logo 或者
   updateEnginesIds()
   init()
+  bindEventDnd()
 }
 
 const actions = {
