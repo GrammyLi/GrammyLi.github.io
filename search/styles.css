@@ -157,8 +157,13 @@
 }
 
 .g-hide {
-  display: none;
+  display: none !important;
 }
+
+.g-right-tab .g-current-theme {
+  cursor: pointer;
+}
+
 
 .g-search__menus {
   margin-top: 9px;
@@ -193,7 +198,7 @@
 }
 
 .g-search__menus .g-menu:hover {
-  background: #f3f6f7;;
+  background: #f3f6f7;
   color: rgb(37, 117, 230) !important;
 }
 
@@ -254,4 +259,81 @@ body {
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.g-right-tabs {
+  margin-right: 20%;
+}
+
+.g-right-tab {
+  display: inline;
+}
+
+.g-right-tab img {
+  width: 55px;
+  height: 55px;
+}
+
+.g-mask {
+  cursor: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  background: rgba(51, 51, 51, .14);
+}
+
+.g-theme__container {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  margin-top: 10px;
+  margin-right: 100px;
+  margin-left: -200px;
+  width: 33%;
+  height: 120px;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.g-right-tabs::after {
+  z-index: 10;
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #fff;
+  position: absolute;
+  margin-left: 4px;
+  display: block;
+
+}
+
+.g-theme {
+  cursor: pointer;
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.g-theme:hover {
+  background: #f3f6f7;
+  color:rgb(98, 154, 231)
+}
+
+.g-theme img {
+  display: block;
+}
+
+.g-theme span {
+  display: block;
+  margin-top: 4px;
 }

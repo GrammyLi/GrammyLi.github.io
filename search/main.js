@@ -1,11 +1,19 @@
 /*
  * @Author: your name
  * @Date: 2021-10-14 13:35:59
- * @LastEditTime: 2021-11-10 13:58:29
+ * @LastEditTime: 2021-11-12 19:24:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/main.js
  */
+const show = (sel) => {
+  e(sel).classList.remove('g-hide')
+}
+
+const hide = (sel) => {
+  e(sel).classList.add('g-hide')
+}
+
 const templateEngine = ({ id, url, text, search }) => {
   return `
   <div class="g-engine g-engine-${id} g-drag" data-id="${id}" draggable="true">
@@ -62,6 +70,7 @@ const renderHistorys = () => {
 }
 
 const init = () => {
+  e('.g-engines').innerHTML = ''
   renderEngines();
   renderLogo();
 };
@@ -104,6 +113,26 @@ const jumpLink = (value) => {
   })
   link.href = engine.search.replace("keyword", v);
   link.click();
+}
+
+const updateHeader = (ele, theme) => {
+  let head = e('.g-current-theme')
+  let headTheme = head.dataset.theme
+  head.dataset.theme = theme
+  head.src = `./img/${theme}.svg`
+  ele.dataset.theme = headTheme
+  ele.querySelector('img').src = `./img/${headTheme}.svg`  
+  // log('headTheme[0].toUpperCase()', headTheme[0].toUpperCase())
+  headTheme[0] = headTheme[0].toUpperCase()
+  ele.querySelector('span').innerHTML = headTheme 
+}
+
+const updateTheme = (ele, theme) => {
+  updateHeader(ele, theme)
+  window.currentTheme = theme
+  // 更新 logo 或者
+  updateEnginesIds()
+  init()
 }
 
 const actions = {
@@ -152,6 +181,22 @@ const actions = {
   searchHistory(event) {
     let v = event.target.innerText
     jumpLink(v)
+  },
+  showThemeContainer() {
+    show('.g-mask')
+    show('.g-theme__container')
+    log('选择主题')
+  },
+  hideThemeContainer() {
+    hide('.g-mask')
+    hide('.g-theme__container')
+  },
+  selectTheme(event) {
+    let ele = event.target.closest(".g-theme");
+    log('ele', ele)
+    let theme = ele.dataset.theme
+    updateTheme(ele, theme)
+    this.hideThemeContainer()
   }
 };
 
