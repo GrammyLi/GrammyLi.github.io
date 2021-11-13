@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-02-26 21:16:08
- * @LastEditTime: 2021-11-12 20:11:09
+ * @LastEditTime: 2021-11-13 13:43:48
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/game-framework/bird/main.js
@@ -26,7 +26,7 @@ const enableDebugMode = (enable, game) => {
 
 const __main = () => {
     let images = {
-        // bg: 'img/bg_day.png',
+        bg: 'img/bg.png',
         // title: 'img/title.png',
         // game_over: 'img/game_over.png',
  
