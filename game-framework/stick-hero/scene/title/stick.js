@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-13 14:09:40
- * @LastEditTime: 2021-11-13 14:18:32
+ * @LastEditTime: 2021-11-15 11:54:39
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /grammyli/game-framework/stick-hero/scene/title/stick.js
@@ -31,8 +31,8 @@ class Stick {
     ctx.save();
 
     // Move the anchor point to the start of the stick and rotate
-    // ctx.translate(x, canvasHeight - platformHeight);
-    // ctx.rotate((Math.PI / 180) * rotation);
+    ctx.translate(x, canvasHeight - platformHeight);
+    ctx.rotate((Math.PI / 180) * rotation);
 
     // Draw stick
     ctx.beginPath();
@@ -46,6 +46,6 @@ class Stick {
   }
   update() {}
   draw() {
-    
+    this.drawStick();
   }
 }

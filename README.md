@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-10 13:05:29
- * @LastEditTime: 2021-11-08 14:29:28
+ * @LastEditTime: 2021-11-15 12:54:36
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/README.md
@@ -71,6 +71,7 @@ link : https://grammyli.com/music
 - music 需要重写进度条
 - 2048 存在算法错误，当横向滑动时，数字的位置显示错误
 - pokemon-color 存在算法错误，有时挺难复现
-- personal web 项目板块待更新
+- ~~personal web 项目板块待更新~~
 - personal web 计划板块待更新
-- search 项目需要完善
+- ~~search 项目需要添加主题功能、可以拖拽、可以点击选择搜索引擎工具~~
+- sitck hero

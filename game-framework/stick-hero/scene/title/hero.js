@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-13 13:50:54
- * @LastEditTime: 2021-11-13 14:03:09
+ * @LastEditTime: 2021-11-15 12:51:55
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /grammyli/game-framework/stick-hero/scene/title/hero.js
@@ -12,7 +12,7 @@ class Hero {
 
     this.heroWidth = 17;
     this.heroHeight = 30;
-    this.heroX = 150;
+    this.heroX = 143;
     this.heroY = 100;
     this.canvasWidth = 375;
     this.canvasHeight = 375;
