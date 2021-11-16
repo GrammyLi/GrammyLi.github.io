@@ -170,6 +170,8 @@
   width: 61.8%;
   border: 1px rgb(37, 117, 230) solid;
   border-radius: 12px;
+  max-height: 800px;
+  transition: max-height .6s ease-out;
 }
 
 .g-search__menus::before {
@@ -267,6 +269,7 @@ body {
 
 .g-right-tab {
   display: inline;
+ 
 }
 
 .g-right-tab img {
@@ -291,16 +294,28 @@ body {
   display: flex;
   flex-wrap: wrap;
   background-color: #fff;
-  margin-top: 10px;
   margin-right: 100px;
   margin-left: -200px;
   width: 33%;
   height: 120px;
   align-items: center;
   border-radius: 12px;
+  margin-top: 10px;
+  /* border: 1px rgb(37, 117, 230) solid; */
 }
 
-.g-right-tabs::after {
+/* .g-theme-empty {
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid rgb(37, 117, 230);
+  margin-left: 4px;
+  z-index: 10;
+} */
+
+.g-theme-tab::after {
   z-index: 10;
   content: "";
   width: 0;
@@ -311,8 +326,8 @@ body {
   position: absolute;
   margin-left: 4px;
   display: block;
-
-}
+ 
+}  
 
 .g-theme {
   cursor: pointer;
@@ -326,7 +341,7 @@ body {
 
 .g-theme:hover {
   background: #f3f6f7;
-  color:rgb(98, 154, 231)
+  color: rgb(98, 154, 231)
 }
 
 .g-theme img {

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-31 11:19:00
- * @LastEditTime: 2021-11-15 12:40:56
+ * @LastEditTime: 2021-11-16 09:29:43
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/game-framework/bird/scene/title/scene_title.js
@@ -11,6 +11,7 @@ class SceneTitle extends Scene {
     super(game);
     this.game = game;
     this.init();
+    this.bindEvents()
   }
   init() {
     // 添加背景图片
@@ -19,13 +20,17 @@ class SceneTitle extends Scene {
     // 添加 hero
     let hero = Hero.new(this.game);
     this.addElement(hero);
-    // 添加 stick
-    // let stick = Stick.new(this.game)
-    // log('stick', stick)
-    // this.addElement(stick)
+
     let square = Square.new(this.game, 110, 375, 50, 200);
     log("square");
     this.addElement(square);
+    // 添加 stick
+    let stick = Stick.new(this.game)
+    log('stick', stick)
+    this.addElement(stick)
+  }
+  bindEvents() {
+    
   }
   update() {
     super.update();

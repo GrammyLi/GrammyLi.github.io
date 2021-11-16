@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-14 13:35:59
- * @LastEditTime: 2021-11-12 20:01:49
+ * @LastEditTime: 2021-11-16 12:30:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/main.js
@@ -186,11 +186,13 @@ const actions = {
   showThemeContainer() {
     show('.g-mask')
     show('.g-theme__container')
+    show('.g-theme-empty')
     log('选择主题')
   },
   hideThemeContainer() {
     hide('.g-mask')
     hide('.g-theme__container')
+    hide('.g-theme-empty')
   },
   selectTheme(event) {
     let ele = event.target.closest(".g-theme");
