@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-10 13:05:29
- * @LastEditTime: 2021-11-16 12:47:17
+ * @LastEditTime: 2021-11-17 14:22:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/README.md
@@ -60,6 +60,13 @@ link: https://grammyli.com/pixel
 ## seamles
 
 link: https://grammyli.com/seamles/
+
+## sudoku
+
+link:  https://grammyli.com/sudoku/
+
+![sudoku](./%20img/sudoku.png)
+
 
 ## music
 
