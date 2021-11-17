@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>DaZhiZi Sudoku</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" data-active="0" data-total="8">
+        <div class="row">
+            <div class="col">
+                <p class="davizi-button">
+                    <button class="btn btn-default " id="pause" data-action="actionPause">Pause Game</button>
+                   
+                    <button class="btn btn-default btn-danger" id="restart" data-action="actionStart">Start Game</button>
+                </p>
+                <p class="time">
+                    <span class="minutes">0</span>
+                    <span class="colon">:</span>
+                    <span class="seconds">00</span>
+                </p>
+                <div class="adjust">
+                    <span>Easy</span>
+                    <input class="difficulty" max="7" min="1" type="range" value="4"></input>
+                    <span>Hard</span>
+                </div>
+                <p>
+                    <button class="btn btn-primary davizi-new-game" id="new">New Puzzle</button>                  
+                </p>
+            </div>
+        </div>
+        <div class="davizi-change-number">
+            <div class="row">
+                <div class="col">
+                    <div class="numbers-bar">
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sudoku">
+           
+    
+        </div>
+       
+    </div>
+    <script src="utils.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
