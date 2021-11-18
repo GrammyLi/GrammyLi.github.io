@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-10 13:05:29
- * @LastEditTime: 2021-11-17 14:22:11
+ * @LastEditTime: 2021-11-18 12:14:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/README.md
@@ -61,6 +61,23 @@ link: https://grammyli.com/pixel
 
 link: https://grammyli.com/seamles/
 
+## popstar
+
+link: https://grammyli.com/popstar/
+
+![popstar](./%20img/popstar.png)
+
+## link
+
+link: https://grammyli.com/link/
+
+![link](./%20img/link.png)
+
+## memory
+
+link: https://grammyli.com/pokemon_card/
+
+![memory](./%20img/memory.png)
 ## sudoku
 
 link:  https://grammyli.com/sudoku/
