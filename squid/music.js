@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-23 20:36:20
- * @LastEditTime: 2021-11-23 20:54:22
+ * @LastEditTime: 2021-11-23 21:16:15
  * @LastEditors: Please set LastEditors
  * @Description:   
  * @FilePath:  
@@ -19,5 +19,4 @@ class Music {
     return this.i;
   }
 }
-
-const m = Music.new()
+window.m = Music.new()
