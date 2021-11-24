@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-10 13:05:29
- * @LastEditTime: 2021-11-24 13:05:27
+ * @LastEditTime: 2021-11-24 21:42:08
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/README.md
@@ -36,6 +36,12 @@ link:  https://grammyli.com/g/puzzle/
 link: https://grammyli.com/g/color/
 
 ![avatar](./%20img/pokemon-color.png)
+
+
+## pinyin
+
+link: https://grammyli.com/t/pinyin/
+
 
 ## avatar
 
