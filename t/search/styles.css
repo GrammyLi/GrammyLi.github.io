@@ -33,6 +33,7 @@
   background: #fff;
   position: relative;
   appearance: none;
+  box-shadow: 0 6px 24px 0 rgb(106 125 173 / 10%);
 }
 
 .g-input__search:focus,

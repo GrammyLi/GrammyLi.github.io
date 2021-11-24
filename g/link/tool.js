@@ -1,6 +1,4 @@
-// 定义我们的 log 函数
 const log = console.log.bind(console)
-// 自定义的选择器函数
 const e = function(selector) {
     let element = document.querySelector(selector)
     if (element === null) {
