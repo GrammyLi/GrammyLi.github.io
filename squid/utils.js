@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-23 19:18:02
- * @LastEditTime: 2021-11-23 20:54:33
+ * @LastEditTime: 2021-11-24 09:34:07
  * @LastEditors: Please set LastEditors
  * @Description:  
  */
@@ -9,8 +9,8 @@ const debug = true
 const log = debug ? console.log.bind(console) : function () { }
 const int = number => parseInt(number, 10)
 
-const bindEvent = (element, eventName, callback) => {
-  element.addEventListener(eventName, callback)
+const bindEvent = (element, eventName, callback, status = true) => {
+  element.addEventListener(eventName, callback, status)
 }
 
 const bindAll = (elements, callback) => {
