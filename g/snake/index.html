@@ -1,0 +1,95 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-06-20 22:46:54
+ * @LastEditTime: 2021-10-14 19:28:01
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /grammyli/snake/index.html
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>grammy turtle </title>
+  <style>
+    /* title */
+
+    header {
+      text-align: center;
+      font-size: 32px;
+      letter-spacing: 10px;
+      padding: 20px 10px;
+    }
+
+    .grammy-canvas {
+      background: white;
+      border: 3px solid #ce5858;
+      float: left;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      height: 100%;
+    }
+
+    body {
+      background: aliceblue;
+      text-align: center;
+    }
+    .grammy-canvas {
+      display: block;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+    }
+  </style>
+   <link rel="shortcut icon" href="gammyli.jpg">
+</head>
+
+<body>
+  <header> grammy Game</header>
+  
+  <canvas class="grammy-canvas" height="600" width="600"></canvas>
+
+  <!-- <audio class="grammy-bgm" src="audio/朝日温子 - K.K. Idol (しずえ Ver.).mp3"></audio> -->
+  <audio class="grammy-up" src="audio/up.mp3"></audio>
+
+  <audio class="grammy-down" src="audio/down.mp3"></audio>
+  <audio class="grammy-left" src="audio/left.mp3"></audio>
+  <audio class="grammy-right" src="audio/right.mp3"></audio>
+  <audio class="grammy-gameover" src="audio/dead.mp3"></audio>
+  <audio class="grammy-eat" src="audio/eat.mp3"></audio>
+  
+  <!-- 工具函数 -->
+  <script src="utils/utils.js"></script>
+  <script src="utils/game.js"></script>
+  <script src="utils/pixels.js"></script>
+  <script src="utils/audio.js"></script>
+
+  <!-- 游戏元素 -->
+  <script src="element/square.js"></script>
+  <script src="element/dragon.js"></script>
+  <script src="element/mario.js"></script>
+  <script src="element/map.js"></script>
+  <script src="element/snake.js"></script>
+  <script src="element/food.js"></script>
+
+  <!-- 游戏场景 -->
+  <script src="scene/scene_edit.js"></script>
+  <script src="scene/scene_start.js"></script>
+  <script src="scene/scene_main.js"></script>
+  <script src="scene/scene_end.js"></script>
+
+  <!-- 特别函数 -->
+  <script src="./main.js"></script>
+</body>
+
+</html>

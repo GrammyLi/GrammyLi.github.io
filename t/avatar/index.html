@@ -1,0 +1,379 @@
+<!--
+ * @Author: grammyli
+ * @Date: 2021-10-09 19:09:23
+ * @LastEditTime: 2021-10-14 12:02:52
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath:  头像生成器/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> grammyli avatar </title>
+  <link href="./styles.css" rel="stylesheet">
+  <link href="./camera.css" rel="stylesheet">
+  <link href="../cv/assets/img/davizi.jpg" rel="icon">
+
+</head>
+
+<body>
+  <div class="t-container">
+
+    <div class="t-btns">
+      <button class="t-upload-btn t-btn">
+        upload
+        <input class="t-upload" type="file" accept="image/*" />
+      </button>
+      <button class="t-save-btn t-btn">
+        save
+      </button>
+    </div>
+    <video class="t-video hidden" autoplay="autoplay" width="300" height="300"></video>
+    <canvas class="t-canvas"></canvas>
+    <div class="t-settings">
+      <div class="t-field">
+        <div class="t-label">
+          theme:
+        </div>
+        <div class="t-value t-value-theme-type" data-type="flag">
+          <input id="radio-1" class="t-type-flag" name="radio" type="radio" checked> 🇨🇳
+          <input id="radio-2" class="t-type-graduation" name="radio" type="radio"> 🎓
+        </div>
+      </div>
+      <!-- <div class="t-field">
+        <div class="t-label">
+          width:
+        </div>
+        <div class="t-value">
+          <input class="t-value-width" type="number" min="400" />
+        </div>
+      </div> -->
+      <div class="t-field t-field-graduation hidden">
+        <div class="t-label">
+          graduation:
+        </div>
+        <div class="t-value">
+          <select class="t-select-graduation" data-graduation="1">
+            <option value="1"> graduation1 </option>
+            <option value="2"> graduation2 </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="t-field t-field-flag">
+        <div class="t-label">
+          flag:
+        </div>
+        <div class="t-value">
+          <select class="t-select-flag" data-flag="1">
+            <option value="1"> flag1 </option>
+            <option value="2"> flag2 </option>
+            <option value="3"> flag3 </option>
+            <option value="4"> flag4 </option>
+            <option value="5"> flag5 </option>
+            <option value="6"> flag6 </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="t-field">
+        <div class="t-label">
+          filter (only once):
+        </div>
+        <div class="t-value">
+          <select class="t-select-filter" data-filter="notFilter">
+            <option value="notFilter"> not filter </option>
+            <option value="comic"> comic </option>
+            <option value="nostalgia"> nostalgia </option>
+            <option value="gray"> gray </option>
+            <option value="blackWhite"> blackWhite </option>
+            <option value="negative"> negative </option>
+            <option value="fusedCast"> fusedCast </option>
+          </select>
+        </div>
+      </div>
+
+
+    </div>
+    <div class='container'>
+      <span class='pulse-button t-open'> </span>
+    </div>
+
+  </div>
+  <script src="./utils.js"></script>
+  <script>
+    const drawToCanvas = (data) => {
+      drawImage(data, (context, img) => {
+        context.drawImage(img, 0, 0, width, width)
+        // 原图像数据
+        window.rawImageData = context.getImageData(0, 0, width, width)
+        // 上传头像的数据
+        window.imageData = context.getImageData(0, 0, width, width)
+        drawHat(context)
+      })
+    }
+
+    // 添加头像周围的图层
+    const drawHat = (context) => {
+      const type = e('.t-value-theme-type').dataset.type
+      const n = +e(`.t-select-${type}`).dataset[type]
+      const pre = type === 'flag' ? 'hat' : type
+      const imgUrl = `https://grammyli.com/avatar/img/${type}/${pre}${n}.png`
+      // log('imgUrl', imgUrl)
+      const img = new Image()
+      img.setAttribute('crossorigin', 'anonymous')
+      img.src = imgUrl
+      img.onload = () => {
+        context.drawImage(img, 0, 0, width, width)
+      }
+    }
+
+    const drawAvatar = () => {
+      if (!imageData) {
+        alert('大佬 上传图片')
+        return
+      }
+      const c = e('.t-canvas')
+      const context = c.getContext('2d')
+      // 清空画布
+      context.clearRect(0, 0, width, width)
+      context.putImageData(imageData, 0, 0)
+      drawHat(context)
+    }
+
+    const handleUploadFile = () => {
+      const input = e('.t-upload')
+      input.addEventListener('change', (event) => {
+        const file = event.target.files[0]
+        // 过滤文件
+        if (!file.type.includes('image')) {
+          alert("请确保文件为图像类型")
+          return false
+        }
+        const reader = new FileReader()
+        // 转化成base64数据类型
+        reader.readAsDataURL(file)
+        reader.onload = () => {
+          drawToCanvas(reader.result)
+        }
+      }, false)
+    }
+
+    const handleSelectFlag = () => {
+      const select = e('.t-select-flag')
+      select.addEventListener('change', (event) => {
+        let v = event.target.value
+        e('.t-select-flag').dataset.flag = v
+        drawAvatar()
+      })
+    }
+
+    const handleSelectGraduation = () => {
+      const select = e('.t-select-graduation')
+      select.addEventListener('change', (event) => {
+        let v = event.target.value
+        e('.t-select-graduation').dataset.graduation = v
+        drawAvatar()
+      })
+    }
+
+    const handleSelectFilter = () => {
+      const select = e('.t-select-filter')
+      select.addEventListener('change', (event) => {
+        let v = event.target.value
+        e('.t-select-filter').dataset.filter = v
+        // 添加滤镜效果
+        imageFilter()
+        drawAvatar()
+      })
+    }
+
+    const handleSetWidth = () => {
+      const input = e('.t-value-width')
+      input.addEventListener('change', (event) => {
+        const v = +event.target.value
+        // log('v', v, typeof v)
+        window.width = v
+        drawAvatar()
+      }, false)
+    }
+
+    const saveAsPNG = () => {
+      const canvas = e('.t-canvas')
+      // log('canvas', canvas)
+      return canvas.toDataURL("image/png")
+    }
+
+    const handleSaveFile = () => {
+      const input = e('.t-save-btn')
+      input.addEventListener('click', (event) => {
+        let a = document.createElement("a")
+        a.download = 'flag-avatar'
+        // log('saveAsPNG() ', saveAsPNG())
+        a.href = saveAsPNG()
+        // log('a.href', a.href)
+        document.body.appendChild(a)
+        a.click()
+        a.remove()
+      })
+    }
+
+    const open = () => {
+      let canvas = e('.t-canvas')
+      let video = e('.t-video')
+      canvas.classList.add('hidden')
+      video.classList.remove('hidden')
+      let constraints = {
+        video: {
+          width: width,
+          height: width,
+        },
+        audio: false
+      };
+      let promise = navigator.mediaDevices.getUserMedia(constraints)
+      promise.then((mediaStream) => {
+        // mediaStreamTrack = typeof mediaStream.stop === 'function' ? mediaStream : mediaStream.getTracks()[1];
+        mediaStreamTrack = mediaStream.getVideoTracks()
+        video.srcObject = mediaStream
+        video.play()
+      })
+    }
+
+    const close = () => {
+      let canvas = e('.t-canvas')
+      let video = e('.t-video')
+      canvas.classList.remove('hidden')
+      video.classList.add('hidden')
+      let stream = video.srcObject
+      let tracks = stream.getTracks()
+      tracks.forEach(function (track) {
+        track.stop()
+      })
+      document.getElementById('video').srcObjec
+    }
+
+    const takePhoto = () => {
+      let video = e('.t-video')
+      let canvas = e('.t-canvas')
+      video.classList.add('hidden')
+      canvas.classList.remove('hidden')
+      let context = canvas.getContext('2d')
+      context.drawImage(video, 0, 0, width, width)
+      // 原图像数据
+      window.rawImageData = context.getImageData(0, 0, width, width)
+      // 上传头像的数据
+      window.imageData = context.getImageData(0, 0, width, width)
+      drawHat(context)
+    }
+
+    const handleTakePhoto = () => {
+      const input = e('.container')
+      input.addEventListener('click', (event) => {
+        const btn = event.target
+        if (btn.classList.contains('t-open')) {
+          log("open")
+          open()
+          btn.classList.remove('t-open')
+          btn.classList.add('pulse')
+          e('.pulse-button ').innerText = 'take'
+        } else {
+          log('take close and close')
+          btn.classList.remove('pulse')
+          btn.classList.add('t-open')
+          e('.pulse-button ').innerText = ''
+          takePhoto()
+          close()
+        }
+      })
+    }
+
+    const handleThemeType = () => {
+      const input = e('.t-value-theme-type')
+      input.addEventListener('click', (event) => {
+        const radio = event.target
+        const flag = e('.t-field-flag')
+        const graduation = e('.t-field-graduation')
+        const cls = 'hidden'
+        if (radio.classList.contains('t-type-flag')) {
+          input.dataset.type = 'flag'
+          if (flag.classList.contains(cls)) {
+            flag.classList.remove(cls)
+          }
+          if (!graduation.classList.contains(cls)) {
+            graduation.classList.add(cls)
+          }
+        } else {
+          input.dataset.type = 'graduation'
+          if (graduation.classList.contains(cls)) {
+            graduation.classList.remove(cls)
+          }
+          if (!flag.classList.contains(cls)) {
+            flag.classList.add(cls)
+          }
+        }
+        if (!imageData) {
+          alert('大佬 来张自拍照吧')
+          return
+        }
+        drawAvatar()
+      })
+    }
+
+    const init = () => {
+      // 设置宽度
+      // e('.t-value-width').value = window.width
+      const url = 'https://grammyli.com/avatar/img/empty.29426768.png'
+      const c = e(".t-canvas")
+      const context = c.getContext("2d")
+      c.width = width
+      c.height = width
+      const img = new Image()
+      img.setAttribute('crossorigin', 'anonymous')
+      img.src = url
+      img.onload = () => {
+        context.drawImage(img, 0, 0, width, width)
+      };
+
+     
+      // drawImage(url, (context, img) => {
+      //   context.drawImage(img, 0, 0, width, width)
+      // })
+    }
+
+    const handleEvents = () => {
+      // 上传文件
+      handleUploadFile()
+      // 下载文件
+      handleSaveFile()
+      // 选择主题类型
+      handleThemeType()
+      // 选择旗子
+      handleSelectFlag()
+      // 选择毕业
+      handleSelectGraduation()
+      // 选择滤镜
+      handleSelectFilter()
+      // TODO
+      // 自定义头像大小
+      // handleSetWidth()
+      handleTakePhoto()
+    }
+
+    const __main = () => {
+      window.width = 300
+      window.imageData = null
+      window.mediaStreamTrack = null // 视频对象(全局)
+      // 初始化
+      init()
+      // 事件集合
+      handleEvents()
+    }
+    __main()
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<html>
+
+<head>
+  <title>捕获音视频数据 WebRTC capture video and audio</title>
+  <style>
+    .none {
+      -webkit-filter: none;
+    }
+
+    .blur {
+      /* 特效模糊 */
+      -webkit-filter: blur(3px);
+    }
+
+    .grayscale {
+      /* 特效灰度 */
+      -webkit-filter: grayscale(1);
+    }
+
+    .invert {
+      /* 翻转 */
+      -webkit-filter: invert(1);
+    }
+
+    .sepia {
+      /* 特效褐色 */
+      -webkit-filter: sepia(1);
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <label>audio Source:</label>
+    <select id="audioSource"></select>
+  </div>
+
+  <div>
+    <label>audio Output:</label>
+    <select id="audioOutput"></select>
+  </div>
+
+  <div>
+    <label>video Source:</label>
+    <select id="videoSource"></select>
+  </div>
+  <!-- 特效选择器 -->
+  <div>
+    <label>Filter:</label>
+    <select id="filter">
+      <option value="none">None</option>
+      <option value="blur">blur</option>
+      <option value="grayscale">Grayscale</option>
+      <option value="invert">Invert</option>
+      <option value="sepia">sepia</option>
+    </select>
+  </div>
+  <!-- 
+      我们创建一个video标签，这个标签就可以显示我们捕获的音视频数据 
+      autoplay 表示当我们拿到视频源的时候直接播放
+      playsinlin  表示在浏览器页面中播放而不是调用第三方工具
+     -->
+  <video autoplay playsinlin id="player"></video>
+  <!-- 引入 adapter.js库 来做 不同浏览器的兼容 -->
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script>
+    'use strict'
+
+    var audioSource = document.querySelector('select#audioSource');
+    var audioOutput = document.querySelector('select#audioOutput');
+    var videoSource = document.querySelector('select#videoSource');
+    // 获取video标签
+    var videoplay = document.querySelector('video#player');
+
+    //filter 特效选择
+    var filtersSelect = document.querySelector('select#filter');
+
+    // deviceInfos是设备信息的数组
+    function gotDevices(deviceInfos) {
+      // 遍历设备信息数组， 函数里面也有个参数是每一项的deviceinfo， 这样我们就拿到每个设备的信息了
+      deviceInfos.forEach(function (deviceinfo) {
+        // 创建每一项
+        var option = document.createElement('option');
+        option.text = deviceinfo.label;
+        option.value = deviceinfo.deviceId;
+
+        if (deviceinfo.kind === 'audioinput') { // 音频输入
+          audioSource.appendChild(option);
+        } else if (deviceinfo.kind === 'audiooutput') { // 音频输出
+          audioOutput.appendChild(option);
+        } else if (deviceinfo.kind === 'videoinput') { // 视频输入
+          videoSource.appendChild(option);
+        }
+      })
+    }
+
+    // 获取到流做什么， 在gotMediaStream方面里面我们要传人一个参数，也就是流，
+    // 这个流里面实际上包含了音频轨和视频轨，因为我们通过constraints设置了要采集视频和音频
+    // 我们直接吧这个流赋值给HTML中赋值的video标签
+    // 当时拿到这个流了，说明用户已经同意去访问音视频设备了
+    function gotMediaStream(stream) {
+      videoplay.srcObject = stream; // 指定数据源来自stream,这样视频标签采集到这个数据之后就可以将视频和音频播放出来
+      // 当我们采集到音视频的数据之后，我们返回一个Promise
+      return navigator.mediaDevices.enumerateDevices();
+    }
+
+    function handleError(err) {
+      console.log('getUserMedia error:', err);
+    }
+
+    function start() {
+      // 判断浏览器是否支持
+      if (!navigator.mediaDevices ||
+        !navigator.mediaDevices.getUserMedia) {
+        console.log('getUserMedia is not supported!');
+      } else {
+        // 获取到deviceId
+        var deviceId = videoSource.value;
+        // 这里是约束参数，正常情况下我们只需要是否使用视频是否使用音频
+        // 对于视频就可以按我们刚才所说的做一些限制
+        var constraints = { // 表示同时采集视频金和音频
+          video: {
+            width: 640, // 宽带
+            height: 480, // 高度
+            frameRate: 15, // 帧率
+            facingMode: 'enviroment', //  设置为后置摄像头
+            deviceId: deviceId ? deviceId : undefined // 如果deviceId不为空直接设置值，如果为空就是undefined
+          },
+          audio: {
+            noiseSuppression: true, // 降噪
+            echoCancellation: true // 回音消除
+          },
+        }
+        //  从指定的设备中去采集数据
+        navigator.mediaDevices.getUserMedia(constraints)
+          .then(gotMediaStream) // 使用Promise串联的方式，获取流成功了
+          .then(gotDevices)
+          .catch(handleError);
+      }
+    }
+
+    start();
+
+    // 当我选择摄像头的时候，他可以触发一个事件，
+    // 当我调用start之后我要改变constraints
+    videoSource.onchange = start;
+
+    // 选择特效的方法
+    filtersSelect.onchange = function () {
+      videoplay.className = filtersSelect.value;
+    }
+  </script>
+</body>
+
+</html>
