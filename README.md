@@ -53,7 +53,7 @@ link: https://grammyli.com/t/avatar-generator/
 
 link: https://grammyli.com/t/search/
 
-![avatar-generator](./search/img/jptu-6ab287015dab.png)
+![avatar-generator](./t/search/img/jptu-6ab287015dab.png)
 
  
 ## visualization
