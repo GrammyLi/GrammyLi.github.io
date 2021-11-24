@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-10 13:05:29
- * @LastEditTime: 2021-11-24 13:03:25
+ * @LastEditTime: 2021-11-24 13:05:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/README.md
@@ -33,7 +33,7 @@ link:  https://grammyli.com/g/puzzle/
 
 ## pokemon color
 
-link: https://grammyli.com/pokemon-color/
+link: https://grammyli.com/g/color/
 
 ![avatar](./%20img/pokemon-color.png)
 
