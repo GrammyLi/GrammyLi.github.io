@@ -17,8 +17,7 @@ const addLight = (scene) => {
 const addLoader = () => {
   loader = new THREE.GLTFLoader();
   // 模型文件路径
-  const sceneGltfUrl =
-    "./model/scene.gltf";
+  const sceneGltfUrl = "./model/scene.gltf";
   loader.load(sceneGltfUrl, function (gltf) {
     // 场景中添加模型文件
     scene.add(gltf.scene);
@@ -60,6 +59,24 @@ const addCubes = () => {
   ).position.z = -1;
   createCube({ w: 0.2, h: 1.5, d: 1 }, start_position, -0.4);
   createCube({ w: 0.2, h: 1.5, d: 1 }, end_position, 0.4);
+};
+
+const addPlayers = () => {
+  const player1 = new Player(scene, "Player 1", 0.25, 0.3, 0xd1ffc6);
+  const player2 = new Player(scene, "Player 2", 0.25, -0.3, 0xffcfd2);
+
+  players = [
+    {
+      player: player1,
+      key: "ArrowUp",
+      name: "Player 1",
+    },
+    {
+      player: player2,
+      key: "w",
+      name: "Player 2",
+    },
+  ];
 };
 
 async function init() {
@@ -176,6 +193,7 @@ const initSquidGame = () => {
 
   dallFacingBack = true;
   startBtn = document.querySelector(".start-btn");
+  addPlayers();
 };
 
 const bindEvents = () => {
@@ -186,21 +204,6 @@ const bindEvents = () => {
 
 const __main = () => {
   initSquidGame();
-  const player1 = new Player(scene, "Player 1", 0.25, 0.3, 0xd1ffc6);
-  const player2 = new Player(scene, "Player 2", 0.25, -0.3, 0xffcfd2);
-
-  players = [
-    {
-      player: player1,
-      key: "ArrowUp",
-      name: "Player 1",
-    },
-    {
-      player: player2,
-      key: "w",
-      name: "Player 2",
-    },
-  ];
   animate();
   bindEvents();
 };
