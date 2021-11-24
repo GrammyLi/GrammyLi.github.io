@@ -1,11 +1,22 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-10 13:05:29
- * @LastEditTime: 2021-11-18 12:14:53
+ * @LastEditTime: 2021-11-24 13:03:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/README.md
 -->
+
+## path
+
+|路径|英文|中文|作品|
+|:- |:-: |:- |-: |
+|t|tool|工具|（搜索、像素、头像、自习室、项目管理）|
+|p|person|个人|（博客、笔记、照片、分享、面经、作品）| 
+|g|game|游戏|（游戏、自制框架）| 
+|c|crawler|爬虫|（数据可视化）| 
+
+ 
 ## personal page
 
 link: https://grammyli.com
@@ -15,7 +26,7 @@ link: https://grammyli.com
 limk: https://grammyli.com/cv
 ## game puzzle
 
-link:  https://grammyli.com/puzzle/
+link:  https://grammyli.com/g/puzzle/
 
 ![game- puzzle](./%20img/image-20211014122031997.png)
 
@@ -28,26 +39,26 @@ link: https://grammyli.com/pokemon-color/
 
 ## avatar
 
-link: https://grammyli.com/avatar
+link: https://grammyli.com/t/avatar
 
 ![avatar](./%20img/image-20211013201952277.png)
 
 ## avatar-generator
 
-link: https://grammyli.com/avatar-generator/
+link: https://grammyli.com/t/avatar-generator/
 
 ![avatar-generator](./%20img/image-20211013202009264.png)
 
 ## g-search
 
-link: https://grammyli.com/search/
+link: https://grammyli.com/t/search/
 
 ![avatar-generator](./search/img/jptu-6ab287015dab.png)
 
  
 ## visualization
 
-link:  https://grammyli.com/visualization/
+link:  https://grammyli.com/c/visualization/
 
 ![visualization - rect](./%20img/image-20211014122052819.png)
 
@@ -55,39 +66,39 @@ link:  https://grammyli.com/visualization/
 
 ## pixel
 
-link: https://grammyli.com/pixel
+link: https://grammyli.com/t/pixel
 
 ## seamles
 
-link: https://grammyli.com/seamles/
+link: https://grammyli.com/p/photo/
 
 ## popstar
 
-link: https://grammyli.com/popstar/
+link: https://grammyli.com/g/popstar/
 
 ![popstar](./%20img/popstar.png)
 
 ## link
 
-link: https://grammyli.com/link/
+link: https://grammyli.com/g/link/
 
 ![link](./%20img/link.png)
 
 ## memory
 
-link: https://grammyli.com/pokemon_card/
+link: https://grammyli.com/g/card/
 
 ![memory](./%20img/memory.png)
 ## sudoku
 
-link:  https://grammyli.com/sudoku/
+link:  https://grammyli.com/g/sudoku/
 
 ![sudoku](./%20img/sudoku.png)
 
 
 ## music
 
-link : https://grammyli.com/music
+link : https://grammyli.com/t/music
 
 
 <img src="./img/../%20img/music.png">
