@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-10-14 13:27:53
- * @LastEditTime: 2021-11-26 15:24:09
+ * @LastEditTime: 2021-11-26 19:29:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/index.html
@@ -13,12 +13,10 @@
   <meta charset="UTF-8">
   <title>grammyli search</title>
   <link href="./styles.css" rel="stylesheet">
-  <link href="./weather.css" rel="stylesheet">
+  <link href="./modal.css" rel="stylesheet">
+  <!-- <link href="./weather.css" rel="stylesheet"> -->
   <link href="../../cv/assets/img/davizi.jpg" rel="icon">
-  <meta property="og:title" content="g-search" />
-  <meta property="og:url" content="https://www.imdb.com/title/tt0117500/" />
-  <meta property="og:image" content="./img/jptu-6ab287015dab.png" />
-  <meta name="description" content="a simple search tool" />
+
 </head>
 
 <body>
@@ -102,10 +100,31 @@
 
     </div>
     <div class="g-stars">
-    
+
     </div>
     <div class="g-hide">
       <a class="g-search-link" href="#" target="_blank"></a>
+    </div>
+    <div class="g-modal g-hide">
+      <div class="g-modal-content">
+        <div class="g-title">add star link</div>
+        <div class="g-input-item">
+          <div class="g-input-key">name</div>
+          <input class="g-input-value g-input-value-name"  />
+        </div>
+        <div class="g-input-item">
+          <div class="g-input-key">link</div>
+          <input class="g-input-value g-input-value-link"  />
+        </div>
+        <div class="g-input-item">
+          <div class="g-input-key">star</div>
+          <input class="g-input-value g-input-value-star"  />
+        </div>
+        <div class="g-modal-btns">
+          <div class="g-modal-btn g-modal-btn-black">取消</div>
+          <div class="g-modal-btn g-modal-btn-blue">确定</div>
+        </div>
+      </div>
     </div>
   </div>
   <!-- 工具函数 -->
