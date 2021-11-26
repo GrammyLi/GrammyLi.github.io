@@ -1,7 +1,7 @@
 /*
  * @Author: grammyli
  * @Date: 2021-10-14 13:35:59
- * @LastEditTime: 2021-11-26 16:39:12
+ * @LastEditTime: 2021-11-26 19:49:07
  * @LastEditors: Please set LastEditors
  * @Description: 函数入口
  * @FilePath: /grammyli/search/main.js
@@ -37,6 +37,7 @@ const addActions = () => {
     themeAction,
     tabAction,
     starAction,
+    modalAction,
   ]
   as.forEach(a => {
     addAction(actions, a);

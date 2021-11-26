@@ -55,11 +55,12 @@
   align-items: center;
   text-align: center;
   margin-left: 8px;
+  cursor: pointer;
 }
 
 .g-modal-btn-black {
-  background-color: black;
-  color: #fff;
+  background-color: rgb(226, 232, 240);
+  color: black;
 }
 
 .g-modal-btn-blue {

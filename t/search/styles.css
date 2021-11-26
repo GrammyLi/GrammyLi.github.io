@@ -121,6 +121,7 @@
   justify-content: center;
   align-items: center;
   color: #171c20;
+  cursor: pointer;
 }
 
 .g-engines .g-engine:hover {
@@ -366,6 +367,7 @@ body {
   font-weight: 500;
   font-size: 1.2vw;
   margin-top: 0.533333vw;
+  cursor: pointer;
 }
 
 .g-left-tab.active {
@@ -389,6 +391,7 @@ body {
   justify-content: center;
   align-items: center;
   color: #171c20;
+  cursor: pointer;
 }
 
 .g-stars .g-star:hover {

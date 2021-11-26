@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-26 14:53:38
- * @LastEditTime: 2021-11-26 18:30:19
+ * @LastEditTime: 2021-11-26 19:39:58
  * @LastEditors: Please set LastEditors
  * @Description: 点击收藏卡片，直接就可以跳转到相应网站
  * @FilePath: /search/comp/star.js
@@ -20,8 +20,8 @@ const addStar = () => {
   const text = 'add star'
   return `
   <div class="g-star">
-    <img src="${url}"  />
-    <span>${text}</span>
+    <img src="${url}" data-action="addStar" />
+    <span data-action="addStar">${text}</span>
   </div>
   `;
 };
@@ -35,5 +35,8 @@ const renderStars = () => {
 const starAction = {
   clickstarCard(event) {
     log("点击收藏卡片");
+  },
+  addStar() {
+    show('.g-modal')
   },
 };
