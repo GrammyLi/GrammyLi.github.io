@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-04 19:56:27
- * @LastEditTime: 2021-11-09 19:14:31
+ * @LastEditTime: 2021-11-26 10:05:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/utils.js
@@ -42,3 +42,17 @@ const ajax = (request) => {
   }
   r.send(data)
 }
+
+const addAction = (action, a) => {
+  action = Object.assign(action, a)
+}
+
+const show = (sel) => {
+  e(sel).classList.remove('g-hide')
+}
+
+const hide = (sel) => {
+  e(sel).classList.add('g-hide')
+}
+
+const unique = arr => Array.from(new Set(arr))
