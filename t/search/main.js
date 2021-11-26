@@ -1,9 +1,9 @@
 /*
  * @Author: grammyli
  * @Date: 2021-10-14 13:35:59
- * @LastEditTime: 2021-11-26 15:27:42
+ * @LastEditTime: 2021-11-26 16:39:12
  * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
+ * @Description: 函数入口
  * @FilePath: /grammyli/search/main.js
  */
 const init = (isFirst = true) => {
@@ -21,7 +21,7 @@ const init = (isFirst = true) => {
     bindEventDnd()
   } else {
     e(".g-stars").innerHTML = "";
-    renderstars()
+    renderStars()
     hide('.g-engines')
     show('.g-stars')
   }

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-10-14 13:37:50
- * @LastEditTime: 2021-11-26 14:36:32
+ * @LastEditTime: 2021-11-26 16:25:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/README.md
@@ -18,7 +18,8 @@
 - 类似google 语音搜索功能
 - ~~类似google 拖拽功能~~
 - 类似google 搜索提示功能
-- 点击star 切换收藏页面
+- ~~点击star 切换收藏页面~~
+- 切换主题功能
 
 ### 参考
 

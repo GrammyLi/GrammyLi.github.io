@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-05 10:06:10
- * @LastEditTime: 2021-11-26 16:07:20
+ * @LastEditTime: 2021-11-26 16:38:39
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/config.js
@@ -250,7 +250,7 @@ updateEnginesIds()
 // search 搜索 | star 收藏
 window.tabType = 'search' 
 
-window.stars = [
+const mixStars = [
   {
     id: 1,
     url: "./img/7417375_bilibili_b site_logo_video_website_icon.svg",
@@ -271,3 +271,53 @@ window.stars = [
     star: 'https://y.qq.com/n/ryqq/search?w=keyword&t=song&remoteplace=txt.yqq.top',
   },
 ];
+const workStars = [
+  {
+    id: 1,
+    url: "./img/7417375_bilibili_b site_logo_video_website_icon.svg",
+    text: "雨说体育",
+    star:
+      "https://space.bilibili.com/306936843/?spm_id_from=333.999.0.0",
+  }
+]
+const lifeStars = [
+  {
+    id: 1,
+    url: "./img/7417375_bilibili_b site_logo_video_website_icon.svg",
+    text: "雨说体育",
+    star:
+      "https://space.bilibili.com/306936843/?spm_id_from=333.999.0.0",
+  }
+]
+const frontStars = [
+  {
+    id: 1,
+    url: "./img/7417375_bilibili_b site_logo_video_website_icon.svg",
+    text: "雨说体育",
+    star:
+      "https://space.bilibili.com/306936843/?spm_id_from=333.999.0.0",
+  }
+]
+const backStars = [
+  {
+    id: 1,
+    url: "./img/7417375_bilibili_b site_logo_video_website_icon.svg",
+    text: "雨说体育",
+    star:
+      "https://space.bilibili.com/306936843/?spm_id_from=333.999.0.0",
+  }
+]
+
+const updateStars = () => {
+  window.stars = starThemes[currentTheme]
+}
+
+const starThemes = {
+  mix: mixStars,
+  work: workStars,
+  life: lifeStars,
+  front: frontStars,
+  back: backStars,
+}
+
+updateStars()

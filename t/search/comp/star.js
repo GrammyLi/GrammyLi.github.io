@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-26 14:53:38
- * @LastEditTime: 2021-11-26 16:04:23
+ * @LastEditTime: 2021-11-26 16:39:24
  * @LastEditors: Please set LastEditors
  * @Description: 点击收藏卡片，直接就可以跳转到相应网站
  * @FilePath: /search/comp/star.js
@@ -15,7 +15,7 @@ const templateStar = ({ id, url, text, star}) => {
   `;
 };
 
-const renderstars = () => {
+const renderStars = () => {
   let t = window.stars.map((e, i) => templateStar(e, i)).join("");
   appendHtml(e(".g-stars"), t);
 };

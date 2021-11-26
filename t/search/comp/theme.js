@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-26 09:25:34
- * @LastEditTime: 2021-11-26 13:29:21
+ * @LastEditTime: 2021-11-26 16:38:59
  * @LastEditors: Please set LastEditors
  * @Description: 选择主题
  * @FilePath: /search/comp/theme.js
@@ -21,8 +21,8 @@ const updateHeader = (ele, theme) => {
 const updateTheme = (ele, theme) => {
   updateHeader(ele, theme)
   window.currentTheme = theme
-  // 更新 logo 或者
   updateEnginesIds()
+  updateStars()
   init(false)
   bindEventDnd()
 }
