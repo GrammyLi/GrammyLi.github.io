@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-05 10:06:10
- * @LastEditTime: 2021-11-26 15:39:20
+ * @LastEditTime: 2021-11-26 16:07:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/config.js
