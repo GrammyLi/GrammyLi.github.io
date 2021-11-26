@@ -1,7 +1,7 @@
 /*
  * @Author: grammyli
  * @Date: 2021-10-14 13:35:59
- * @LastEditTime: 2021-11-26 13:31:12
+ * @LastEditTime: 2021-11-26 15:27:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/main.js
@@ -13,8 +13,18 @@ const init = (isFirst = true) => {
     // 搜索的历史记录
     window.historys = [];
   }
-  e(".g-engines").innerHTML = "";
-  renderEngines();
+  if (tabType === 'search') {
+    e(".g-engines").innerHTML = "";
+    renderEngines();
+    show('.g-engines')
+    hide('.g-stars')
+    bindEventDnd()
+  } else {
+    e(".g-stars").innerHTML = "";
+    renderstars()
+    hide('.g-engines')
+    show('.g-stars')
+  }
   renderLogo();
 };
 
@@ -25,6 +35,8 @@ const addActions = () => {
     inputAction,
     engineAction,
     themeAction,
+    tabAction,
+    starAction,
   ]
   as.forEach(a => {
     addAction(actions, a);
@@ -40,10 +52,13 @@ const bindEventClick = () => {
 };
 
 const bindEvents = () => {
+  // 控制输入框清空按钮显示，回车之后进行搜索
   bindEventKeyup();
+  // 全局绑定点击事件
   bindEventClick();
-  bindEventDnd();
+  // 控制历史会议记录的显示
   bindEventChange();
+  // 添加相应的点击事件
   addActions()
 };
 

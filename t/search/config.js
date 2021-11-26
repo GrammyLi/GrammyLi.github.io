@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-05 10:06:10
- * @LastEditTime: 2021-11-12 19:28:21
+ * @LastEditTime: 2021-11-26 15:39:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/config.js
@@ -245,3 +245,29 @@ const updateEnginesIds = () => {
 };
 
 updateEnginesIds()
+
+// 默认选择 search 功能
+// search 搜索 | star 收藏
+window.tabType = 'search' 
+
+window.stars = [
+  {
+    id: 1,
+    url: "./img/7417375_bilibili_b site_logo_video_website_icon.svg",
+    text: "雨说体育",
+    star:
+      "https://space.bilibili.com/306936843/?spm_id_from=333.999.0.0",
+  },
+  {
+    id: 2,
+    url: "./img/214732_zhihu_china_chinese_icon.svg",
+    text: "Zhihu",
+    star: 'https://www.zhihu.com/search?type=content&q=keyword',
+  },
+  {
+    id: 3,
+    url: "./img/qq-music-1.svg",
+    text: "QQ音乐",
+    star: 'https://y.qq.com/n/ryqq/search?w=keyword&t=song&remoteplace=txt.yqq.top',
+  },
+];

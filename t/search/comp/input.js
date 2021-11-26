@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-26 09:25:52
- * @LastEditTime: 2021-11-26 10:06:00
+ * @LastEditTime: 2021-11-26 15:32:42
  * @LastEditors: Please set LastEditors
  * @Description: 搜索框 | 历史记录
  * @FilePath: /search/comp/input.js
@@ -31,9 +31,14 @@ const bindEventChange = () => {
       renderHistorys();
       e(".g-search__menus").classList.remove("g-hide");
       e(".g-engines").classList.add("g-hide");
+      e(".g-stars").classList.add("g-hide");
     } else {
       e(".g-search__menus").classList.add("g-hide");
-      e(".g-engines").classList.remove("g-hide");
+      if (tabType === 'search') {
+        e(".g-engines").classList.remove("g-hide");
+      } else {
+        e(".g-stars").classList.remove("g-hide");
+      }
     }
   });
   bindEvent(e(".g-input__search"), "input", (event) => {
@@ -42,9 +47,14 @@ const bindEventChange = () => {
       renderHistorys();
       e(".g-search__menus").classList.remove("g-hide");
       e(".g-engines").classList.add("g-hide");
+      e(".g-stars").classList.add("g-hide");
     } else {
       e(".g-search__menus").classList.add("g-hide");
-      e(".g-engines").classList.remove("g-hide");
+      if (tabType === 'search') {
+        e(".g-engines").classList.remove("g-hide");
+      } else {
+        e(".g-stars").classList.remove("g-hide");
+      }
     }
   });
 };
@@ -94,7 +104,11 @@ const inputAction = {
   clearHistory() {
     window.historys = [];
     e(".g-search__menus").classList.add("g-hide");
-    e(".g-engines").classList.remove("g-hide");
+    if (tabType === 'search') {
+      e(".g-engines").classList.remove("g-hide");
+    } else {
+      e(".g-stars").classList.remove("g-hide");
+    }
   },
   searchHistory(event) {
     let v = event.target.innerText;

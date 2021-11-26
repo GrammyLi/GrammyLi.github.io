@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-26 09:25:43
- * @LastEditTime: 2021-11-26 09:43:14
+ * @LastEditTime: 2021-11-26 15:44:21
  * @LastEditors: Please set LastEditors
  * @Description: 搜索的引擎logo
  * @FilePath: /search/comp/logo.js
@@ -43,7 +43,12 @@ const renderLogo = () => {
   // 先清空画布
   center.innerHTML = "";
   center.innerHTML = t;
-  hideLogoBtn()
+  if (tabType === 'search') { 
+    hideLogoBtn()
+  } else {
+    hide('.g-left-img')
+    hide('.g-right-img')
+  }
 };
 
 const logoAction = {

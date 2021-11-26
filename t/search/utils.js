@@ -1,13 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-11-04 19:56:27
- * @LastEditTime: 2021-11-26 10:05:00
+ * @LastEditTime: 2021-11-26 15:05:03
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/utils.js
  */
 const debug = true
-const log = debug ? console.log.bind(console) : function () { }
+const log = debug ? console.log.bind('***🍉 debug 🍉***' ,console) : function () { }
 const int = number => parseInt(number, 10)
 
 const bindEvent = (element, eventName, callback) => {
