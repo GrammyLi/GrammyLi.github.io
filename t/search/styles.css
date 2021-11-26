@@ -270,7 +270,7 @@ body {
 
 .g-right-tab {
   display: inline;
- 
+
 }
 
 .g-right-tab img {
@@ -327,8 +327,8 @@ body {
   position: absolute;
   margin-left: 4px;
   display: block;
- 
-}  
+
+}
 
 .g-theme {
   cursor: pointer;
@@ -352,4 +352,22 @@ body {
 .g-theme span {
   display: block;
   margin-top: 4px;
+}
+
+.g-left-tabs {
+  margin-left: 19%;
+}
+
+.g-left-tab {
+  display: inline;
+  margin-right: 48px;
+  border-radius: 8px;
+  line-height: 20px;
+  font-weight: 500;
+  font-size: 1.2vw;
+  margin-top: 0.533333vw;
+}
+
+.g-left-tab.active {
+  color: rgb(98, 154, 231)
 }
