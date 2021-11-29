@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-09-10 13:05:29
- * @LastEditTime: 2021-11-24 21:42:08
+ * @LastEditTime: 2021-11-28 15:24:26
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/README.md
@@ -25,7 +25,6 @@ link: https://grammyli.com
 
 limk: https://grammyli.com/cv
 ## game puzzle
-
 link:  https://grammyli.com/g/puzzle/
 
 ![game- puzzle](./%20img/image-20211014122031997.png)
@@ -33,7 +32,8 @@ link:  https://grammyli.com/g/puzzle/
 
 ## pokemon color
 
-link: https://grammyli.com/g/color/
+<a href="https://grammyli.com/g/color/" target="_blank">https://grammyli.com/g/color/ </a>
+ 
 
 ![avatar](./%20img/pokemon-color.png)
 

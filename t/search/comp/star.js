@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-11-26 14:53:38
- * @LastEditTime: 2021-11-26 19:39:58
+ * @LastEditTime: 2021-11-26 19:56:51
  * @LastEditors: Please set LastEditors
  * @Description: 点击收藏卡片，直接就可以跳转到相应网站
  * @FilePath: /search/comp/star.js
