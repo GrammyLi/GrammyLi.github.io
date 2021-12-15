@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-10-14 13:27:53
- * @LastEditTime: 2021-11-26 19:48:37
+ * @LastEditTime: 2021-12-15 13:37:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/index.html
@@ -27,6 +27,9 @@
       </div>
       <div class="g-left-tab" data-type="star" data-action="clickTab">
         collection
+      </div>
+      <div class="g-left-tab" data-type="time" data-action="clickTab">
+        time
       </div>
     </div>
     <div class="g-right-tabs">
@@ -67,7 +70,7 @@
     </div>
   </div>
   <div class="g-container">
-    <div class="g-logo">
+    <div class="g-logo g-logo-engine">
       <div class="g-left btn" data-offset="-1">
         <div class="g-engine">
           <img class="g-left-img" src="./img/6905902_arrow_arrows_down_interface_left_icon.svg" type="image/svg+xml"
@@ -82,6 +85,12 @@
           <img class="g-right-img" src="./img/6905905_arrow_arrows_down_interface_right_icon.svg" type="image/svg+xml"
             data-action="clickControlBtn" />
         </div>
+      </div>
+    </div>
+    <div class="g-logo g-hide g-logo-time">
+      <div class="g-center">
+        <div class="g-time">13:33:54</div>
+        <div class="g-date">2121.12.25</div>
       </div>
     </div>
     <div class="g-search">
@@ -141,6 +150,7 @@
   <script src="./comp/star.js"></script>
   <script src="./comp/modal.js"></script>
   <script src="./weather.js"></script>
+  <script src="./comp/time.js"></script>
   <!-- 入口函数 -->
   <script src="./main.js"></script>
 </body>

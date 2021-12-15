@@ -409,3 +409,20 @@ body {
   font-size: 1.2vw;
   margin-top: 0.533333vw;
 }
+
+.g-time {
+  background: #fff;
+  text-align: center;
+  font-family: 'VT323', monospace;
+  font-size: 3.6rem;
+}
+
+.g-date {
+  margin-top: 12px;
+  display: block;
+  background: #fff;
+  text-align: center;
+  font-family: 'VT323', monospace;
+  font-size: 2rem;
+  margin-bottom: 16px;
+}

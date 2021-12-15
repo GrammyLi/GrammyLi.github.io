@@ -1,7 +1,7 @@
 /*
  * @Author: grammyli
  * @Date: 2021-10-14 13:35:59
- * @LastEditTime: 2021-11-26 19:49:07
+ * @LastEditTime: 2021-12-15 13:47:07
  * @LastEditors: Please set LastEditors
  * @Description: 函数入口
  * @FilePath: /grammyli/search/main.js
@@ -12,6 +12,7 @@ const init = (isFirst = true) => {
     window.currentEngineIndex = 2;
     // 搜索的历史记录
     window.historys = [];
+    // 添加时间
   }
   if (tabType === 'search') {
     e(".g-engines").innerHTML = "";
@@ -61,6 +62,7 @@ const bindEvents = () => {
   bindEventChange();
   // 添加相应的点击事件
   addActions()
+  addTime()
 };
 
 const __main = () => {
