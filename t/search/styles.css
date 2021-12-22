@@ -410,6 +410,10 @@ body {
   margin-top: 0.533333vw;
 }
 
+.g-logo-time {
+  margin-top: 8px;
+}
+
 .g-time {
   background: #fff;
   text-align: center;
