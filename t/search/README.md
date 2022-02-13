@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-10-14 13:37:50
- * @LastEditTime: 2021-11-28 15:25:32
+ * @LastEditTime: 2021-12-22 20:08:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/search/README.md
@@ -35,3 +35,25 @@ https://sea.team/
 
 预览
 https://grammyli.com/t/search
+
+### 后端接口设计
+
+path: /e/addUpdate
+method: post
+有id则更新相应内容，没有则添加engine
+
+ 
+path: /e/remove/id
+method: get
+删除engine
+
+
+path: /s/addUpdate
+method: post
+有id则更新相应内容，没有则添加 star
+
+path: /s/remove/id
+method: get
+删除 star
+
+

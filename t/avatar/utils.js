@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-10-09 21:34:32
- * @LastEditTime: 2021-10-14 12:01:59
+ * @LastEditTime: 2022-01-20 20:44:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /grammyli/ avatar/utils.js
@@ -55,7 +55,6 @@ const fusedCastOfColors = (colors) => {
   let B = b * 128 / (g + r + 1)
   return [int(R), int(G), int(B), int(A)];
 }
-
 
 const grayOfColors = (colors) => {
   let r = colors[0];
