@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2022-02-16 18:28:55
- * @LastEditTime: 2022-02-16 18:55:28
+ * @LastEditTime: 2022-02-16 18:58:28
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /art/asciiImage.js
@@ -103,9 +103,8 @@ class AsciiImage extends G  {
       // 转化成base64数据类型
       reader.readAsDataURL(file)
       reader.onload = () => {
-        imageUrl = reader.result
-        window.asciiImage.update(imageUrl)
-        // drawToCanvas(reader.result)
+        const url = reader.result
+        this.update(url)
       }
     }, false)
   }
