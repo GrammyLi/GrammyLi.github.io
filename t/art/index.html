@@ -1,0 +1,67 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-02-15 19:10:49
+ * @LastEditTime: 2022-02-15 19:59:13
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /art/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>g-ascii-avatar</title>
+  <style>
+    body {
+      background: black;
+    }
+
+    .container {
+      top: 50%;
+      left: 50%;
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      transform: translate(-50%, -50%);
+    }
+
+    .g-canvas {
+      border: 3px solid white;
+    }
+
+    .controls {
+      position: absolute;
+      bottom: -60px;
+      width: 100%;
+      display: flex;
+    }
+
+    .controls>input {
+      width: 75%;
+    }
+
+    .controls>label {
+      width: 30%;
+      color: white;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <canvas class="g-canvas"></canvas>
+    <div class='controls'>
+      <label for="size" class="g-cell-size-label">cell size: 10</label>
+      <input type="range"  class="g-cell-size-value" name="size" min="1" max="20" value="5">
+
+    </div>
+  </div>
+  <script src="./utils.js"></script>
+  <script src="./main.js"></script>
+</body>
+
+</html>
