@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2022-02-15 19:12:04
- * @LastEditTime: 2022-02-16 09:41:20
+ * @LastEditTime: 2022-02-16 13:07:46
  * @LastEditors: Please set LastEditors
  * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  * @FilePath: /art/main.js
@@ -31,23 +31,13 @@ class Cell {
   }
 }
 
-// TODO 待优化
-const convertToSymbol = (g) => {
-  if (g > 250) return "@";
-  else if (g > 240) return "*";
-  else if (g > 220) return "+";
-  else if (g > 200) return "#";
-  else if (g > 180) return "&";
-  else if (g > 160) return "%";
-  else if (g > 140) return "_";
-  else if (g > 120) return ":";
-  else if (g > 100) return "£";
-  else if (g > 80) return "/";
-  else if (g > 60) return "-";
-  else if (g > 40) return "X";
-  else if (g > 20) return "W";
-  else return "";
-}
+const convertToChar = (g) => {
+  const chars = "grammyli@outlook.com*+#&%_:/x";
+  const n = int(g / 20);
+  const index = n >= chars.length ? chars.length - 1 : n;
+  return chars[index];
+};
+
 
 const scanImage = () => {
   const cellSize = parseInt(e(".g-cell-size-value").value);
@@ -72,29 +62,29 @@ const scanImage = () => {
         const blue = pixels.data[pos + 2];
         const total = red + green + blue;
         const averageColorValue = total / 3;
-        const symbol = convertToSymbol(averageColorValue);
+        const char = convertToChar(averageColorValue);
         const color = "rgb(" + red + "," + green + "," + blue + ")";
         if (total > 200) {
-          imageCellArray.push(new Cell(x, y, symbol, color, ctx));
+          imageCellArray.push(new Cell(x, y, char, color, ctx));
         }
       }
     }
   }
-  return imageCellArray
-}
+  return imageCellArray;
+};
 
-const drawAscii = (imageCellArray) =>  {
+const drawAscii = (imageCellArray) => {
   const canvas = e(".g-canvas");
   const ctx = canvas.getContext("2d");
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   for (let i = 0; i < imageCellArray.length; i++) {
     imageCellArray[i].draw();
   }
-}
+};
 
-function handleSlider() {
-  const inputSlider = e(".g-cell-size-value")
-  const inputLabel = e(".g-cell-size-label")
+const handleSlider = () => {
+  const inputSlider = e(".g-cell-size-value");
+  const inputLabel = e(".g-cell-size-label");
   if (inputSlider.value == 1) {
     inputLabel.innerHTML = "Original image";
     const canvas = e(".g-canvas");
@@ -105,12 +95,23 @@ function handleSlider() {
     const imageCellArray = scanImage();
     drawAscii(imageCellArray);
   }
-}
+};
 
-loadImage(imageUrl, (image) => {
-  drawImage(image);
-
+const addAscii = () => {
   const imageCellArray = scanImage();
   drawAscii(imageCellArray);
-  bindEvent(e('.g-cell-size-value'), 'change', handleSlider)
-});
+};
+
+const __main = () => {
+  loadImage(imageUrl, (image) => {
+    drawImage(image);
+    addAscii();
+
+    bindEvent(e(".g-cell-size-value"), "change", () => {
+      drawImage(image);
+      handleSlider(image);
+    });
+  });
+};
+
+__main();
