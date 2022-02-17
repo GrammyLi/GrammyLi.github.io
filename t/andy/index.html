@@ -1,0 +1,73 @@
+<!--
+ * @Author: your name
+ * @Date: 2022-02-17 12:37:06
+ * @LastEditTime: 2022-02-17 12:42:46
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /andy/index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> grammyli andy </title>
+  <link href="./style.css" rel="stylesheet">
+  
+  <link href="../../cv/assets/img/davizi.jpg" rel="icon">
+</head>
+
+<body>
+  <div class="t-container">
+
+    <div class="t-btns">
+      <button class="t-upload-btn t-btn">
+        upload
+        <input class="t-upload" type="file" accept="image/*" />
+      </button>
+      <button class="t-save-btn t-btn">
+        save
+      </button>
+    </div>
+    <video class="t-video hidden" autoplay="autoplay" width="300" height="300"></video>
+    <canvas class="t-canvas"></canvas>
+    <div class="t-settings">
+      <div class="t-field">
+        <div class="t-label">
+          theme:
+        </div>
+        <div class="t-value t-value-theme-type" data-type="flag">
+          <input id="radio-1" class="t-type" name="radio" type="radio" checked> 🇨对图片作无处理
+          <input id="radio-1" class="t-type" name="radio" type="radio" checked> 🇨对图片作灰度处理
+          <input id="radio-2" class="t-type" name="radio" type="radio"> 对图片作反色处理
+
+        </div>
+      </div>
+       
+      <div class="t-field">
+        <div class="t-label">
+          filter (only once):
+        </div>
+        <div class="t-value">
+          <select class="t-select-filter" data-filter="notFilter">
+            <option value="notFilter"> not filter </option>
+            <option value="comic"> comic </option>
+            <option value="nostalgia"> nostalgia </option>
+            <option value="gray"> gray </option>
+            <option value="blackWhite"> blackWhite </option>
+            <option value="negative"> negative </option>
+            <option value="fusedCast"> fusedCast </option>
+          </select>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <script src="./utils.js"></script>
+</body>
+
+</html>
+ 
