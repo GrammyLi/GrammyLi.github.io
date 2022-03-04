@@ -5,26 +5,25 @@ class Paint extends G {
     this.canvas.width = w;
     this.canvas.height = h;
     this.ctx = this.canvas.getContext("2d");
+
     this.type = "painting";
     this.typeStatus = {
       erasering: false,
       painting: false,
     };
+    this.penSize = 2.5;
+    this.penColor = "#2c2c2c";
+    this.bgColor = "white";
     this.bindEvents();
   }
   updatePaintConfig() {
-    if (this.typeStatus.erasering) {
-      this.ctx.strokeStyle = "white";
-      this.ctx.lineWidth = 4;
-    } else {
-      this.ctx.strokeStyle = "#2c2c2c";
-      this.ctx.lineWidth = 2.5;
-    }
+    this.ctx.strokeStyle = this.penColor;
+    this.ctx.lineWidth = this.penSize;
   }
   bindEventMove() {
     const { canvas, ctx } = this;
     bindEvent(canvas, "mousemove", (event) => {
-      this.updatePaintConfig()
+      this.updatePaintConfig();
       const x = event.offsetX;
       const y = event.offsetY;
       if (!this.typeStatus[this.type]) {
@@ -54,17 +53,45 @@ class Paint extends G {
       this.typeStatus[this.type] = false;
     });
   }
-  bindEvnetType() {
+  // 画笔颜色根据画笔类型来定
+  penColorByType() {
+    if (this.type === "erasering") {
+      this.penColor = this.bgColor;
+    }
+  }
+  // 画笔的类型
+  bindEventType() {
     bindEvent(e(".controls__type"), "click", (event) => {
       const target = event.target;
-      this.type = target.dataset.type
+      this.type = target.dataset.type;
+      this.penColorByType();
     });
+  }
+  // 画笔的大小
+  bindEventPenSize() {
+   // e('.controls__range-size')
+   bindEvent(e('.controls__range-size'), "change", (event) => {
+    const target = event.target
+    const v = int(target.value)
+    this.penSize = v
+   })
+  }
+  // 画笔的颜色
+  bindEventPenColor() {
+    bindEvent(e('.controls__colors'), "click", (event) => {
+      const target = event.target
+      const color = target.style.backgroundColor
+      log('color', color)
+      this.penColor = color
+     })
   }
   bindEvents() {
     this.bindEventMove();
     this.bindEventDown();
     this.bindEventUp();
     this.bindEventLeave();
-    this.bindEvnetType();
+    this.bindEventType();
+    this.bindEventPenSize();
+    this.bindEventPenColor()
   }
 }

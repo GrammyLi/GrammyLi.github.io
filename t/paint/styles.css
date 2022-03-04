@@ -24,6 +24,7 @@ body {
 }
 
 .controls__btns button {
+  text-transform: none;
   all: unset;
   cursor: pointer;
   background-color: white;
@@ -34,14 +35,10 @@ body {
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0, 0, 0, 0.2);
   color: rgba(0, 0, 0, 0.7);
-  /* 글자 대문자로 바꿈 */
-  text-transform: uppercase;
-  /* 글자 굵기 */
   font-weight: 800;
   font-size: 13px;
 }
 
-/* 버튼 누를 때 동적효과 */
 .controls__btns button:active {
   transform: scale(0.98);
 }
