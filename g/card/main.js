@@ -1,28 +1,3 @@
- /*
-- data    
-- render data => map  
-- event  
-    - click
-        - 点击翻转
-
-- 算法   
-    - 点击两次 对比是否 数字相等  
-        - 相等  翻转成功  
-        - 不相等 翻转失败 还原
-
-- 数据打乱
-
-- 先情况 container内容，再去初始化页面 然后再去绑定事件
-*/
-
-
-/*
- 1. 点击开始游戏
- 2. 点击退出游戏
- 3. 解决翻转问题 未解决
-
- 4. 记录翻转的次数，时间
-*/
 const updateTimer = () => {
     clearInterval(window.timeId)
     window.total_time = 0
@@ -32,6 +7,7 @@ const updateTimer = () => {
         e('.magician-timer').innerHTML = time
     }, 1000)
 }
+
 // 清空游戏的内容：更新图片数据、定时器清零、尝试次数和匹配次数置零
 const clearGameContent = () => {
     // 宝可梦清空
