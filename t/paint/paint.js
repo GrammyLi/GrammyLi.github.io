@@ -21,13 +21,29 @@ class Paint extends G {
       erasering: false,
       painting: false,
       line: false,
-      edgeRect: false,
-      fillRect: false,
+      dottedLine: false,
+      edgeRect: false, // 只有边框的矩形
+      fillRect: false, // 只有填充的矩形
+      rect: false, // 既有边框，又有填充色的矩形
+      edgeEllipse: false,
+      fillEllipse: false,
+      ellipse: false,
     };
     this.penSize = 2.5;
+    this.dattedSize = 5;
     this.penColor = "#2c2c2c";
     this.bgColor = "white";
     this.points = [];
+    this.types = [
+      "line",
+      "dottedLine",
+      "edgeRect",
+      "fillRect",
+      "rect",
+      "edgeEllipse",
+      "fillEllipse",
+      "ellipse",
+    ];
   }
   updatePaintConfig() {
     this.ctx.strokeStyle = this.penColor;
@@ -42,13 +58,23 @@ class Paint extends G {
     ctx.lineTo(x2, y2);
     ctx.stroke();
   }
+  dottedLine(p1, p2) {
+    const { ctx } = this;
+    const [x1, y1] = p1;
+    const [x2, y2] = p2;
+    ctx.beginPath();
+    ctx.setLineDash([this.dattedSize]);
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
+  }
   edgeRect(p1, p2) {
     const { ctx } = this;
     const [x1, y1] = p1;
     const [x2, y2] = p2;
-    const w = x2 - x1
-    const h = y2 - y1
-    ctx.lineWidth = this.penSize;        
+    const w = x2 - x1;
+    const h = y2 - y1;
+    ctx.lineWidth = this.penSize;
     ctx.strokeRect(x1, y1, w, h);
     ctx.fill();
   }
@@ -56,14 +82,46 @@ class Paint extends G {
     const { ctx } = this;
     const [x1, y1] = p1;
     const [x2, y2] = p2;
-    const w = x2 - x1
-    const h = y2 - y1
+    const w = x2 - x1;
+    const h = y2 - y1;
     ctx.fillStyle = this.penColor;
     ctx.fillRect(x1, y1, w, h);
     ctx.fill();
   }
+  edgeEllipse(p1, p2) {
+    const { ctx } = this;
+    const [x1, y1] = p1;
+    const [x2, y2] = p2;
+    const angle = 0;
+    ctx.beginPath();
+    const x = (x1 + x2) / 2
+    const y = (y1 + y2) / 2
+    const w = x2 - x1;
+    const h = y2 - y1;
+    ctx.ellipse(x, y, int(w), int(h), (angle * Math.PI) / 180, 0, 2 * Math.PI);
+    ctx.strokeStyle = this.penColor;
+    ctx.stroke();
+    // ctx.fillStyle = "#058";
+    // ctx.fill();
+    // ctx.stroke();
+  }
+  fillEllipse(p1, p2) {
+    const { ctx } = this;
+    const [x1, y1] = p1;
+    const [x2, y2] = p2;
+    const angle = 0;
+    ctx.beginPath();
+    const x = (x1 + x2) / 2
+    const y = (y1 + y2) / 2
+    const w = x2 - x1;
+    const h = y2 - y1;
+    ctx.ellipse(x, y, int(w), int(h), (angle * Math.PI) / 180, 0, 2 * Math.PI);
+    ctx.strokeStyle = this.penColor;
+    ctx.fillStyle = this.penColor;
+    ctx.fill();
+  }
   clear() {
-    log('清空画布')
+    log("清空画布");
     this.ctx.clearRect(0, 0, this.w, this.h);
   }
   save() {
@@ -74,21 +132,20 @@ class Paint extends G {
     this.ctx.putImageData(this.pixels, 0, 0);
   }
   bindEventPenMove() {
-    const { ctx, moveEvent } = this;
+    const { ctx, moveEvent, types } = this;
     moveEvent.move((event) => {
       this.updatePaintConfig();
       const x = event.offsetX;
       const y = event.offsetY;
       const status = this.typeStatus[this.type];
+      log("status", status);
       if (status) {
-        const types = ["line", "fillRect", 'edgeRect'];
-        log('this.type', this.type)
         if (types.includes(this.type)) {
           // 第一次点击，之后鼠标移动，会自动画线
           if (this.points.length !== 1) {
             return;
           }
-          log('画')
+          log("画");
           // 清画布
           this.clear();
           // 画之前的画布
@@ -97,7 +154,6 @@ class Paint extends G {
           let p2 = [x, y];
           this[this.type](p1, p2);
         } else {
-          log('保存')
           ctx.lineTo(x, y);
           ctx.stroke();
           this.save();
@@ -109,7 +165,6 @@ class Paint extends G {
     });
     moveEvent.down((event) => {
       this.typeStatus[this.type] = true;
-      const types = ["line", "fillRect", 'edgeRect'];
       if (types.includes(this.type)) {
         const x = event.offsetX;
         const y = event.offsetY;
@@ -119,7 +174,7 @@ class Paint extends G {
           const [p1, p2] = this.points;
           this[this.type](p1, p2);
           this.points = [];
-          log('dwon 保存')
+          log("dwon 保存");
           this.save();
         }
       } else {
@@ -129,14 +184,12 @@ class Paint extends G {
       }
     });
     moveEvent.up((event) => {
-      const types = ["line", "fillRect", 'edgeRect'];
       if (types.includes(this.type)) {
         return;
       }
       this.typeStatus[this.type] = false;
     });
     moveEvent.leave((event) => {
-      const types = ["line", "fillRect", 'edgeRect'];
       if (types.includes(this.type)) {
         return;
       }
@@ -154,7 +207,7 @@ class Paint extends G {
     bindEvent(e(".controls__type"), "click", (event) => {
       const target = event.target;
       this.type = target.dataset.type;
-      log('this.type', this.type)
+      log("this.type", this.type);
       this.penColorByType();
     });
   }
@@ -176,12 +229,22 @@ class Paint extends G {
       this.penColor = color;
     });
   }
-  test() {}
+  test() {
+    const { ctx } = this;
+    // ctx.setLineDash([]);
+    ctx.beginPath();
+    ctx.ellipse(100, 100, 50, 75, (45 * Math.PI) / 180, 0, 2 * Math.PI); //倾斜45°角
+    ctx.stroke();
+    // ctx.setLineDash([5]);
+    // ctx.moveTo(0, 200);
+    // ctx.lineTo(200, 0);
+    // ctx.stroke();
+  }
   bindEvents() {
     this.bindEventPenMove();
     this.bindEventPenType();
     this.bindEventPenSize();
     this.bindEventPenColor();
-    this.test();
+    // this.test();
   }
 }
