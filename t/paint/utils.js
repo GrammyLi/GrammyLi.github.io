@@ -29,8 +29,11 @@ class G {
   }
 }
 
-
 const randomBetween = (start, end) => {
   let n = Math.random() * (end - start + 1)
   return ~~(n + start)
 }
+
+const appendHtml = (element, html) => {
+  element.insertAdjacentHTML("beforeend", html);
+};

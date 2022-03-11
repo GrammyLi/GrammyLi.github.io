@@ -7,64 +7,90 @@ class Paint extends G {
     this.w = w;
     this.h = h;
     this.setup();
+    this.insertButtons()
     this.bindEvents();
   }
   setup() {
     this.ctx = this.canvas.getContext("2d");
+    // 画布像素信息
     this.pixels = this.ctx.getImageData(0, 0, this.w, this.h);
     // 鼠标在画板上移动事件
     this.moveEvent = MoveEvent.new({ ele: this.canvas });
     // 画笔的类型
     this.type = "painting";
-    // 画笔的状态
-    this.typeStatus = {
-      erasering: false,
-      painting: false,
-      line: false,
-      edgeRect: false, // 只有边框的矩形
-      fillRect: false, // 只有填充的矩形
-      rect: false, // 既有边框，又有填充色的矩形
-      edgeEllipse: false,
-      fillEllipse: false,
+    // 是否完全填充色
+    this.fill = false;
+    // 线的类型
+    this.lineType = "line";
+    // 画笔的大小
+    this.penSize = 1;
+    // 如果虚线的时候，点的间距
+    this.dattedSize = 5;
+    this.penColor = "#2c2c2c";
+    this.bgColor = "white";
+
+    this.graphicsTypes = {
+      rect: false,
       ellipse: false,
-      edgeCircle: false,
+      circle: false,
+    };
+    this.penTypes = {
+      linePen: false,
       circlePen: false,
       squarePen: false,
       trianglePen: false,
       moPen: false,
-      cutout: false
     };
-    this.penSize = 2.5;
-    this.dattedSize = 5;
-    this.penColor = "#2c2c2c";
-    this.bgColor = "white";
+    this.types = Object.keys(this.graphicsTypes);
+    this.types.push("linePen");
+    this.typeStatus = Object.assign(this.graphicsTypes, this.penTypes);
+    log("type", this.typeStatus);
     this.points = [];
-    this.types = [
-      "line",
-      "edgeRect",
-      "fillRect",
-      "rect",
-      "edgeEllipse",
-      "fillEllipse",
-      "ellipse",
-      "edgeCircle",
-    ];
-    this.lineType = "line";
   }
-  updatePaintConfig() {
-    this.ctx.strokeStyle = this.penColor;
-    this.ctx.lineWidth = this.penSize;
+  templateButton(type) {
+    return `<button class="g__input-type" data-type="${type}"> ${type} </button>`
   }
-  updateConfigByLineType() {
-    const { ctx } = this;
-    if (this.lineType === "dash") {
-      ctx.setLineDash([]);
-    } else if (this.lineType === "datted") {
-      ctx.setLineDash([this.dattedSize]);
+  insertButtons() {
+    const container = e('.controls__btns')
+    const btns = Object.keys(this.typeStatus)
+    const content = btns.map(t => this.templateButton(t)).join('\n')
+    appendHtml(container, content)
+  }
+  rect(p1, p2) {
+    const { ctx, fill } = this;
+    const [x1, y1] = p1;
+    const [x2, y2] = p2;
+    const w = x2 - x1;
+    const h = y2 - y1;
+    if (fill) {
+      ctx.fillStyle = this.penColor;
+      ctx.fillRect(x1, y1, w, h);
     } else {
+      ctx.lineWidth = this.penSize;
+      ctx.strokeRect(x1, y1, w, h);
+    }
+    ctx.fill();
+  }
+  ellipse(p1, p2) {
+    const { ctx, fill } = this;
+    const [x1, y1] = p1;
+    const [x2, y2] = p2;
+    const angle = 0;
+    ctx.beginPath();
+    const x = (x1 + x2) / 2;
+    const y = (y1 + y2) / 2;
+    const w = x2 - x1;
+    const h = y2 - y1;
+    ctx.ellipse(x, y, int(w), int(h), (angle * Math.PI) / 180, 0, 2 * Math.PI);
+    ctx.strokeStyle = this.penColor;
+    if (fill) {
+      ctx.fillStyle = this.penColor;
+      ctx.fill();
+    } else {
+      ctx.stroke();
     }
   }
-  line(p1, p2) {
+  linePen(p1, p2) {
     const { ctx } = this;
     const [x1, y1] = p1;
     const [x2, y2] = p2;
@@ -73,15 +99,22 @@ class Paint extends G {
     ctx.lineTo(x2, y2);
     ctx.stroke();
   }
-  edgeCircle(p1, p2) {
-    const { ctx } = this;
+  circle(p1, p2) {
+    const { ctx, fill } = this;
     const [x1, y1] = p1;
     const [x2, y2] = p2;
     const r2 = Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2);
     const r = int(Math.sqrt(r2));
     ctx.beginPath();
-    ctx.arc(x1, y1, r, 0, 2 * Math.PI);
-    ctx.stroke();
+    if (fill) {
+      ctx.arc(x1, y1, r, 0, 2 * Math.PI);
+      ctx.strokeStyle = this.penColor;
+      ctx.fillStyle = this.penColor;
+      ctx.fill();
+    } else {
+      ctx.arc(x1, y1, r, 0, 2 * Math.PI);
+      ctx.stroke();
+    }
   }
   circlePen([x, y]) {
     const { ctx } = this;
@@ -100,7 +133,7 @@ class Paint extends G {
     let x2 = x + s;
     let y2 = y + s;
     let p2 = [x2, y2];
-    this.fillRect(p1, p2);
+    this.rect(p1, p2);
   }
   trianglePen([x, y]) {
     const { ctx } = this;
@@ -116,20 +149,16 @@ class Paint extends G {
     ctx.lineTo(x2 - this.penSize, y2);
     ctx.fill();
   }
-// x = r*sin(theta)
-// y = r*cos(theta)
-// 其中0 <= r <= R, 0 <= theta < 360 
   moPen([x, y]) {
-    let pi = Math.PI
-    let pointNum = 10
-    let R = this.penSize * 15
+    let pi = Math.PI;
+    let pointNum = 10;
+    let R = this.penSize * 15;
     for (let i = 0; i < pointNum; i++) {
-      let r = randomBetween(0, R)
-      let t = randomBetween(0, 2 * pi) 
-      let x1 = r * Math.sin(t)
-      let y1 = r * Math.cos(t)
-      log('x1', x1, 'y1', y1)
-      this.circlePen([x1 + x, y1 + y])
+      let r = randomBetween(0, R);
+      let t = randomBetween(0, 2 * pi);
+      let x1 = r * Math.sin(t);
+      let y1 = r * Math.cos(t);
+      this.circlePen([x1 + x, y1 + y]);
     }
   }
   cutout(p1, p2) {
@@ -138,60 +167,7 @@ class Paint extends G {
     const [x2, y2] = p2;
     const w = x2 - x1;
     const h = y2 - y1;
-    this.cutData = this.ctx.getImageData(x1, x2, )
-  }
-  // TODO 实心还是空心
-  edgeRect(p1, p2) {
-    const { ctx } = this;
-    const [x1, y1] = p1;
-    const [x2, y2] = p2;
-    const w = x2 - x1;
-    const h = y2 - y1;
-    ctx.lineWidth = this.penSize;
-    ctx.strokeRect(x1, y1, w, h);
-    ctx.fill();
-  }
-  fillRect(p1, p2) {
-    const { ctx } = this;
-    const [x1, y1] = p1;
-    const [x2, y2] = p2;
-    const w = x2 - x1;
-    const h = y2 - y1;
-    ctx.fillStyle = this.penColor;
-    ctx.fillRect(x1, y1, w, h);
-    ctx.fill();
-  }
-  edgeEllipse(p1, p2) {
-    const { ctx } = this;
-    const [x1, y1] = p1;
-    const [x2, y2] = p2;
-    const angle = 0;
-    ctx.beginPath();
-    const x = (x1 + x2) / 2;
-    const y = (y1 + y2) / 2;
-    const w = x2 - x1;
-    const h = y2 - y1;
-    ctx.ellipse(x, y, int(w), int(h), (angle * Math.PI) / 180, 0, 2 * Math.PI);
-    ctx.strokeStyle = this.penColor;
-    ctx.stroke();
-    // ctx.fillStyle = "#058";
-    // ctx.fill();
-    // ctx.stroke();
-  }
-  fillEllipse(p1, p2) {
-    const { ctx } = this;
-    const [x1, y1] = p1;
-    const [x2, y2] = p2;
-    const angle = 0;
-    ctx.beginPath();
-    const x = (x1 + x2) / 2;
-    const y = (y1 + y2) / 2;
-    const w = x2 - x1;
-    const h = y2 - y1;
-    ctx.ellipse(x, y, int(w), int(h), (angle * Math.PI) / 180, 0, 2 * Math.PI);
-    ctx.strokeStyle = this.penColor;
-    ctx.fillStyle = this.penColor;
-    ctx.fill();
+    this.cutData = this.ctx.getImageData(x1, x2);
   }
   clear() {
     this.ctx.clearRect(0, 0, this.w, this.h);
@@ -202,6 +178,19 @@ class Paint extends G {
   // 重新绘制之前的画布
   set() {
     this.ctx.putImageData(this.pixels, 0, 0);
+  }
+  updatePaintConfig() {
+    this.ctx.strokeStyle = this.penColor;
+    this.ctx.lineWidth = this.penSize;
+  }
+  updateConfigByLineType() {
+    const { ctx } = this;
+    if (this.lineType === "dash") {
+      ctx.setLineDash([]);
+    } else if (this.lineType === "datted") {
+      ctx.setLineDash([this.dattedSize]);
+    } else {
+    }
   }
   bindEventPenMove() {
     const { ctx, moveEvent, types } = this;
@@ -224,12 +213,7 @@ class Paint extends G {
           let p2 = [x, y];
           this[this.type](p1, p2);
         } else {
-          if (
-            this.type === "circlePen" ||
-            this.type === "squarePen" ||
-            this.type === "trianglePen" ||
-            this.type === "moPen"
-          ) {
+          if (this.penTypes.hasOwnProperty(this.type)) {
             this[this.type]([x, y]);
           } else {
             ctx.lineTo(x, y);
