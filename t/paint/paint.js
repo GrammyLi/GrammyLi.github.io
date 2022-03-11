@@ -7,7 +7,7 @@ class Paint extends G {
     this.w = w;
     this.h = h;
     this.setup();
-    this.insertButtons()
+    this.insertButtons();
     this.bindEvents();
   }
   setup() {
@@ -43,18 +43,20 @@ class Paint extends G {
     };
     this.types = Object.keys(this.graphicsTypes);
     this.types.push("linePen");
+    this.types.push('cutout')
     this.typeStatus = Object.assign(this.graphicsTypes, this.penTypes);
-    log("type", this.typeStatus);
+    this.typeStatus.cutout = false
     this.points = [];
+    this.cutoutPoints = []
   }
   templateButton(type) {
-    return `<button class="g__input-type" data-type="${type}"> ${type} </button>`
+    return `<button class="g__input-type" data-type="${type}"> ${type} </button>`;
   }
   insertButtons() {
-    const container = e('.controls__btns')
-    const btns = Object.keys(this.typeStatus)
-    const content = btns.map(t => this.templateButton(t)).join('\n')
-    appendHtml(container, content)
+    const container = e(".controls__btns");
+    const btns = Object.keys(this.typeStatus);
+    const content = btns.map((t) => this.templateButton(t)).join("\n");
+    appendHtml(container, content);
   }
   rect(p1, p2) {
     const { ctx, fill } = this;
@@ -65,11 +67,11 @@ class Paint extends G {
     if (fill) {
       ctx.fillStyle = this.penColor;
       ctx.fillRect(x1, y1, w, h);
+      ctx.fill();
     } else {
       ctx.lineWidth = this.penSize;
       ctx.strokeRect(x1, y1, w, h);
     }
-    ctx.fill();
   }
   ellipse(p1, p2) {
     const { ctx, fill } = this;
@@ -167,7 +169,14 @@ class Paint extends G {
     const [x2, y2] = p2;
     const w = x2 - x1;
     const h = y2 - y1;
-    this.cutData = this.ctx.getImageData(x1, x2);
+    this.fill = false
+    this.penColor = 'red'
+
+    this.rect(p1, p2)
+    // this.highData = this.ctx.getImageData(x1, y1, w, h);
+    log('this.cutData', this.cutData)
+    // ctx.clearRect(x1, y1, w, h)
+    // this.lowerData = this.ctx.getImageData(0, 0, this.w, this.h)
   }
   clear() {
     this.ctx.clearRect(0, 0, this.w, this.h);
@@ -199,6 +208,7 @@ class Paint extends G {
       const x = event.offsetX;
       const y = event.offsetY;
       const status = this.typeStatus[this.type];
+      // TODO  优化代码
       if (status) {
         if (types.includes(this.type)) {
           // 第一次点击，之后鼠标移动，会自动画线
@@ -237,7 +247,6 @@ class Paint extends G {
           const [p1, p2] = this.points;
           this[this.type](p1, p2);
           this.points = [];
-          log("dwon 保存");
           this.save();
         }
       } else {
@@ -320,6 +329,9 @@ class Paint extends G {
         this.updateConfigByLineType();
       }
     });
+  }
+  bindEventFillColor() {
+ 
   }
   bindEvents() {
     this.bindEventPenMove();
