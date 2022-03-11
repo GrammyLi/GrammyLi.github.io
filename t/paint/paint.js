@@ -21,13 +21,18 @@ class Paint extends G {
       erasering: false,
       painting: false,
       line: false,
-      dottedLine: false,
       edgeRect: false, // 只有边框的矩形
       fillRect: false, // 只有填充的矩形
       rect: false, // 既有边框，又有填充色的矩形
       edgeEllipse: false,
       fillEllipse: false,
       ellipse: false,
+      edgeCircle: false,
+      circlePen: false,
+      squarePen: false,
+      trianglePen: false,
+      moPen: false,
+      cutout: false
     };
     this.penSize = 2.5;
     this.dattedSize = 5;
@@ -36,18 +41,28 @@ class Paint extends G {
     this.points = [];
     this.types = [
       "line",
-      "dottedLine",
       "edgeRect",
       "fillRect",
       "rect",
       "edgeEllipse",
       "fillEllipse",
       "ellipse",
+      "edgeCircle",
     ];
+    this.lineType = "line";
   }
   updatePaintConfig() {
     this.ctx.strokeStyle = this.penColor;
     this.ctx.lineWidth = this.penSize;
+  }
+  updateConfigByLineType() {
+    const { ctx } = this;
+    if (this.lineType === "dash") {
+      ctx.setLineDash([]);
+    } else if (this.lineType === "datted") {
+      ctx.setLineDash([this.dattedSize]);
+    } else {
+    }
   }
   line(p1, p2) {
     const { ctx } = this;
@@ -58,16 +73,74 @@ class Paint extends G {
     ctx.lineTo(x2, y2);
     ctx.stroke();
   }
-  dottedLine(p1, p2) {
+  edgeCircle(p1, p2) {
     const { ctx } = this;
     const [x1, y1] = p1;
     const [x2, y2] = p2;
+    const r2 = Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2);
+    const r = int(Math.sqrt(r2));
     ctx.beginPath();
-    ctx.setLineDash([this.dattedSize]);
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
+    ctx.arc(x1, y1, r, 0, 2 * Math.PI);
     ctx.stroke();
   }
+  circlePen([x, y]) {
+    const { ctx } = this;
+    const r = this.penSize;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, 2 * Math.PI);
+    ctx.strokeStyle = this.penColor;
+    ctx.fillStyle = this.penColor;
+    ctx.fill();
+  }
+  squarePen([x, y]) {
+    let s = this.penSize / 2;
+    let x1 = x - s;
+    let y1 = y - s;
+    let p1 = [x1, y1];
+    let x2 = x + s;
+    let y2 = y + s;
+    let p2 = [x2, y2];
+    this.fillRect(p1, p2);
+  }
+  trianglePen([x, y]) {
+    const { ctx } = this;
+    let s = this.penSize / 2;
+    let x1 = x - s / 2;
+    let y1 = y - s;
+    let x2 = x + s / 2;
+    let y2 = y + s;
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x1 + this.penSize, y1);
+    ctx.lineTo(x2, y2);
+    ctx.lineTo(x2 - this.penSize, y2);
+    ctx.fill();
+  }
+// x = r*sin(theta)
+// y = r*cos(theta)
+// 其中0 <= r <= R, 0 <= theta < 360 
+  moPen([x, y]) {
+    let pi = Math.PI
+    let pointNum = 10
+    let R = this.penSize * 15
+    for (let i = 0; i < pointNum; i++) {
+      let r = randomBetween(0, R)
+      let t = randomBetween(0, 2 * pi) 
+      let x1 = r * Math.sin(t)
+      let y1 = r * Math.cos(t)
+      log('x1', x1, 'y1', y1)
+      this.circlePen([x1 + x, y1 + y])
+    }
+  }
+  cutout(p1, p2) {
+    const { ctx } = this;
+    const [x1, y1] = p1;
+    const [x2, y2] = p2;
+    const w = x2 - x1;
+    const h = y2 - y1;
+    this.cutData = this.ctx.getImageData(x1, x2, )
+  }
+  // TODO 实心还是空心
   edgeRect(p1, p2) {
     const { ctx } = this;
     const [x1, y1] = p1;
@@ -94,8 +167,8 @@ class Paint extends G {
     const [x2, y2] = p2;
     const angle = 0;
     ctx.beginPath();
-    const x = (x1 + x2) / 2
-    const y = (y1 + y2) / 2
+    const x = (x1 + x2) / 2;
+    const y = (y1 + y2) / 2;
     const w = x2 - x1;
     const h = y2 - y1;
     ctx.ellipse(x, y, int(w), int(h), (angle * Math.PI) / 180, 0, 2 * Math.PI);
@@ -111,8 +184,8 @@ class Paint extends G {
     const [x2, y2] = p2;
     const angle = 0;
     ctx.beginPath();
-    const x = (x1 + x2) / 2
-    const y = (y1 + y2) / 2
+    const x = (x1 + x2) / 2;
+    const y = (y1 + y2) / 2;
     const w = x2 - x1;
     const h = y2 - y1;
     ctx.ellipse(x, y, int(w), int(h), (angle * Math.PI) / 180, 0, 2 * Math.PI);
@@ -121,7 +194,6 @@ class Paint extends G {
     ctx.fill();
   }
   clear() {
-    log("清空画布");
     this.ctx.clearRect(0, 0, this.w, this.h);
   }
   save() {
@@ -138,14 +210,12 @@ class Paint extends G {
       const x = event.offsetX;
       const y = event.offsetY;
       const status = this.typeStatus[this.type];
-      log("status", status);
       if (status) {
         if (types.includes(this.type)) {
           // 第一次点击，之后鼠标移动，会自动画线
           if (this.points.length !== 1) {
             return;
           }
-          log("画");
           // 清画布
           this.clear();
           // 画之前的画布
@@ -154,8 +224,17 @@ class Paint extends G {
           let p2 = [x, y];
           this[this.type](p1, p2);
         } else {
-          ctx.lineTo(x, y);
-          ctx.stroke();
+          if (
+            this.type === "circlePen" ||
+            this.type === "squarePen" ||
+            this.type === "trianglePen" ||
+            this.type === "moPen"
+          ) {
+            this[this.type]([x, y]);
+          } else {
+            ctx.lineTo(x, y);
+            ctx.stroke();
+          }
           this.save();
         }
       } else {
@@ -225,26 +304,45 @@ class Paint extends G {
     bindEvent(e(".controls__colors"), "click", (event) => {
       const target = event.target;
       const color = target.style.backgroundColor;
-      log("color", color);
       this.penColor = color;
     });
   }
   test() {
     const { ctx } = this;
     // ctx.setLineDash([]);
-    ctx.beginPath();
-    ctx.ellipse(100, 100, 50, 75, (45 * Math.PI) / 180, 0, 2 * Math.PI); //倾斜45°角
-    ctx.stroke();
+    // ctx.beginPath();
+    // ctx.ellipse(100, 100, 50, 75, (45 * Math.PI) / 180, 0, 2 * Math.PI); //倾斜45°角
+    // ctx.stroke();
     // ctx.setLineDash([5]);
     // ctx.moveTo(0, 200);
     // ctx.lineTo(200, 0);
     // ctx.stroke();
+    // ctx.beginPath();
+    // ctx.moveTo(100, 0);
+    // ctx.lineTo(200, 0);
+    // ctx.lineTo(150, 100);
+    // ctx.lineTo(50, 100);
+    // ctx.fill();
+  }
+  bindEventLineType() {
+    bindEvent(e(".g__input-radios"), "click", (event) => {
+      let target = event.target;
+      if (target.classList.contains("g__input-line")) {
+        es(".g__input-line").forEach((ele) => {
+          ele.checked = false;
+        });
+        target.checked = true;
+        this.lineType = target.dataset.type;
+        this.updateConfigByLineType();
+      }
+    });
   }
   bindEvents() {
     this.bindEventPenMove();
     this.bindEventPenType();
     this.bindEventPenSize();
     this.bindEventPenColor();
-    // this.test();
+    this.bindEventLineType();
+    this.test();
   }
 }

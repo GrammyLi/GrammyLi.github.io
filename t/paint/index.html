@@ -13,8 +13,19 @@
   <canvas class="g-canvas"></canvas>
   <div class="controls">
     <div class="controls__range">
-       <div>size: </div>
-       <input class="controls__range-size" type="range" min="0.1" max="12" value="2.5" step="0.1" />
+      <div>size: </div>
+      <input class="controls__range-size" type="range" min="0.1" max="12" value="2.5" step="0.1" />
+    </div>
+    <div class="g__input-radios">
+      <div class="g__input-radio">
+        <input class="g__input-line" type="radio" id="dash" data-type="dash" checked>
+        <label for="dash">dash</label>
+      </div>
+
+      <div class="g__input-radio">
+        <input class="g__input-line"  type="radio" id="datted" data-type="datted">
+        <label for="datted">datted</label>
+      </div>
     </div>
     <div class="controls__btns controls__type">
       <button class="g__input-type" data-type="painting"> paint </button>
@@ -25,7 +36,11 @@
       <button class="g__input-type" data-type="fillRect"> fill rect </button>
       <button class="g__input-type" data-type="edgeEllipse"> edge ellipse </button>
       <button class="g__input-type" data-type="fillEllipse"> fillEllipse </button>
-
+      <button class="g__input-type" data-type="edgeCircle"> edgeCircle </button>
+      <button class="g__input-type" data-type="circlePen"> circlePen </button>  
+      <button class="g__input-type" data-type="squarePen"> squarePen </button>
+      <button class="g__input-type" data-type="trianglePen"> trianglePen </button>
+      <button class="g__input-type" data-type="moPen"> moPen </button>
     </div>
     <!-- <div class="controls__btns">
       <button>Fill</button>

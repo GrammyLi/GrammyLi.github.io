@@ -1,5 +1,7 @@
 const e = (sel) => document.querySelector(sel);
 
+const es = (sel) => document.querySelectorAll(sel);
+
 const debug = true;
 const log = debug
   ? console.log.bind(console, "***🍉 debug 🍉***",)
@@ -25,4 +27,10 @@ class G {
     let i = new this(...args);
     return i;
   }
+}
+
+
+const randomBetween = (start, end) => {
+  let n = Math.random() * (end - start + 1)
+  return ~~(n + start)
 }
