@@ -182,13 +182,14 @@ class Paint extends G {
     this.penColor = "red";
     let w = int(x1 - x2);
     let h = int(y1 - y2);
-    // if (w !== 0 && h !== 0) {
-    //   // 先存数据
-    //   this.cutoutDataTemp = ctx.getImageData(x1, y1, w, h);
-    //   ctx.clearRect(x1, y1, w, h);
-    //   this.lowerDataTemp = ctx.getImageData(0, 0, this.w, this.h);
-    //   this.set()
-    // }
+    if (w !== 0 && h !== 0) {
+      // 先存数据
+      // log('存切割出来的图像')
+      // this.cutoutDataTemp = ctx.getImageData(x1, y1, w, h);
+      // ctx.clearRect(x1, y1, w, h);
+      // this.lowerDataTemp = this.ctx.getImageData(0, 0, this.w, this.h);
+      // this.set()
+    }
   
    
     this.rect(p1, p2);
@@ -239,6 +240,7 @@ class Paint extends G {
             let [cutX, cutY] = this.cutoutPoints[0];
             let x1 = cutX + moveX;
             let y1 = cutY + moveY;
+            this.firstPoint = [x1, y1]
             ctx.putImageData(this.lowerData, 0, 0);
             ctx.putImageData(this.cutoutData, x1, y1);
             return;
@@ -253,6 +255,7 @@ class Paint extends G {
           this.set();
           let p1 = this.points[0];
           let p2 = [x, y];
+          log('this.type', this.type)
           this[this.type](p1, p2);
         } else {
           if (this.penTypes.hasOwnProperty(this.type)) {
@@ -299,12 +302,14 @@ class Paint extends G {
             this.cutoutData = this.ctx.getImageData(x1, y1, w, h);
             this.ctx.clearRect(x1, y1, w, h);
             this.lowerData = this.ctx.getImageData(0, 0, this.w, this.h);
+            this.ctx.putImageData(this.cutoutData, x1, y1)
             log("this.cutoutData", this.cutoutData);
           }
         } else if (this.points.length === 2) {
           const [p1, p2] = this.points;
           this[this.type](p1, p2);
           this.points = [];
+          log('保存  down down down')
           this.save();
         }
       } else {
@@ -322,8 +327,15 @@ class Paint extends G {
       ) {
         // this.edgeRect(this.cutoutPoint);
         // this.edgeRect(this.cutoutPoints[0]);
-        let [x1, y1] = this.cutoutPoints[0]
-        // this.clear()
+        let [x1, y1] = this.points[0]
+        let [x2, y2] = this.firstPoint
+        const w = this.cutoutW
+        const h = this.cutoutH
+        this.clear()
+        this.set()
+        const cutoutData = this.ctx.getImageData(x1, y1, w, h);
+        this.ctx.clearRect(x1, y1, w, h);
+        this.ctx.putImageData(cutoutData, x2, y2)
         // ctx.putImageData(this.lowerDataTemp, 0, 0);
         // ctx.putImageData(this.cutoutDataTemp, x1, y1);
         this.points = [];
