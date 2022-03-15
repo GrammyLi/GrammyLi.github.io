@@ -61,14 +61,6 @@ class Paint extends G {
     const content = btns.map((t) => this.templateButton(t)).join("\n");
     appendHtml(container, content);
   }
-  edgeRect(p1) {
-    const { ctx, cutoutH, cutoutW } = this;
-    const [x1, y1] = p1;
-    this.ctx.strokeStyle = "black";
-    ctx.lineWidth = this.penSize;
-    ctx.strokeRect(x1, y1, cutoutW, cutoutH);
-    this.ctx.strokeStyle = this.penColor;
-  }
   rect(p1, p2) {
     const { ctx, fill } = this;
     const [x1, y1] = p1;
@@ -181,17 +173,7 @@ class Paint extends G {
     this.fill = false;
     this.penColor = "red";
     let w = int(x1 - x2);
-    let h = int(y1 - y2);
-    if (w !== 0 && h !== 0) {
-      // 先存数据
-      // log('存切割出来的图像')
-      // this.cutoutDataTemp = ctx.getImageData(x1, y1, w, h);
-      // ctx.clearRect(x1, y1, w, h);
-      // this.lowerDataTemp = this.ctx.getImageData(0, 0, this.w, this.h);
-      // this.set()
-    }
-  
-   
+    let h = int(y1 - y2);  
     this.rect(p1, p2);
     const p3 = [x1 + w, y1];
     const p4 = [x1, y1 + h];
@@ -278,22 +260,17 @@ class Paint extends G {
         const y = event.offsetY;
         const p = [x, y];
         this.points.push(p);
-        log(" down this.points", this.points);
         if (this.cutoutPoints.length > 0) {
           // 说明是选择 cutout 模式
-          log("现在是 cutout 模式");
-          log("utoutPoints", this.cutoutPoints);
           const [p1, p2, p3, p4] = this.cutoutPoints;
           const w = int(p2[0] - p1[0]);
           const h = int(p2[1] - p3[1]);
           // 判断是否第三次点击
           if (this.points.length > 2) {
-            log("三次");
             // 判断是否点击到里面
             let isX = x > p1[0] && x < p2[0];
             let isY = y > p1[1] && y < p4[1];
             if (isX && isY) {
-              log("点击 到里面");
               this.cutoutInPoints = true;
               this.cutoutPoint = [x, y];
             }
@@ -303,13 +280,11 @@ class Paint extends G {
             this.ctx.clearRect(x1, y1, w, h);
             this.lowerData = this.ctx.getImageData(0, 0, this.w, this.h);
             this.ctx.putImageData(this.cutoutData, x1, y1)
-            log("this.cutoutData", this.cutoutData);
           }
         } else if (this.points.length === 2) {
           const [p1, p2] = this.points;
           this[this.type](p1, p2);
           this.points = [];
-          log('保存  down down down')
           this.save();
         }
       } else {
@@ -319,14 +294,12 @@ class Paint extends G {
       }
     });
     moveEvent.up((event) => {
-      log("离开");
+      // TODO 待优化
       if (
         this.type === "cutout" &&
         this.cutoutInPoints &&
         this.points.length > 2
       ) {
-        // this.edgeRect(this.cutoutPoint);
-        // this.edgeRect(this.cutoutPoints[0]);
         let [x1, y1] = this.points[0]
         let [x2, y2] = this.firstPoint
         const w = this.cutoutW
@@ -336,8 +309,7 @@ class Paint extends G {
         const cutoutData = this.ctx.getImageData(x1, y1, w, h);
         this.ctx.clearRect(x1, y1, w, h);
         this.ctx.putImageData(cutoutData, x2, y2)
-        // ctx.putImageData(this.lowerDataTemp, 0, 0);
-        // ctx.putImageData(this.cutoutDataTemp, x1, y1);
+       
         this.points = [];
         // 切割的四个点
         this.cutoutPoints = [];
@@ -359,15 +331,6 @@ class Paint extends G {
         return;
       }
       this.typeStatus[this.type] = false;
-      // if (this.type === "cutout" && this.cutoutInPoints) {
-      //   this.points = [];
-      //   this.cutoutPoints = [];
-      //   // 是否点击到剪切位置
-      //   this.cutoutInPoints = false;
-      //   this.cutoutPoint = null;
-
-      //   this.save();
-      // }
     });
   }
   // 画笔颜色根据画笔类型来定
