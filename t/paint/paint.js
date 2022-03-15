@@ -43,11 +43,14 @@ class Paint extends G {
     };
     this.types = Object.keys(this.graphicsTypes);
     this.types.push("linePen");
-    this.types.push('cutout')
+    this.types.push("cutout");
     this.typeStatus = Object.assign(this.graphicsTypes, this.penTypes);
-    this.typeStatus.cutout = false
+    this.typeStatus.cutout = false;
     this.points = [];
-    this.cutoutPoints = []
+    this.cutoutPoints = [];
+    // 是否点击到剪切位置
+    this.cutoutInPoints = false;
+    this.cutoutPoint = null;
   }
   templateButton(type) {
     return `<button class="g__input-type" data-type="${type}"> ${type} </button>`;
@@ -57,6 +60,14 @@ class Paint extends G {
     const btns = Object.keys(this.typeStatus);
     const content = btns.map((t) => this.templateButton(t)).join("\n");
     appendHtml(container, content);
+  }
+  edgeRect(p1) {
+    const { ctx, cutoutH, cutoutW } = this;
+    const [x1, y1] = p1;
+    this.ctx.strokeStyle = "black";
+    ctx.lineWidth = this.penSize;
+    ctx.strokeRect(x1, y1, cutoutW, cutoutH);
+    this.ctx.strokeStyle = this.penColor;
   }
   rect(p1, p2) {
     const { ctx, fill } = this;
@@ -167,16 +178,26 @@ class Paint extends G {
     const { ctx } = this;
     const [x1, y1] = p1;
     const [x2, y2] = p2;
-    const w = x2 - x1;
-    const h = y2 - y1;
-    this.fill = false
-    this.penColor = 'red'
-
-    this.rect(p1, p2)
-    // this.highData = this.ctx.getImageData(x1, y1, w, h);
-    log('this.cutData', this.cutData)
-    // ctx.clearRect(x1, y1, w, h)
-    // this.lowerData = this.ctx.getImageData(0, 0, this.w, this.h)
+    this.fill = false;
+    this.penColor = "red";
+    let w = int(x1 - x2);
+    let h = int(y1 - y2);
+    // if (w !== 0 && h !== 0) {
+    //   // 先存数据
+    //   this.cutoutDataTemp = ctx.getImageData(x1, y1, w, h);
+    //   ctx.clearRect(x1, y1, w, h);
+    //   this.lowerDataTemp = ctx.getImageData(0, 0, this.w, this.h);
+    //   this.set()
+    // }
+  
+   
+    this.rect(p1, p2);
+    const p3 = [x1 + w, y1];
+    const p4 = [x1, y1 + h];
+    this.cutoutW = w;
+    this.cutoutH = h;
+    // p1 -> p3 -> p2 -> p4
+    this.cutoutPoints = [p1, p3, p2, p4];
   }
   clear() {
     this.ctx.clearRect(0, 0, this.w, this.h);
@@ -211,6 +232,17 @@ class Paint extends G {
       // TODO  优化代码
       if (status) {
         if (types.includes(this.type)) {
+          if (this.type === "cutout" && this.cutoutInPoints) {
+            // log("切换 移动");
+            let moveX = x - this.cutoutPoint[0];
+            let moveY = y - this.cutoutPoint[1];
+            let [cutX, cutY] = this.cutoutPoints[0];
+            let x1 = cutX + moveX;
+            let y1 = cutY + moveY;
+            ctx.putImageData(this.lowerData, 0, 0);
+            ctx.putImageData(this.cutoutData, x1, y1);
+            return;
+          }
           // 第一次点击，之后鼠标移动，会自动画线
           if (this.points.length !== 1) {
             return;
@@ -243,7 +275,33 @@ class Paint extends G {
         const y = event.offsetY;
         const p = [x, y];
         this.points.push(p);
-        if (this.points.length === 2) {
+        log(" down this.points", this.points);
+        if (this.cutoutPoints.length > 0) {
+          // 说明是选择 cutout 模式
+          log("现在是 cutout 模式");
+          log("utoutPoints", this.cutoutPoints);
+          const [p1, p2, p3, p4] = this.cutoutPoints;
+          const w = int(p2[0] - p1[0]);
+          const h = int(p2[1] - p3[1]);
+          // 判断是否第三次点击
+          if (this.points.length > 2) {
+            log("三次");
+            // 判断是否点击到里面
+            let isX = x > p1[0] && x < p2[0];
+            let isY = y > p1[1] && y < p4[1];
+            if (isX && isY) {
+              log("点击 到里面");
+              this.cutoutInPoints = true;
+              this.cutoutPoint = [x, y];
+            }
+          } else {
+            const [x1, y1] = p1;
+            this.cutoutData = this.ctx.getImageData(x1, y1, w, h);
+            this.ctx.clearRect(x1, y1, w, h);
+            this.lowerData = this.ctx.getImageData(0, 0, this.w, this.h);
+            log("this.cutoutData", this.cutoutData);
+          }
+        } else if (this.points.length === 2) {
           const [p1, p2] = this.points;
           this[this.type](p1, p2);
           this.points = [];
@@ -256,6 +314,29 @@ class Paint extends G {
       }
     });
     moveEvent.up((event) => {
+      log("离开");
+      if (
+        this.type === "cutout" &&
+        this.cutoutInPoints &&
+        this.points.length > 2
+      ) {
+        // this.edgeRect(this.cutoutPoint);
+        // this.edgeRect(this.cutoutPoints[0]);
+        let [x1, y1] = this.cutoutPoints[0]
+        // this.clear()
+        // ctx.putImageData(this.lowerDataTemp, 0, 0);
+        // ctx.putImageData(this.cutoutDataTemp, x1, y1);
+        this.points = [];
+        // 切割的四个点
+        this.cutoutPoints = [];
+        // 是否点击到剪切位置
+        this.cutoutInPoints = false;
+        // 点击切割图像里面的点
+        this.cutoutPoint = null;
+
+        this.save();
+        // this.set()
+      }
       if (types.includes(this.type)) {
         return;
       }
@@ -266,6 +347,15 @@ class Paint extends G {
         return;
       }
       this.typeStatus[this.type] = false;
+      // if (this.type === "cutout" && this.cutoutInPoints) {
+      //   this.points = [];
+      //   this.cutoutPoints = [];
+      //   // 是否点击到剪切位置
+      //   this.cutoutInPoints = false;
+      //   this.cutoutPoint = null;
+
+      //   this.save();
+      // }
     });
   }
   // 画笔颜色根据画笔类型来定
@@ -316,6 +406,15 @@ class Paint extends G {
     // ctx.lineTo(150, 100);
     // ctx.lineTo(50, 100);
     // ctx.fill();
+    // Now you can just call
+
+    // Draw using default border radius,
+    // stroke it but no fill (function's default values)
+    // this.roundRect(this.ctx, 5, 5, 50, 50, 20);
+    // To change the color on the rectangle, just manipulate the context
+    // ctx.strokeStyle = "rgb(255, 0, 0)";
+    // ctx.fillStyle = "rgba(255, 255, 0, .5)";
+    // roundRect(ctx, 100, 5, 100, 100, 20, true);
   }
   bindEventLineType() {
     bindEvent(e(".g__input-radios"), "click", (event) => {
@@ -330,9 +429,7 @@ class Paint extends G {
       }
     });
   }
-  bindEventFillColor() {
- 
-  }
+  bindEventFillColor() {}
   bindEvents() {
     this.bindEventPenMove();
     this.bindEventPenType();
@@ -341,4 +438,55 @@ class Paint extends G {
     this.bindEventLineType();
     this.test();
   }
+  roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+    if (typeof stroke === "undefined") {
+      stroke = true;
+    }
+    if (typeof radius === "undefined") {
+      radius = 5;
+    }
+    if (typeof radius === "number") {
+      radius = { tl: radius, tr: radius, br: radius, bl: radius };
+    } else {
+      var defaultRadius = { tl: 0, tr: 0, br: 0, bl: 0 };
+      for (var side in defaultRadius) {
+        radius[side] = radius[side] || defaultRadius[side];
+      }
+    }
+    ctx.beginPath();
+    ctx.moveTo(x + radius.tl, y);
+    ctx.lineTo(x + width - radius.tr, y);
+    ctx.quadraticCurveTo(x + width, y, x + width, y + radius.tr);
+    ctx.lineTo(x + width, y + height - radius.br);
+    ctx.quadraticCurveTo(
+      x + width,
+      y + height,
+      x + width - radius.br,
+      y + height
+    );
+    ctx.lineTo(x + radius.bl, y + height);
+    ctx.quadraticCurveTo(x, y + height, x, y + height - radius.bl);
+    ctx.lineTo(x, y + radius.tl);
+    ctx.quadraticCurveTo(x, y, x + radius.tl, y);
+    ctx.closePath();
+    if (fill) {
+      ctx.fill();
+    }
+    if (stroke) {
+      ctx.stroke();
+    }
+  }
 }
+
+// 第一步：
+
+// 第一次点击，点击画红色矩形， 完成
+// 第二次点击，记录四个点，并且保存着四个点
+// 第三次点击，点击判断是否在矩形内部,如果在内部，可以拖拽移动
+// 剩余的数据， 再画选择的矩形，
+
+// 关闭cutout, 清除四个点
+
+// 第二步；
+// 第三次点击，点击判断是否在矩形内部，可以拖拽
+// 如果点击外部，则取消 cutout
