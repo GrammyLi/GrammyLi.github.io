@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>fomaatter.js</title>
+    <script src="./lib/bundle.js"></script>
+    <script src="./lib/utils.js"></script>
+
+    <script src="assets/libs/ace/ace.js"></script>
+
+    <style>
+        body {
+            display: flex;
+        }
+        .g-config-container {
+            display: inline-block;
+            width: 500px;
+        }
+        .g-code-contianer {
+            border: 1px solid red;
+            display: inline-block;
+        }
+
+        .g-items {
+            display: block;
+        }
+
+        .g-items {
+            margin-left: 32px;
+        }
+
+        pre#editor {
+            flex: 1;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="g-config-container">
+
+    </div>
+
+    <pre id="editor" class="g-code-contianer">
+    </pre>
+
+
+    <script src="./code.js"></script>
+    <script src="./config.js"></script>
+    <script src="./main.js"></script>
+    <style>
+        .ace-twilight .ace_comment {
+            font-style: inherit
+        }
+    
+        .ace_editor {
+            font: 14px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+        }
+    
+        .ace-twilight .ace_meta.ace_tag,
+        .ace-twilight .ace_variable {
+            color: #1ea2b9;
+        }
+    
+        .ace_folding-enabled>.ace_gutter-cell {
+            color: #666;
+        }
+    
+        .ace_editor.ace_autocomplete .ace_completion-highlight {
+            color: #00b317;
+            font-weight: 600;
+            text-shadow: 0 0 0;
+        }
+    
+        .ace_editor.ace_autocomplete .ace_marker-layer .ace_active-line {
+            background-color: #235f36;
+        }
+    
+        .ace_editor.ace_autocomplete {
+            border-radius: 3px;
+            background: #333333;
+            border: 1px #040404 solid;
+            color: #c1c1c1;
+        }
+        </style>
+</body>
+
+</html>
