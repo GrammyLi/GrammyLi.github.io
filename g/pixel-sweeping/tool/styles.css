@@ -1,0 +1,28 @@
+.color {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  margin-right: 8px;
+  border: 1px solid black;
+}
+.pixels {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.row {
+  display: flex;
+}
+.pixel {
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border: 1px solid black;
+}
+.current-pixel {
+  margin-top: 24px;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border: 1px solid black;
+}
