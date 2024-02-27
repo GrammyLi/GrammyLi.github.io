@@ -1,12 +1,3 @@
-<!--
- * @Author: your name
- * @Date: 2021-09-10 13:05:29
- * @LastEditTime: 2021-11-28 15:24:26
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /grammyli/README.md
--->
-
 ## path
 
 |路径|英文|中文|作品|
@@ -16,106 +7,49 @@
 |g|game|游戏|（游戏、自制框架）| 
 |c|crawler|爬虫|（数据可视化）| 
 
- 
-## personal page
+  
 
-link: https://grammyli.com
+## TODO
 
-## cv
-
-limk: https://grammyli.com/cv
-## game puzzle
-link:  https://grammyli.com/g/puzzle/
-
-![game- puzzle](./%20img/image-20211014122031997.png)
-
-
-## pokemon color
-
-<a href="https://grammyli.com/g/color/" target="_blank">https://grammyli.com/g/color/ </a>
- 
-
-![avatar](./%20img/pokemon-color.png)
+1. 项目进行优化
+    1. 自己弄一套主页，【低】
+    2. 优化游戏 【高】
+2. 实现轮子工具，查看资料去学习
+3. 将实现的项目用到自己的工作中
+4. 尝试着有产品的思维，想一个创业项目，前后端自己实现，最后部署到
+5. 复习 python 今年上半年目标
+6. 向春哥请教 java 问题，下半年完成对应 java 项目
 
 
-## pinyin
+## 其他
 
-link: https://grammyli.com/t/pinyin/
+```
+1. 游戏 
+    1. 贪吃蛇 
+    2. 记忆纸牌 
+    3. 扫雷
+    4. 数独
+    5. 连连看
+    6. 消消乐
+    7. 拼图
+    8. 俄罗斯方块
+    9. 打砖块
+    10. flappy bird
+    11. 飞机大战
+    12. 2048
+2. 音乐播放器. (可以用 react , vue 或者原生都行)
+3. 论坛
+4. 微软画板 
+5. 实现轮子工具  （例如简易  webpack、JsonParse 等 ）
+
+```
 
 
-## avatar
 
-link: https://grammyli.com/t/avatar
-
-![avatar](./%20img/image-20211013201952277.png)
-
-## avatar-generator
-
-link: https://grammyli.com/t/avatar-generator/
-
-![avatar-generator](./%20img/image-20211013202009264.png)
-
-## g-search
-
-link: https://grammyli.com/t/search/
-
-![avatar-generator](./t/search/img/jptu-6ab287015dab.png)
 
  
-## visualization
+ 
 
-link:  https://grammyli.com/c/visualization/
+ 
 
-![visualization - rect](./%20img/image-20211014122052819.png)
-
-![visualization - line](./%20img/image-20211014122207704.png)
-
-## pixel
-
-link: https://grammyli.com/t/pixel
-
-## seamles
-
-link: https://grammyli.com/p/photo/
-
-## popstar
-
-link: https://grammyli.com/g/popstar/
-
-![popstar](./%20img/popstar.png)
-
-## link
-
-link: https://grammyli.com/g/link/
-
-![link](./%20img/link.png)
-
-## memory
-
-link: https://grammyli.com/g/card/
-
-![memory](./%20img/memory.png)
-## sudoku
-
-link:  https://grammyli.com/g/sudoku/
-
-![sudoku](./%20img/sudoku.png)
-
-
-## music
-
-link : https://grammyli.com/t/music
-
-
-<img src="./img/../%20img/music.png">
-
-### TODO
-
-- music 解决点击播放，专辑图片旋转功能
-- music 需要重写进度条
-- 2048 存在算法错误，当横向滑动时，数字的位置显示错误
-- pokemon-color 存在算法错误，有时挺难复现
-- ~~personal web 项目板块待更新~~
-- personal web 计划板块待更新
-- ~~search 项目需要添加主题功能、可以拖拽、可以点击选择搜索引擎工具~~
-- sitck hero
+ 
