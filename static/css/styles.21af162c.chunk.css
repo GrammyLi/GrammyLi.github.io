@@ -11,16 +11,9 @@
 .home__content--l {
   flex: 1;
 }
-.home__content--l h1 {
-  font-size: 56px;
-}
 .home__content--l h2 {
-  font-size: 24px;
   color: #595959;
   font-weight: 400;
-}
-.home__content--l h3 {
-  font-size: 28px;
 }
 .home__content--l p {
   color: #595959;
