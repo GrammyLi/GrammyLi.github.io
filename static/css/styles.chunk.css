@@ -1,0 +1,340 @@
+ 
+.home {
+  min-height: 500px;
+  height: 100%;
+  margin-bottom: 50px;
+}
+.home__content {
+  display: flex;
+  padding: 16px;
+}
+.home__content--l {
+  flex: 1;
+}
+.home__content--l h1 {
+  font-size: 56px;
+}
+.home__content--l h2 {
+  font-size: 24px;
+  color: #595959;
+  font-weight: 400;
+}
+.home__content--l h3 {
+  font-size: 28px;
+}
+.home__content--l p {
+  color: #595959;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.home__content--r {
+  width: 512px;
+}
+@keyframes moveUpDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.home .chakra-icon {
+  animation: moveUpDown 2s infinite cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+@media screen and (max-width: 1100px) {
+  .home {
+    margin-bottom: 40px;
+  }
+  .home__content--l {
+    flex: 1;
+  }
+  .home__content--l h1 {
+    font-size: 32px;
+  }
+  .home__content--l h2 {
+    font-size: 22px;
+  }
+  .home__content--l h3 {
+    font-size: 16px;
+  }
+  .home__content--r {
+    display: none;
+  }
+}
+
+.slide-indicator {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+  font-size: 24px;
+  color: #000;
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+.slide-indicator.visible {
+  opacity: 1;
+  animation: bounce 2s infinite;
+}
+.slide-indicator.hidden {
+  opacity: 0;
+}
+.slide-indicator span {
+  margin-bottom: 4px;
+  margin-left: 10px;
+  font-size: 16px;
+}
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+@media screen and (max-width: 1100px) {
+  .slide-indicator {
+    display: none;
+  }
+}
+
+.projects {
+  padding: 20px;
+  text-align: center;
+}
+.projects__title {
+  margin-bottom: 30px;
+}
+.projects__card {
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.projects__card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.projects__card .ant-card-cover img {
+  border-bottom: 1px solid #f0f0f0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.projects__card .ant-card-actions {
+  border-top: 1px solid #f0f0f0;
+}
+.projects__detail {
+  margin-top: 10px;
+  text-align: left;
+}
+.projects__detail p {
+  margin: 0;
+}
+.projects__show-more {
+  text-align: center;
+  margin-top: 20px;
+}
+.projects__show-more .ant-btn {
+  border-radius: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.projects__show-more .ant-btn:hover {
+  background-color: #1890ff;
+  color: #fff;
+}
+
+.about {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+.about__title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.about__section {
+  margin-bottom: 40px;
+}
+.about__section-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.about__company-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.about__company-title .about__job-title {
+  font-size: 18px;
+  font-weight: normal;
+}
+.about__company-title .about__time {
+  font-size: 16px;
+  font-weight: normal;
+  color: #888;
+}
+.about__project {
+  margin-bottom: 20px;
+}
+.about__paragraph {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 5px 0;
+}
+.about__list {
+  list-style-type: disc;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.about__list-item {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 5px 0;
+}
+
+.resume {
+  margin: 0 auto;
+  font-family: "Helvetica", "Avenir", sans-serif;
+  line-height: 1.6;
+  color: #333;
+  padding: 24px;
+  background: #ffffff;
+}
+.resume h2 {
+  width: 60%;
+  padding: 0 0 12px 0;
+  border-bottom: 2px solid #007acc;
+  color: #007acc;
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 600;
+}
+.resume h3 {
+  color: #007acc;
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.resume .resume__avatar {
+  float: right;
+  padding: 10px;
+  background: #fff;
+  margin: 0 30px 20px 0;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+  width: 30%;
+  max-width: 150px;
+  transition: transform 0.3s ease;
+}
+.resume .resume__avatar:hover {
+  transform: scale(1.05);
+}
+.resume .resume__name {
+  margin: 0 0 16px 0;
+  padding: 0 0 12px 0;
+  font-size: 42px;
+  font-weight: bold;
+  color: #2c3e50;
+  border-bottom: 2px solid #007acc;
+  line-height: 1.2;
+}
+.resume .resume__contact {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.resume .resume__contact-item {
+  display: flex;
+  align-items: center;
+  margin-right: 24px;
+  margin-bottom: 8px;
+}
+.resume .resume__contact-item a {
+  margin-left: 8px;
+  color: #007acc;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.resume .resume__contact-item a:hover {
+  color: #005fa3;
+  text-decoration: underline;
+}
+.resume .resume__contact-item svg {
+  font-size: 18px;
+  margin-right: 4px;
+}
+.resume .resume__objective {
+  font-family: "Georgia", serif;
+  font-style: italic;
+  color: #666;
+  margin: 24px 0;
+  background: #f9f9f9;
+  padding: 12px 16px;
+  border-left: 4px solid #007acc;
+  border-radius: 4px;
+  width: 60%;
+}
+@media screen and (max-width: 550px) {
+  .resume .resume__avatar {
+    margin: 0 auto 20px auto;
+    display: block;
+  }
+  .resume .resume__objective {
+    width: 100%;
+  }
+  .resume h2 {
+    width: 100%;
+  }
+}
+
+.app {
+  padding: 12px;
+}
+.app .ant-tabs-nav-list {
+  width: 100% !important;
+  justify-content: flex-end !important;
+}
+
+.footer {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+.footer__content {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.footer__links {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  margin: 80px 0px 24px 0px;
+}
+.footer__links a {
+  color: rgba(0, 0, 0, 0.85);
+}
+.footer__links a:hover {
+  color: #1890ff;
+}
+.footer__copyright {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.65);
+  margin-bottom: 24;
+}
+
